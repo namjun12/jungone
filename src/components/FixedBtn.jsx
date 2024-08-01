@@ -30,9 +30,9 @@ const ToTopWrap = styled.div`
    }
 
    .Top_Scroll_btn i {
-      font-size: 24px;
-      color: #464646;
       z-index: 2;
+      font-size: 24px;
+      color: #fff;
    }
 
    .Top_Scroll_btn .progress_bar {
@@ -53,7 +53,7 @@ const ToTopWrap = styled.div`
       transform: translate(-50%, -50%);
       width: 90%;
       height: 90%;
-      background-color: #fff;
+      background-color: var(--pointColor01);
       border-radius: 100%;
    }
 `
@@ -87,8 +87,8 @@ const TopBtn = () => {
       }
 
       function getColorFromPercentage(percentage) {
-         const startColor = [0, 0, 0]; // RGB 값으로 작성해야함!
-         const endColor = [0, 0, 0];
+         const startColor = [121, 146, 107]; // RGB 값으로 작성해야함!
+         const endColor = [121, 146, 107];
 
          const color = startColor.map((start, i) => {
             return Math.round(start + (endColor[i] - start) * (percentage / 100));
@@ -156,6 +156,7 @@ const Contact = () => {
 }
 // Contact Btn
 const FixedBtnWrap = styled.div`
+   z-index: 9990;
    position: fixed;
    bottom: 20px;
    right: 20px;

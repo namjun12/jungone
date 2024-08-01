@@ -1,9 +1,16 @@
 import testImg from "../images/common/testimg.jpg"
+import simbol from "../images/common/simbol.png"
 import pattern01 from "../images/common/pattern01.webp"
 import image01 from "../images/home/guard.webp"
 import image02 from "../images/home/ceo-photo.webp"
 import image03 from "../images/home/circle01.png"
 import image04 from "../images/home/people.webp"
+import image05 from "../images/home/world-bg.webp"
+import image06 from "../images/home/with01.webp"
+import image08 from "../images/home/with03.webp"
+import image09 from "../images/home/professional01.webp"
+import image10 from "../images/home/professional02.webp"
+import image11 from "../images/home/people-bg.webp"
 import icon01 from "../images/common/icon/icon01.png"
 import icon02 from "../images/common/icon/icon02.png"
 import icon03 from "../images/common/icon/icon03.png"
@@ -24,19 +31,20 @@ import icon11 from "../images/common/icon/icon11.png"
 // import icon18 from "../images/common/icon/icon18.png"
 
 export {
+   simbol,
    testImg,
    pattern01,
    image01,
    image02,
    image03,
    image04,
-   // image05,
-   // image06,
+   image05,
+   image06,
    // image07,
-   // image08,
-   // image09,
-   // image10,
-   // image11,
+   image08,
+   image09,
+   image10,
+   image11,
    // image12,
    icon01,
    icon02,

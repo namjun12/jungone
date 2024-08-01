@@ -16,6 +16,10 @@
    --subColor11: #fbfbff;
    --subColor12: #f8f8f8;
 }
+#root{
+   overflow: hidden;
+   width: 100%;
+}
 .container{
    max-width: 1440px;
    margin-left: auto;

@@ -11,7 +11,6 @@ export const BtnLink = styled(Link)`
    font-weight: 700;
    margin-left: auto;
    margin-right: auto;
-   margin: 48px auto 0px auto;
    background-color: var(--pointColor01);
 `
 export const BtnLink02 = styled(BtnLink)`
@@ -76,4 +75,13 @@ export const Title01 = styled.h3`
    &>strong{
       color: var(--pointColor01);
    }
+`
+export const StrokeTitle = styled.strong`
+   opacity: 0.4;
+   display: block;
+   line-height: 1em;
+   font-size: 100px;
+   font-weight: 700;
+   -webkit-text-stroke: 1px var(--pointColor01);
+   color: transparent;
 `
