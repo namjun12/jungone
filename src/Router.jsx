@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 // Company
 import CompanyLayout from "./pages/company/layout";
 import Ceo from "./pages/company/Ceo";
+import SloganVision from "./pages/company/SloganVision";
+import People from "./pages/company/People";
 
 const router = createBrowserRouter([
    {
@@ -31,7 +33,15 @@ const router = createBrowserRouter([
                {
                   path: 'ceo',
                   element: <Ceo />
-               }
+               },
+               {
+                  path: 'slogan-vision',
+                  element: <SloganVision />
+               },
+               {
+                  path: 'people',
+                  element: <People />
+               },
             ]
          }
       ],

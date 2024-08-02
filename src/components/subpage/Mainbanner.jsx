@@ -62,6 +62,7 @@ const MainBannerWrap = styled.div`
 `
 
 const Mainbanner = ({ bannerInfo, tabInfo }) => {
+   console.log("lender")
    const pathname = useLocation().pathname
    const [lastScrollY, setLastScrollY] = useState(0);
    const [isAnimating, setIsAnimating] = useState(false);
@@ -72,26 +73,12 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
       const tabEl = document.querySelector(".tab")
       const tabHeight = tabEl.clientHeight;
 
-      const FixedTab = () => {
-         window.addEventListener("scroll", () => {
-            const sct = document.documentElement.scrollTop;
-
-            if (sct >= winHeight - tabHeight) {
-               tabEl.classList.add("on")
-            } else {
-               tabEl.classList.remove("on")
-            }
-         })
-      }
-      FixedTab();
-
       const handleScroll = () => {
-         if (isAnimating) return;
+         const scrollTop = document.documentElement.scrollTop
+         const isScrollingDown = scrollTop > lastScrollY;
+         // if (isAnimating) return;
 
-         const scrollPosition = window.scrollY;
-         const isScrollingDown = scrollPosition > lastScrollY;
-
-         if (isScrollingDown && scrollPosition >= 1 && scrollPosition < winHeight) {
+         if (isScrollingDown && scrollTop < winHeight / 2) {
             setIsAnimating(true);
             gsap.to(window, {
                scrollTo: { y: winHeight, autoKill: false },
@@ -99,7 +86,7 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
                onComplete: () => setIsAnimating(false),
             });
          }
-         if (!isScrollingDown && scrollPosition > 1 && scrollPosition <= winHeight / 2) {
+         if (!isScrollingDown && scrollTop < (winHeight / 2) + 1) {
             setIsAnimating(true);
             gsap.to(window, {
                scrollTo: { y: 0, autoKill: false },
@@ -108,7 +95,13 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
             });
          }
 
-         setLastScrollY(scrollPosition);
+         if (scrollTop >= winHeight - tabHeight) {
+            tabEl.classList.add("on")
+         } else {
+            tabEl.classList.remove("on")
+         }
+
+         setLastScrollY(scrollTop);
       };
 
       window.addEventListener('scroll', handleScroll);

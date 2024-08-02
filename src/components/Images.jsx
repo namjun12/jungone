@@ -1,6 +1,7 @@
 import testImg from "../images/common/testimg.jpg"
 import simbol from "../images/common/simbol.png"
 import pattern01 from "../images/common/pattern01.webp"
+import pattern02 from "../images/common/pattern02.png"
 import image01 from "../images/home/guard.webp"
 import image02 from "../images/home/ceo-photo.webp"
 import image03 from "../images/home/circle01.png"
@@ -12,13 +13,13 @@ import image09 from "../images/home/professional01.webp"
 import image10 from "../images/home/professional02.webp"
 import image11 from "../images/home/people-bg.webp"
 import image12 from "../images/company/ceo-photo.webp";
-// import image13 from "../images/";
-// import image14 from "../images/";
-// import image15 from "../images/";
-// import image16 from "../images/";
-// import image17 from "../images/";
-// import image18 from "../images/";
-// import image19 from "../images/";
+import image13 from "../images/company/text01.png";
+import image14 from "../images/company/text02.png";
+import image15 from "../images/company/slogan.png";
+import image16 from "../images/company/vision.png";
+import image17 from "../images/company/ci01.png";
+import image18 from "../images/company/ci02.png";
+import image19 from "../images/company/ci03.png";
 // import image20 from "../images/";
 // import image21 from "../images/";
 // import image22 from "../images/";
@@ -31,6 +32,8 @@ import image12 from "../images/company/ceo-photo.webp";
 // import image29 from "../images/";
 // import image30 from "../images/";
 import mainBanner01 from "../images/common/main-banner01.webp"
+import iconQuotation01 from "../images/common/icon/icon-quotation-open.png"
+import iconQuotation02 from "../images/common/icon/icon-quotation-close.png"
 import icon01 from "../images/common/icon/icon01.png"
 import icon02 from "../images/common/icon/icon02.png"
 import icon03 from "../images/common/icon/icon03.png"
@@ -42,8 +45,6 @@ import icon08 from "../images/common/icon/icon08.png"
 import icon09 from "../images/common/icon/icon09.png"
 import icon10 from "../images/common/icon/icon10.png"
 import icon11 from "../images/common/icon/icon11.png"
-// import icon12 from "../images/common/icon/icon12.png"
-// import icon13 from "../images/common/icon/icon13.png"
 // import icon14 from "../images/common/icon/icon14.png"
 // import icon15 from "../images/common/icon/icon15.png"
 // import icon16 from "../images/common/icon/icon16.png"
@@ -54,6 +55,7 @@ export {
    simbol,
    testImg,
    pattern01,
+   pattern02,
    image01,
    image02,
    image03,
@@ -66,13 +68,13 @@ export {
    image10,
    image11,
    image12,
-   // image13,
-   // image14,
-   // image15,
-   // image16,
-   // image17,
-   // image18,
-   // image19,
+   image13,
+   image14,
+   image15,
+   image16,
+   image17,
+   image18,
+   image19,
    // image20,
    // image21,
    // image22,
@@ -85,6 +87,8 @@ export {
    // image29,
    // image30,
    mainBanner01,
+   iconQuotation01,
+   iconQuotation02,
    icon01,
    icon02,
    icon03,
