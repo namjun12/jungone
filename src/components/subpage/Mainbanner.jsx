@@ -86,7 +86,7 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
                onComplete: () => setIsAnimating(false),
             });
          }
-         if (!isScrollingDown && scrollTop < (winHeight / 2) + 1) {
+         if (!isScrollingDown && scrollTop < winHeight / 5) {
             setIsAnimating(true);
             gsap.to(window, {
                scrollTo: { y: 0, autoKill: false },
@@ -110,6 +110,10 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
          window.removeEventListener('scroll', handleScroll);
       };
    }, [lastScrollY, isAnimating]);
+
+   window.addEventListener("wheel", (e) =>{
+      console.log('deltaY', e.deltaY)
+   })
 
    return (
       <MainBannerWrap bg={bannerInfo.bgImgPath}>
