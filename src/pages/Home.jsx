@@ -398,13 +398,13 @@ const Container = styled.div`
 const Home = () => {
 
    const isMobile = document.documentElement.clientWidth < 1280
-   useEffect(() => {
-      document.getElementById("header")?.classList.remove("on")
+   // useEffect(() => {
+   //    document.getElementById("header")?.classList.remove("on")
 
-      return () => {
-         document.getElementById("header")?.classList.add("on")
-      }
-   }, [])
+   //    return () => {
+   //       document.getElementById("header")?.classList.add("on")
+   //    }
+   // }, [])
 
    const data = {
       banner: [
@@ -429,22 +429,22 @@ const Home = () => {
       ],
    }
 
-   useEffect(() => {
-      const handleScroll = () => {
-         const currentScrollTop = document.documentElement.scrollTop;
-         const header = document.getElementById("header")
-         if (currentScrollTop > 0) {
-            header?.classList.add("on")
-         } else {
-            header?.classList.remove("on")
-         }
-      };
+   // useEffect(() => {
+   //    const handleScroll = () => {
+   //       const currentScrollTop = document.documentElement.scrollTop;
+   //       const header = document.getElementById("header")
+   //       if (currentScrollTop > 0) {
+   //          header?.classList.add("on")
+   //       } else {
+   //          header?.classList.remove("on")
+   //       }
+   //    };
 
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-         window.removeEventListener('scroll', handleScroll);
-      };
-   }, [])
+   //    window.addEventListener('scroll', handleScroll);
+   //    return () => {
+   //       window.removeEventListener('scroll', handleScroll);
+   //    };
+   // }, [])
 
    const consultingInfo = [
       {
@@ -892,7 +892,7 @@ const Home = () => {
                   </div>
                   <div className="pagination" />
                </Swiper>
-               <BtnLink02>후기 더 보러가기</BtnLink02>
+               <BtnLink02 className='xl:mt-80'>후기 더 보러가기</BtnLink02>
             </div>
          </section>
       </Container>

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+// Images
+import { simbol } from './Images'
+
 export const BtnLink = styled(Link)`
    display: flex;
    justify-content: center;
@@ -74,6 +77,22 @@ export const Title01 = styled.h3`
    font-weight: 700;
    &>strong{
       color: var(--pointColor01);
+   }
+`
+export const Title02 = styled.h3`
+   line-height: 1em;
+   text-align: center;
+   font-size: 40px;
+   font-weight: bold;
+   &::before{
+      content: '';
+      display: block;
+      clear: both;
+      width: 25px;
+      height: 25px;
+      margin: 0px auto 8px auto;
+      background-image: url(${simbol});
+      background-size: cover;
    }
 `
 export const StrokeTitle = styled.strong`

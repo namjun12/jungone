@@ -11,6 +11,26 @@ import image08 from "../images/home/with03.webp"
 import image09 from "../images/home/professional01.webp"
 import image10 from "../images/home/professional02.webp"
 import image11 from "../images/home/people-bg.webp"
+import image12 from "../images/company/ceo-photo.webp";
+// import image13 from "../images/";
+// import image14 from "../images/";
+// import image15 from "../images/";
+// import image16 from "../images/";
+// import image17 from "../images/";
+// import image18 from "../images/";
+// import image19 from "../images/";
+// import image20 from "../images/";
+// import image21 from "../images/";
+// import image22 from "../images/";
+// import image23 from "../images/";
+// import image24 from "../images/";
+// import image25 from "../images/";
+// import image26 from "../images/";
+// import image27 from "../images/";
+// import image28 from "../images/";
+// import image29 from "../images/";
+// import image30 from "../images/";
+import mainBanner01 from "../images/common/main-banner01.webp"
 import icon01 from "../images/common/icon/icon01.png"
 import icon02 from "../images/common/icon/icon02.png"
 import icon03 from "../images/common/icon/icon03.png"
@@ -45,7 +65,26 @@ export {
    image09,
    image10,
    image11,
-   // image12,
+   image12,
+   // image13,
+   // image14,
+   // image15,
+   // image16,
+   // image17,
+   // image18,
+   // image19,
+   // image20,
+   // image21,
+   // image22,
+   // image23,
+   // image24,
+   // image25,
+   // image26,
+   // image27,
+   // image28,
+   // image29,
+   // image30,
+   mainBanner01,
    icon01,
    icon02,
    icon03,

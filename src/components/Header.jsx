@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 // styled
 const Container = styled.header`
    z-index: 9980;
-   position: fixed;
+   position: absolute;
    top: 0px;
    left: 0px;
    display: flex;
@@ -239,7 +239,7 @@ export default function Header() {
          subCategory: [
             {
                title: "대표소개",
-               path: "/",
+               path: "/company/ceo",
             },
             {
                title: "슬로건 및 비전",
@@ -309,7 +309,7 @@ export default function Header() {
    ]
 
    return (
-      <Container id="header" className={`${headerActive === 1 ? "open" : "close"} on`}>
+      <Container id="header" className={`${headerActive === 1 ? "open" : "close"}`}>
          <Logo className="xl:ml-40 ml-16" to="/">
             <img className="xl:h-48 h-34 logo_normal" src={logo} alt="logo" />
             <img className="xl:h-48 h-34 logo_white" src={logoWhite} alt="logo" />

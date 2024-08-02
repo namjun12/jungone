@@ -4,11 +4,12 @@ import { createBrowserRouter } from "react-router-dom"
 import NotFound from "./components/NotFound";
 // import DetailPage from "./components/DetailPage";
 
-// pages 
+// Pages 
 import Root from "./Root";
 import Home from "./pages/Home";
-
-// 회사소개
+// Company
+import CompanyLayout from "./pages/company/layout";
+import Ceo from "./pages/company/Ceo";
 
 const router = createBrowserRouter([
    {
@@ -19,6 +20,20 @@ const router = createBrowserRouter([
             path: '',
             element: <Home />
          },
+         {
+            path: 'company',
+            element: <CompanyLayout />,
+            children: [
+               {
+                  path: '',
+                  element: <NotFound />,
+               },
+               {
+                  path: 'ceo',
+                  element: <Ceo />
+               }
+            ]
+         }
       ],
       errorElement: <NotFound />
    },

@@ -112,7 +112,7 @@ export default function Footer() {
    ]
 
    return (
-      <Container id="footer" className="xl:mt-120 mt-60">
+      <Container id="footer">
          <div className="container xl:flex block justify-between xl:pt-40 pt-24 xl:pb-40 pb-32">
             <div>
                <img className="logo xl:mb-20 mb-24" src={Logo} alt="logo" />
