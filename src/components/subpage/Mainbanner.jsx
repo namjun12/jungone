@@ -62,7 +62,6 @@ const MainBannerWrap = styled.div`
 `
 
 const Mainbanner = ({ bannerInfo, tabInfo }) => {
-   console.log("lender")
    const pathname = useLocation().pathname
    const [lastScrollY, setLastScrollY] = useState(0);
    const [isAnimating, setIsAnimating] = useState(false);
@@ -76,7 +75,14 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
       const handleScroll = () => {
          const scrollTop = document.documentElement.scrollTop
          const isScrollingDown = scrollTop > lastScrollY;
-         // if (isAnimating) return;
+
+         if (scrollTop >= winHeight - tabHeight) {
+            tabEl.classList.add("on")
+         } else {
+            tabEl.classList.remove("on")
+         }
+
+         if (isAnimating) return;
 
          if (isScrollingDown && scrollTop < winHeight / 2) {
             setIsAnimating(true);
@@ -86,20 +92,15 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
                onComplete: () => setIsAnimating(false),
             });
          }
-         if (!isScrollingDown && scrollTop < winHeight / 5) {
-            setIsAnimating(true);
-            gsap.to(window, {
-               scrollTo: { y: 0, autoKill: false },
-               duration: duration,
-               onComplete: () => setIsAnimating(false),
-            });
-         }
+         // if (!isScrollingDown && scrollTop < winHeight / 5) {
+         //    setIsAnimating(true);
+         //    gsap.to(window, {
+         //       scrollTo: { y: 0, autoKill: false },
+         //       duration: duration,
+         //       onComplete: () => setIsAnimating(false),
+         //    });
+         // }
 
-         if (scrollTop >= winHeight - tabHeight) {
-            tabEl.classList.add("on")
-         } else {
-            tabEl.classList.remove("on")
-         }
 
          setLastScrollY(scrollTop);
       };
@@ -110,10 +111,6 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
          window.removeEventListener('scroll', handleScroll);
       };
    }, [lastScrollY, isAnimating]);
-
-   window.addEventListener("wheel", (e) =>{
-      console.log('deltaY', e.deltaY)
-   })
 
    return (
       <MainBannerWrap bg={bannerInfo.bgImgPath}>

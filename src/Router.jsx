@@ -12,6 +12,9 @@ import CompanyLayout from "./pages/company/layout";
 import Ceo from "./pages/company/Ceo";
 import SloganVision from "./pages/company/SloganVision";
 import People from "./pages/company/People";
+// Space
+import SpaceLayout from "./pages/space-organization/layout";
+import Service from "./pages/space-organization/service";
 
 const router = createBrowserRouter([
    {
@@ -42,6 +45,20 @@ const router = createBrowserRouter([
                   path: 'people',
                   element: <People />
                },
+            ]
+         },
+         {
+            path: 'space-organization',
+            element: <SpaceLayout />,
+            children: [
+               {
+                  path: '',
+                  element: <NotFound />
+               },
+               {
+                  path: 'service',
+                  element: <Service />
+               }
             ]
          }
       ],

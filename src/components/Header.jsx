@@ -243,15 +243,11 @@ export default function Header() {
             },
             {
                title: "슬로건 및 비전",
-               path: "/",
+               path: "/company/slogan-vision",
             },
             {
                title: "인재상",
-               path: "/",
-            },
-            {
-               title: "부분컨설팅",
-               path: "/",
+               path: "/company/people",
             },
          ]
       },
@@ -259,41 +255,29 @@ export default function Header() {
          title: "공간정리",
          subCategory: [
             {
-               title: "부분컨설팅",
-               path: "/",
-            },
-            {
-               title: "전체컨설팅",
-               path: "/",
-            },
-            {
-               title: "가구재배치",
-               path: "/",
-            },
-            {
-               title: "사업공간",
-               path: "/",
+               title: "서비스소개",
+               path: "/space-organization/service",
             },
          ]
       },
       {
-         title: "토탈홈케어",
+         title: "원스톱 토탈서비스",
          subCategory: [
             {
-               title: "토탈홈케어 서비스",
+               title: "서비스소개",
                path: "/",
             },
          ]
       },
       {
-         title: "공간정원연구소",
+         title: "공간정원 연구소",
          subCategory: [
             {
                title: "공간 가드닝 연구",
                path: "/",
             },
             {
-               title: "생활가구, 수납도구 개발",
+               title: "라이프 오브제 연구",
                path: "/",
             },
             {
@@ -301,7 +285,7 @@ export default function Header() {
                path: "/",
             },
             {
-               title: "연구소",
+               title: "가드너즈 아카데미",
                path: "/",
             },
          ]

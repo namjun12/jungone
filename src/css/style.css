@@ -17,23 +17,9 @@
    --subColor11: #fbfbff;
    --subColor12: #f8f8f8;
 }
-/* .list-dot{
-   position: relative;
-   padding-left: 8px;
+*{
+   color: inherit;
 }
-.list-dot::before{
-   content: "";
-   display: block;
-   clear: both;
-   position: absolute;
-   top: 13px;
-   left: 0px;
-   font-size: 12px;
-   width: 5px;
-   height: 5px;
-   border-radius: 50%;
-   background-color: #000;
-} */
 #root{
    overflow: hidden;
    width: 100%;
