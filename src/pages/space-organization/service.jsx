@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
 // Components
-import { Title02 } from '../../components/StyledCommon';
+import { Title02, SubBanner01, Desc01 } from '../../components/StyledCommon';
 import ContactBanner from '../../components/subpage/ContactBanner';
 
 // Images
@@ -12,17 +12,9 @@ import DOMPurify from 'dompurify';
 // Styles
 const ServiceWrap = styled.div`
    .banner{
-      height: 330px;
-      padding: 0px 100px;
       background-image: url(${image21});
-      background-size: cover;
-      background-position: center center;
-      .icon{
-         width: auto;
-         height: 22px;
-      }
    }
-   .desc{
+   /* .desc{
       position: relative;
       &::after{
          content: '';
@@ -52,7 +44,7 @@ const ServiceWrap = styled.div`
             background-color: var(--pointColor03);
          }
       }
-   }
+   } */
    .tab-wrap{
       box-shadow: inset 0px 0px 0px 1px var(--subColor04);
       .btn-tab{
@@ -223,20 +215,20 @@ const Service = () => {
       <ServiceWrap className='xl:mt-120'>
          <div className='container'>
             <Title02>공간정리</Title02>
-            <div className='banner flex flex-col justify-center items-center xl:mt-40'>
+            <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
                <p className='text-center xl:leading-36 xl:text-24 xl:mt-24 xl:mb-24 text-white'>
                   공간정원의 다년간의 정리 연구와 개발을 통해 <strong>사용자 개개인의 생활패턴</strong>과 <strong>성향</strong>에 맞는 편리하고 세련된 환경으로 재구성하며,
                   나아가 <strong>사용자에게 필요한 공간의 기능들을 부여하여 성장과 발전을 돕는 공간</strong>으로 만들어 드리는 정리수납 서비스입니다.
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />
-            </div>
+            </SubBanner01>
          </div>
          <div className='container desc xl:mt-105'>
-            <p className='desc xl:leading-36 text-center xl:text-24 font-medium'>
+            <Desc01 className='desc xl:leading-36 text-center xl:text-24 font-medium'>
                사용자의 현재 생활과 가족구성원의 패턴 및 성향을 분석하여 맞춤형 공간 재구성 및 정리수납을 하는 가장 선진화된 정리수납<br className='xl:block hidden' />
                현재 전세계에서 <span className='point font-bold text-pointColor01'>가장 선진화된 정리기법을 연구하고 서비스 하는 곳</span>은 공간정원이 유일합니다
-            </p>
+            </Desc01>
          </div>
          <div className='tab-wrap container xl:mt-90 xl:pb-120'>
             <div className='tab grid grid-cols-3'>
@@ -305,7 +297,7 @@ const Service = () => {
                         <div className='text-wrap flex flex-col justify-center items-center'>
                            <h4 className='leading-1em xl:text-24 font-bold text-white'>{styleInfo.title}</h4>
                            <p
-                           className='text-center xl:leading-26 xl:text-18 xl:mt-24 text-white'
+                              className='text-center xl:leading-26 xl:text-18 xl:mt-24 text-white'
                               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(styleInfo.desc) }}
                            />
                         </div>

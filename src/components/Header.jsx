@@ -265,7 +265,7 @@ export default function Header() {
          subCategory: [
             {
                title: "서비스소개",
-               path: "/",
+               path: "/one-stop/service",
             },
          ]
       },
@@ -286,6 +286,31 @@ export default function Header() {
             },
             {
                title: "가드너즈 아카데미",
+               path: "/",
+            },
+         ]
+      },
+      {
+         title: "커뮤니티",
+         subCategory: [
+            {
+               title: "공지사항",
+               path: "/",
+            },
+            {
+               title: "자주묻는 질문",
+               path: "/",
+            },
+            {
+               title: "SNS",
+               path: "/",
+            },
+            {
+               title: "고객후기",
+               path: "/",
+            },
+            {
+               title: "문의하기",
                path: "/",
             },
          ]

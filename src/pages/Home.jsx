@@ -529,7 +529,7 @@ const Home = () => {
                         <h2 className='xl:leading-80 xl:text-64 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
                         <p className='xl:leading-28 xl:text-17 font-light xl:mt-50' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.sub_title) }}></p>
                         {bannerInfo.path &&
-                           <BtnLink to={bannerInfo.path}>
+                           <BtnLink className='xl:mt-48' to={bannerInfo.path}>
                               더 알아보기
                            </BtnLink>}
                      </div>

@@ -104,3 +104,45 @@ export const StrokeTitle = styled.strong`
    -webkit-text-stroke: 1px var(--pointColor01);
    color: transparent;
 `
+
+export const SubBanner01 = styled.div`
+   height: 330px;
+   padding: 0px 100px;
+   background-size: cover;
+   background-position: center center;
+   .icon{
+      width: auto;
+      height: 22px;
+   }
+`
+export const Desc01 = styled.p`
+   position: relative;
+   &::after{
+      content: '';
+      display: block;
+      clear: both;
+      z-index: 9;
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      width: 2px;
+      height: 100px;
+      background-color: var(--subColor05);
+   }
+   .point{
+      position: relative;
+      &::after{
+         content: '';
+         display: block;
+         clear: both;
+         z-index: -9;
+         position: absolute;
+         top: 5px;
+         left: 0px;
+         width: 100%;
+         height: 21px;
+         background-color: var(--pointColor03);
+      }
+   }
+`

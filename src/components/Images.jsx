@@ -22,20 +22,29 @@ import image17 from "../images/company/ci01.png";
 import image18 from "../images/company/ci02.png";
 import image19 from "../images/company/ci03.png";
 import image20 from "../images/company/people01.png";
-import image21 from "../images/space/banner01.png";
+import image21 from "../images/space/banner01.webp";
 import image22 from "../images/space/style01.webp";
 import image23 from "../images/space/style02.webp";
 import image24 from "../images/space/style03.webp";
-// import image25 from "../images/";
-// import image26 from "../images/";
-// import image27 from "../images/";
-// import image28 from "../images/";
-// import image29 from "../images/";
-// import image30 from "../images/";
+import image25 from "../images/one-stop/banner01.webp";
+import image26 from "../images/one-stop/category.png";
+import image27 from "../images/one-stop/why.png";
+import image28 from "../images/one-stop/type01.webp";
+import image29 from "../images/one-stop/type02.webp";
+import image30 from "../images/one-stop/type03.webp";
+import image31 from "../images/one-stop/type04.webp";
+import image32 from "../images/one-stop/type05.webp";
+import image33 from "../images/one-stop/type06.webp";
+import image34 from "../images/one-stop/type07.webp";
+import image35 from "../images/one-stop/type08.webp";
+// import image36 from "../images/";
 import mainBanner01 from "../images/common/main-banner01.webp"
 import mainBanner02 from "../images/common/main-banner02.webp"
+import mainBanner03 from "../images/common/main-banner03.webp"
 import iconQuotation01 from "../images/common/icon/icon-quotation-open.png"
 import iconQuotation02 from "../images/common/icon/icon-quotation-close.png"
+import iconQuotation03 from "../images/common/icon/icon-quotation-open02.webp"
+import iconQuotation04 from "../images/common/icon/icon-quotation-close02.webp"
 import icon01 from "../images/common/icon/icon01.png"
 import icon02 from "../images/common/icon/icon02.png"
 import icon03 from "../images/common/icon/icon03.png"
@@ -86,16 +95,24 @@ export {
    image22,
    image23,
    image24,
-   // image25,
-   // image26,
-   // image27,
-   // image28,
-   // image29,
-   // image30,
+   image25,
+   image26,
+   image27,
+   image28,
+   image29,
+   image30,
+   image31,
+   image32,
+   image33,
+   image34,
+   image35,
    mainBanner01,
    mainBanner02,
+   mainBanner03,
    iconQuotation01,
    iconQuotation02,
+   iconQuotation03,
+   iconQuotation04,
    icon01,
    icon02,
    icon03,
