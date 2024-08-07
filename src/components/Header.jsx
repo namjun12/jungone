@@ -274,19 +274,19 @@ export default function Header() {
          subCategory: [
             {
                title: "공간 가드닝 연구",
-               path: "/",
+               path: "/space-lab/gardening",
             },
             {
                title: "라이프 오브제 연구",
-               path: "/",
+               path: "/space-lab/life",
             },
             {
                title: "교육 기획",
-               path: "/",
+               path: "/space-lab/edu",
             },
             {
                title: "가드너즈 아카데미",
-               path: "/",
+               path: "/space-lab/academy",
             },
          ]
       },

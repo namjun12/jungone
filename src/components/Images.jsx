@@ -37,10 +37,13 @@ import image32 from "../images/one-stop/type05.webp";
 import image33 from "../images/one-stop/type06.webp";
 import image34 from "../images/one-stop/type07.webp";
 import image35 from "../images/one-stop/type08.webp";
+import image36 from "../images/space-lab/research01.png";
+// import image36 from "../images/";
 // import image36 from "../images/";
 import mainBanner01 from "../images/common/main-banner01.webp"
 import mainBanner02 from "../images/common/main-banner02.webp"
 import mainBanner03 from "../images/common/main-banner03.webp"
+import mainBanner04 from "../images/common/main-banner04.webp"
 import iconQuotation01 from "../images/common/icon/icon-quotation-open.png"
 import iconQuotation02 from "../images/common/icon/icon-quotation-close.png"
 import iconQuotation03 from "../images/common/icon/icon-quotation-open02.webp"
@@ -106,9 +109,11 @@ export {
    image33,
    image34,
    image35,
+   image36,
    mainBanner01,
    mainBanner02,
    mainBanner03,
+   mainBanner04,
    iconQuotation01,
    iconQuotation02,
    iconQuotation03,

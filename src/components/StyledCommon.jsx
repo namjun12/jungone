@@ -104,7 +104,6 @@ export const StrokeTitle = styled.strong`
    -webkit-text-stroke: 1px var(--pointColor01);
    color: transparent;
 `
-
 export const SubBanner01 = styled.div`
    height: 330px;
    padding: 0px 100px;

@@ -20,6 +20,10 @@ import OneStopLayout from "./pages/one-stop/layout";
 import OneStopService from "./pages/one-stop/service";
 // Space Lab
 import SpaceLabLayout from "./pages/space-lab/layout";
+import GardeningResearch from "./pages/space-lab/GardeningResearch";
+import LifeResearch from "./pages/space-lab/LifeResearch";
+import EduPlanning from "./pages/space-lab/EduPlanning";
+import GardenerAcademy from "./pages/space-lab/GardenerAcademy"
 
 const router = createBrowserRouter([
    {
@@ -89,8 +93,20 @@ const router = createBrowserRouter([
                   element: <NotFound />
                },
                {
-                  path: 'space-research',
-                  element: <OneStopService />
+                  path: 'gardening',
+                  element: <GardeningResearch />
+               },
+               {
+                  path: 'life',
+                  element: <LifeResearch />
+               },
+               {
+                  path: 'edu',
+                  element: <EduPlanning />
+               },
+               {
+                  path: 'academy',
+                  element: <GardenerAcademy />
                },
             ],
          }
