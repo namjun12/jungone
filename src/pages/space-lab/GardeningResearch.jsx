@@ -21,6 +21,9 @@ import DOMPurify from 'dompurify'
 const CategoryWrap = styled.div`
    .category{
       .item{
+         &:first-of-type{
+            margin-top: 0px;
+         };
          &:nth-of-type(2n){
             .main-img{
                order: 1;
@@ -30,16 +33,18 @@ const CategoryWrap = styled.div`
                *{
                   text-align: right;
                }
-            }
-            .bg-pattern{
-               margin-left: 0px;
-               margin-right: auto;
+               .bg-pattern{
+                  margin-left: 0px;
+                  margin-right: auto;
+               }
             }
          }
          .main-img{
             max-width: 755px;
          }
          .text-wrap{
+            width: 100%;
+            max-width: 660px;
             .bg-pattern{
                width: 95px;
                height: auto;
@@ -97,12 +102,12 @@ const GardeningResearch = () => {
       },
       {
          img: image02,
-         title: "시니어를 위한 공간 가드닝",
+         title: "<span class='point'>시니어</span>를 위한 공간 가드닝",
          desc: `
-            부모님과 어른들을 위한 공간구성 및 정리법은 젊은이를 위한 정리법과 분명히 달라야 합니다 
-            편리함에 초점을 두고 현재의 건강 상태에 따라 차별화되는 맞춤 공간과 
-            특수한 기능의 공간으로 재구성 해드리는 서비스 입니다 
-
+            부모님과 어른들을 위한 공간구성 및 정리법은 젊은이를 위한 정리법과 분명히 달라야 합니다 <br class='xl:block hidden'/>
+            편리함에 초점을 두고 현재의 건강 상태에 따라 차별화되는 맞춤 공간과 <br class='xl:block hidden'/>
+            특수한 기능의 공간으로 재구성 해드리는 서비스 입니다 <br class='xl:block hidden'/>
+            <br class='xl:block hidden'/>
             *특수기능의 공간 : 시니어의 건강이나 신체 상태에따라 국가에서 지원하는 생활 보조 설비, 기구들을 반영한 공간 구성방법
             필요시 국가에서 지원되는 생활보조 설비나 기구중 적합한 항목들을 알려드리고 혜택을 받을수 있게 도와드립니다
             (항목별로 50~100%의 국가지원)
@@ -110,59 +115,59 @@ const GardeningResearch = () => {
       },
       {
          img: image03,
-         title: "휴식 에너지형 공간 가드닝",
+         title: "<span class='point'>휴식 에너지형</span> 공간 가드닝",
          desc: `
-            정적인 공간에 비움의 인테리어를 통한 편리하고 안정된 환경으로 공간을 구성 합니다
-            주로 직장이나 외부에서 에너지를 많이 사용하는 분들께 적합한 환경으로 공간상의 자극을 최소화하고 
+            정적인 공간에 비움의 인테리어를 통한 편리하고 안정된 환경으로 공간을 구성 합니다 <br class='xl:block hidden'/>
+            주로 직장이나 외부에서 에너지를 많이 사용하는 분들께 적합한 환경으로 공간상의 자극을 최소화하고 <br class='xl:block hidden'/>
             스트레스 유발을 최소화하며 휴식 기능을 강화한 환경으로 만들어 드리는 정리 서비스 입니다
          `,
       },
       {
          img: image04,
-         title: "활력 에너지형 공간 가드닝",
+         title: "<span class='point'>활력 에너지형</span> 공간 가드닝",
          desc: `
-            사용자의 취향이나 니즈에 따라 동적이고 특징있는 공간으로 구성해드리는 서비스입니다
-            주로 1인가구나 신혼부부처럼 집에서 취미를 즐기는 시간이 많은분들께 적합한 서비스로 
+            사용자의 취향이나 니즈에 따라 동적이고 특징있는 공간으로 구성해드리는 서비스입니다 <br class='xl:block hidden'/>
+            주로 1인가구나 신혼부부처럼 집에서 취미를 즐기는 시간이 많은분들께 적합한 서비스로 <br class='xl:block hidden'/>
             개인 및 가족의 취향이나 니즈에 따라 다양한 형태로 공간을 구성해 드리는 맞춤 정리 서비스 입니다  
          `,
       },
       {
          img: image05,
-         title: "복합형(휴식형+취미형) 공간 가드닝",
+         title: "<span class='point'>복합형(휴식형+취미형)</span> 공간 가드닝",
          desc: `
-            사용자의 디테일한 생활 패턴과 취향에 맞춰 휴식과 활력을 조화롭게 구성하며, 
+            사용자의 디테일한 생활 패턴과 취향에 맞춰 휴식과 활력을 조화롭게 구성하며, <br class='xl:block hidden'/>
             사용자에게 가장 잘맞는 이상적인 공간으로 정리해 드리는 서비스 입니다.
          `,
       },
       {
          img: image06,
-         title: "신혼부부를 위한 공간 가드닝",
+         title: "<span class='point'>신혼부부</span>를 위한 공간 가드닝",
          desc: `
-            21세기 부부의 형태는 다양합니다.
-            맞벌이 부부를 위한 공간부터, 다자녀를 위한 공간까지
+            21세기 부부의 형태는 다양합니다. <br class='xl:block hidden'/>
+            맞벌이 부부를 위한 공간부터, 다자녀를 위한 공간까지 <br class='xl:block hidden'/>
             효율적으로 공간활용을 구상해드리고 있습니다.
          `,
       },
       {
          img: image07,
-         title: "1인 가구를 위한 공간 가드닝",
+         title: "<span class='point'>1인 가구</span>를 위한 공간 가드닝",
          desc: `
-            1인가구를 위한 맞춤 공간 가드닝 서비스입니다.
+            1인가구를 위한 맞춤 공간 가드닝 서비스입니다. <br class='xl:block hidden'/>
             사용자의 생활패턴이나 좁은 공간에서의 효율적인 공간활용을 구상해드립니다.
          `,
       },
       {
          img: image08,
-         title: "공간별 사용자 맞춤 가드닝",
+         title: "공간별 <span class='point'>사용자 맞춤</span> 가드닝",
          desc: `
-            사용자의 취향이나 생활패턴에 따라 맞춤형으로 구성해드리는 서비스입니다.
+            사용자의 취향이나 생활패턴에 따라 맞춤형으로 구성해드리는 서비스입니다. <br class='xl:block hidden'/>
             복층, 반려동물 등 다양한 상황에서 맞는 형태로 공간을 구성해드리는 맞춤 가드닝 서비스입니다. 
          `,
       },
    ]
 
    return (
-      <CategoryWrap className='container'>
+      <CategoryWrap className='container xl:pb-120'>
          <SpaceLab01
             info={SpaceLab01Info}
          />
@@ -171,7 +176,7 @@ const GardeningResearch = () => {
             {categoryInfo &&
                <ul className='xl:mt-80'>
                   {categoryInfo.map((categoryInfo, index) => (
-                     <li className='item flex xl:gap-32' key={index}>
+                     <li className='item flex xl:gap-32 xl:mt-80' key={index}>
                         <img className='main-img w-full' src={categoryInfo.img} alt="" />
                         <div className='text-wrap'>
                            <img className='bg-pattern xl:mb-32' src={pattern02} alt="배경 패턴" />

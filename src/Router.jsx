@@ -24,6 +24,14 @@ import GardeningResearch from "./pages/space-lab/GardeningResearch";
 import LifeResearch from "./pages/space-lab/LifeResearch";
 import EduPlanning from "./pages/space-lab/EduPlanning";
 import GardenerAcademy from "./pages/space-lab/GardenerAcademy"
+// Community
+import CommunityLayout from "./pages/community/Layout";
+import Notice from "./pages/community/Notice";
+import Faq from "./pages/community/Faq";
+import Sns from "./pages/community/Sns";
+import Review from "./pages/community/Review";
+import Contact from "./pages/community/Contact";
+
 
 const router = createBrowserRouter([
    {
@@ -109,6 +117,36 @@ const router = createBrowserRouter([
                   element: <GardenerAcademy />
                },
             ],
+         },
+         {
+            path: 'community',
+            element: <CommunityLayout />,
+            children: [
+               {
+                  path: '',
+                  element: <NotFound />
+               },
+               {
+                  path: 'notice',
+                  element: <Notice/>,
+               },
+               {
+                  path: 'faq',
+                  element: <Faq/>,
+               },
+               {
+                  path: 'sns',
+                  element: <Sns/>,
+               },
+               {
+                  path: 'review',
+                  element: <Review/>,
+               },
+               {
+                  path: 'contact',
+                  element: <Contact/>,
+               },
+            ]
          }
       ],
       errorElement: <NotFound />

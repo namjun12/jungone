@@ -38,8 +38,23 @@ import image33 from "../images/one-stop/type06.webp";
 import image34 from "../images/one-stop/type07.webp";
 import image35 from "../images/one-stop/type08.webp";
 import image36 from "../images/space-lab/research01.png";
-// import image36 from "../images/";
-// import image36 from "../images/";
+import image37 from "../images/space-lab/research02.webp";
+import image38 from "../images/space-lab/life01.webp";
+import image39 from "../images/space-lab/life02.webp";
+import image40 from "../images/space-lab/life03.webp";
+import image41 from "../images/space-lab/research03.webp";
+import image42 from "../images/space-lab/edu01.webp";
+import image43 from "../images/space-lab/edu02.webp";
+import image44 from "../images/space-lab/edu03.webp";
+import image45 from "../images/space-lab/research04.webp";
+import image46 from "../images/space-lab/academy01.png";
+import image47 from "../images/space-lab/academy02.png";
+import image48 from "../images/space-lab/academy03.png";
+import image49 from "../images/space-lab/expert01.webp";
+import image50 from "../images/space-lab/expert02.webp";
+import image51 from "../images/space-lab/expert03.webp";
+import image52 from "../images/space-lab/expert04.webp";
+// import image50 from "../images/";
 import mainBanner01 from "../images/common/main-banner01.webp"
 import mainBanner02 from "../images/common/main-banner02.webp"
 import mainBanner03 from "../images/common/main-banner03.webp"
@@ -110,6 +125,22 @@ export {
    image34,
    image35,
    image36,
+   image37,
+   image38,
+   image39,
+   image40,
+   image41,
+   image42,
+   image43,
+   image44,
+   image45,
+   image46,
+   image47,
+   image48,
+   image49,
+   image50,
+   image51,
+   image52,
    mainBanner01,
    mainBanner02,
    mainBanner03,
