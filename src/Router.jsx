@@ -32,7 +32,6 @@ import Sns from "./pages/community/Sns";
 import Review from "./pages/community/Review";
 import Contact from "./pages/community/Contact";
 
-
 const router = createBrowserRouter([
    {
       path: '/',

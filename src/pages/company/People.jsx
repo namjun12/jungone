@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import DOMPurify from 'dompurify'
 
 // Components
 import { Title01, Title02 } from '../../components/StyledCommon'
 
 // Images
 import { icon12, icon13, icon14, image20 } from '../../components/Images'
-import DOMPurify from 'dompurify'
 
 const PeopleWrap = styled.div`
    .items-wrap{
@@ -62,7 +62,7 @@ const People = () => {
             </div>
             <ul className='items-wrap grid grid-cols-3 xl:gap-24 xl:mt-80'>
                {peopleInfo.map((peopleInfo, index) => (
-                  <li className='item relative xl:p-40'>
+                  <li className='item relative xl:p-40' key={index}>
                      <div>
                         <img className='icon' src={peopleInfo.image} alt="아이콘" />
                         <h4 className='leading-1em xl:text-24 font-medium xl:mt-32'>{peopleInfo.title}</h4>

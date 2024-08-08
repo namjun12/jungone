@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -35,6 +35,11 @@ const circleSacle = keyframes`
    }
 `
 const Container = styled.div`
+   overflow-x: hidden;
+   .container{
+      padding-left: 16px;
+      padding-right: 16px;
+   }
    .has-simbol{ 
       position: relative;
       &::after{
@@ -393,18 +398,132 @@ const Container = styled.div`
          }
       }
    }
+   @media screen and (max-width: 1500px){
+      .guard {
+         align-items: flex-start;
+         .main-image{
+            width: 40%;
+            margin-left: 0px;
+         }
+      }
+      .ceo{
+         .text-wrap{
+            max-width: 550px;
+         }
+      }
+      .people {
+         .main-img{
+            max-width: 750px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+         }
+      }
+   }
+   @media screen and (max-width:1280px){
+      .main-banner{
+         .mb-swiper{
+            .navigation,
+            .pagination{
+               display: none;
+            }
+         }
+      }
+      .guard{
+         display: block;
+         .main-image{
+            width: 100%;
+            max-width: 100%;
+         }
+      }
+      .ceo{
+         flex-direction: column;
+         .img-wrap{
+            order: 0;
+         }
+         .text-wrap{
+            order: 1;
+            .title-stroke{
+               margin-left: 0px;
+               margin-bottom: -13px;
+            }
+         }
+      }
+      .world{
+         *{
+            text-align: center;
+         }
+         .text-wrap{
+            max-width: 100%;
+         }
+         .map-wrap{
+            margin-left: auto;
+            margin-right: auto;
+         }
+      }
+      .with {
+         .items-wrap {
+            .item{
+               background-size: cover;
+               &:hover{
+                  background-size: cover;
+               }
+            }
+         }
+      }
+      .consulting{
+         .contents-wrap {
+            flex-wrap: wrap;
+            gap: 16px;
+            .item{
+               .num-wrap{
+                  position: relative;
+                  .num{
+                     position: relative;
+                     top: 0px;
+                     left: 50%;
+                     transform: translateX(-50%);
+                     width: 30px;
+                     height: 30px;
+                     border-radius: 50%;
+                  }
+               }
+               &:not(:last-of-type){
+                  .num-wrap::after{
+                     content: '';
+                     display: block;
+                     clear: both;
+                     z-index: -9;
+                     position: absolute;
+                     top: 15px;
+                     left: 0px;
+                     transform: translateX(50%);
+                     width: 100%;
+                     height: 1px;
+                     background: linear-gradient(to right, #aeaeae 50%, rgba(255, 255, 255, 0) 0%);
+                     background-size: 8px 1px;
+                  }
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 767px){
+      .with{
+         .items-wrap{
+            display: block;
+            .item{
+               &:not(:last-of-type){
+                  margin-bottom: 16px;
+               }
+            }
+         }
+      }
+   }
 `
 
 const Home = () => {
 
    const isMobile = document.documentElement.clientWidth < 1280
-   // useEffect(() => {
-   //    document.getElementById("header")?.classList.remove("on")
-
-   //    return () => {
-   //       document.getElementById("header")?.classList.add("on")
-   //    }
-   // }, [])
 
    const data = {
       banner: [
@@ -428,24 +547,6 @@ const Home = () => {
          }
       ],
    }
-
-   // useEffect(() => {
-   //    const handleScroll = () => {
-   //       const currentScrollTop = document.documentElement.scrollTop;
-   //       const header = document.getElementById("header")
-   //       if (currentScrollTop > 0) {
-   //          header?.classList.add("on")
-   //       } else {
-   //          header?.classList.remove("on")
-   //       }
-   //    };
-
-   //    window.addEventListener('scroll', handleScroll);
-   //    return () => {
-   //       window.removeEventListener('scroll', handleScroll);
-   //    };
-   // }, [])
-
    const consultingInfo = [
       {
          title: "상담문의",
@@ -526,10 +627,10 @@ const Home = () => {
                {data && data.banner.map((bannerInfo, index) => (
                   <SwiperSlide key={index}>
                      <div className='contents-wrap'>
-                        <h2 className='xl:leading-80 xl:text-64 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
-                        <p className='xl:leading-28 xl:text-17 font-light xl:mt-50' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.sub_title) }}></p>
+                        <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
+                        <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.sub_title) }}></p>
                         {bannerInfo.path &&
-                           <BtnLink className='xl:mt-48' to={bannerInfo.path}>
+                           <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.path}>
                               더 알아보기
                            </BtnLink>}
                      </div>
@@ -575,22 +676,22 @@ const Home = () => {
                </div>
             </Swiper>
          </section>
-         <section className='container guard flex items-end xl:mt-120'>
+         <section className='container guard flex items-end xl:mt-120 mt-80'>
             <img className='main-image' src={image01} alt="가드닝" />
-            <div className='text-wrap'>
+            <div className='text-wrap xl:mt-0 mt-40'>
                <Title01 className='w-fit has-simbol'>
                   지금 당신의 공간을 <strong>가드닝</strong>하세요
                </Title01>
-               <div className='hide-text line xl:mt-24 xl:mb-32'>line</div>
-               <p className='xl:leading32 xl:text-20'>
+               <div className='hide-text xl:block hidden line xl:mt-24 xl:mb-32'>line</div>
+               <p className='xl:leading32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
                   만약 우리가 생활하는 모든 공간이 정원이라면,<br className='xl:block hidden' />
                   잡초가 자라고 화초가 시들어가는 모습을 그냥 두거나 방치하지 않을겁니다.<br className='xl:block hidden' />
-                  화초에 물을 주고 사랑을 주며 가꾸는것처럼 우리의 생활공간도 가드닝 해주셔야 됩니다.<br className='xl:block hidden' />
-                  <br className='xl:block hidden' />
+                  화초에 물을 주고 사랑을 주며 가꾸는것처럼 우리의 생활공간도 가드닝 해주셔야 됩니다.<br />
+                  <br />
                   공간정원은 소비자 개개인의 공간과 라이프스타일을 분석하여<br className='xl:block hidden' />
                   1:1 맞춤 정리서비스를 제공합니다.<br className='xl:block hidden' />
-                  전문가의 제안을 통해 사용목적에 맞는 공간재구성과 공간의 효율을 높여드립니다.<br className='xl:block hidden' />
-                  <br className='xl:block hidden' />
+                  전문가의 제안을 통해 사용목적에 맞는 공간재구성과 공간의 효율을 높여드립니다.<br />
+                  <br />
                   공간정원은 “공간정원 연구소”를 설립하여 정리수납 방법의 연구를 시작으로<br className='xl:block hidden' />
                   공간 스타일링,생활용품 및 가구의 제작까지 연구가 확대되고 있습니다.<br className='xl:block hidden' />
                   이를 바탕으로 국내 시장을 선도하고 나아가 세계시장으로의 진출을 기대하고 있습니다.<br className='xl:block hidden' />
@@ -601,16 +702,16 @@ const Home = () => {
                </p>
             </div>
          </section>
-         <section className='container ceo flex items-center xl:mt-180'>
+         <section className='container ceo flex items-center xl:mt-180 mt-80'>
             <div className='text-wrap'>
                <div>
-                  <StrokeTitle className='title-stroke whitespace-nowrap'>CEO GREETING</StrokeTitle>
+                  <StrokeTitle className='title-stroke whitespace-nowrap xl:mt-0 mt-24'>CEO GREETING</StrokeTitle>
                   <Title01>
                      안녕하세요, <strong>공간정원 대표</strong><br />
                      이정원입니다
                   </Title01>
                </div>
-               <p className='xl:leading-36 xl:text-20 xl:mt-40'>
+               <p className='xl:leading-36 leading-18 xl:text-20 text-13 xl:mt-40 mt-24'>
                   공간정원은 단순히 서비스의 차원을 넘어 사람을 위한 공간,<br className='xl:block hidden' />
                   사람이 성장하는 공간을 만들어가는 공간 리빌딩 전문기업입니다.<br className='xl:block hidden' />
                   편리하고 필요한 공간을 재구성하는 공간정리에서부터<br className='xl:block hidden' />
@@ -621,7 +722,7 @@ const Home = () => {
                   세계의 각 문화와 생활환경에 맞는 모든 사람들의<br className='xl:block hidden' />
                   더 나은 생활을 선도해 가겠습니다.
                </p>
-               <BtnViewmore className='xl:mt-40' to="">
+               <BtnViewmore className='xl:mt-40 mt-32' to="">
                   <p className="txt">View More</p>
                   <i className="xi-long-arrow-right"></i>
                </BtnViewmore>
@@ -635,13 +736,13 @@ const Home = () => {
             </div>
          </section>
          <section className='bg-pointColor03'>
-            <div className='container world flex items-center xl:mt-160 xl:pt-80 xl:pb-80'>
+            <div className='container world xl:flex items-center xl:mt-160 mt-80 xl:pt-80 pt-40 xl:pb-80 pb-40'>
                <div className='text-wrap'>
                   <Title01>
                      <strong>세계로 뻗어나가는 </strong><br />
                      공간정원
                   </Title01>
-                  <p className='xl:leading-36 xl:text-20 xl:mt-40'>
+                  <p className='xl:leading-36 leading-18 xl:text-20 text-13 xl:mt-40 mt-24'>
                      공간정원은 국내를 시작으로 다양한 문화권의 생활과 정리기법들을 연구 개발하여 세계인들의 생활과
                      삶의 질 향상에 기여하겠습니다
                   </p>
@@ -683,16 +784,16 @@ const Home = () => {
                </div>
             </div>
          </section>
-         <section className='container with xl:mt-160'>
+         <section className='container with xl:mt-160 mt-80'>
             <div>
                <Title01 className='text-center'>
                   <strong>공간정원과 </strong>함께하세요
                </Title01>
-               <p className='text-center xl:leading-32 xl:text-20 xl:mt-32'>
+               <p className='text-center xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-32 mt-24'>
                   깔끔함에 국한된 기존 정리수납에서 벗어나 깔끔함과 더불어 편리함은 물론, 각 사용자 성향을 반영하여 집 전체의 리빌딩을 서비스합니다.
                </p>
             </div>
-            <ul className='items-wrap grid xl:gap-24 xl:mt-48'>
+            <ul className='items-wrap grid gap-24 xl:mt-48 mt-40'>
                {withInfo.map((withInfo, index) => (
                   <li
                      style={{ backgroundImage: `url(${withInfo.bg})` }}
@@ -707,14 +808,14 @@ const Home = () => {
                ))}
             </ul>
          </section>
-         <section className='consulting xl:mt-160'>
+         <section className='consulting container xl:mt-160 mt-80'>
             <div>
                <Title01 className='text-center'>
                   <strong>공간정원의 컨설팅</strong>이 궁금하신가요?
                </Title01>
                <p className='text-center xl:leading-36 xl:text-20 xl:mt-32'>사용자별 맞춤 공간컨설팅 상담을 공간정원에서 받아보세요.</p>
-               <div className='xl:mt-56'>
-                  <div className='num-wrap flex justify-center items-center'>
+               <div className='xl:mt-56 mt-40'>
+                  <div className='xl:flex hidden num-wrap justify-center items-center'>
                      <div className='item flex justify-center items-center'>
                         <p className='num xl:text-18 font-bold text-white bg-pointColor01'>01</p>
                      </div>
@@ -738,8 +839,11 @@ const Home = () => {
                   <ul className='contents-wrap flex justify-center xl:gap-40'>
                      {consultingInfo.map((consultingInfo, index) => (
                         <li className='item' key={index}>
-                           <h4 className='text-center xl:text-22 font-bold xl:mt-16'>{consultingInfo.title}</h4>
-                           <div className='box flex flex-col justify-center items-center xl:gap-20 xl:mt-24 bg-subColor07'>
+                           <div className='num-wrap'>
+                              <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>01</p>
+                           </div>
+                           <h4 className='text-center xl:text-22 font-bold xl:mt-16 mt-8'>{consultingInfo.title}</h4>
+                           <div className='box flex flex-col justify-center items-center xl:gap-20 xl:mt-24 mt-16 bg-subColor07'>
                               <img className='icon' src={consultingInfo.image} alt="아이콘" />
                               <p
                                  className='text-center xl:leading-22 xl:text-14'

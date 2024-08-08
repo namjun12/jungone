@@ -59,6 +59,7 @@ import mainBanner01 from "../images/common/main-banner01.webp"
 import mainBanner02 from "../images/common/main-banner02.webp"
 import mainBanner03 from "../images/common/main-banner03.webp"
 import mainBanner04 from "../images/common/main-banner04.webp"
+import mainBanner05 from "../images/common/main-banner05.webp"
 import iconQuotation01 from "../images/common/icon/icon-quotation-open.png"
 import iconQuotation02 from "../images/common/icon/icon-quotation-close.png"
 import iconQuotation03 from "../images/common/icon/icon-quotation-open02.webp"
@@ -145,6 +146,7 @@ export {
    mainBanner02,
    mainBanner03,
    mainBanner04,
+   mainBanner05,
    iconQuotation01,
    iconQuotation02,
    iconQuotation03,

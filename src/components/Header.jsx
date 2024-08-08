@@ -295,23 +295,23 @@ export default function Header() {
          subCategory: [
             {
                title: "공지사항",
-               path: "/",
+               path: "/community/notice",
             },
             {
                title: "자주묻는 질문",
-               path: "/",
+               path: "/community/faq",
             },
             {
                title: "SNS",
-               path: "/",
+               path: "/community/sns",
             },
             {
                title: "고객후기",
-               path: "/",
+               path: "/community/review",
             },
             {
                title: "문의하기",
-               path: "/",
+               path: "/community/contact",
             },
          ]
       },

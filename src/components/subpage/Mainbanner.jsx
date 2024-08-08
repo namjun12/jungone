@@ -44,6 +44,7 @@ const MainBannerWrap = styled.div`
    .tab{
       width: 100%;
       &.on{
+         z-index: 99;
          position: fixed;
          top: 0px;
          left: 0px;

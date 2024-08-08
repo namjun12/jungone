@@ -15,6 +15,11 @@ export const BtnLink = styled(Link)`
    margin-left: auto;
    margin-right: auto;
    background-color: var(--pointColor01);
+   @media screen and (max-width: 1280px){
+      width: 155px;
+      height: 40px;
+      font-size: 13px;
+   }
 `
 export const BtnLink02 = styled(BtnLink)`
    border: 1px solid var(--subColor01);
@@ -70,6 +75,17 @@ export const BtnViewmore = styled(Link)`
       padding-left: 15px;
       color: #fff;
    }
+   @media screen and (max-width:1280px){
+      font-size: 12px;
+      gap: 24px;
+      &::after{
+         width: 30px;
+         height: 30px;
+      }
+      .xi-long-arrow-right{
+         font-size: 12px;
+      }
+   }
 `
 export const Title01 = styled.h3`
    line-height: 52px;
@@ -77,6 +93,10 @@ export const Title01 = styled.h3`
    font-weight: 700;
    &>strong{
       color: var(--pointColor01);
+   }
+   @media screen and (max-width:1280px){
+      line-height: 32px;
+      font-size: 24px;
    }
 `
 export const Title02 = styled.h3`
@@ -103,6 +123,9 @@ export const StrokeTitle = styled.strong`
    font-weight: 700;
    -webkit-text-stroke: 1px var(--pointColor01);
    color: transparent;
+   @media screen and (max-width:1280px){
+      font-size: 40px;
+   }
 `
 export const SubBanner01 = styled.div`
    height: 330px;

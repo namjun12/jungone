@@ -547,6 +547,13 @@ input::-webkit-search-results-decoration {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
+.max-line3{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
 .hide-text{
   text-indent: -9999px;
 }

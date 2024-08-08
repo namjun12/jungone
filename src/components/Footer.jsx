@@ -3,6 +3,10 @@ import styled from "styled-components"
 
 // images
 import Logo from "../images/common/logo_white.png"
+import sns01 from "../images/common/icon/sns01.png"
+import sns02 from "../images/common/icon/sns02.png"
+import sns03 from "../images/common/icon/sns03.png"
+import sns04 from "../images/common/icon/sns04.png"
 
 const Container = styled.footer`
    background-color: var(--subColor02);
@@ -27,6 +31,12 @@ const Container = styled.footer`
          }
       }
    }
+   .sns-wrap{
+      .icon{
+         width: 38px;
+         height: auto;
+      }
+   }
    @media screen and (max-width:1280px){
       .logo{
          width: 166px;
@@ -48,65 +58,64 @@ export default function Footer() {
       {
          title: "회사소개",
          category: [
-            "우수조달컨설팅 소개",
-            "유튜브 소개",
-            "컨설턴트 소개",
-            "컨설턴트 소개",
-            "찾아오시는 길",
-            "인증성공업체",
+            "대표소개",
+            "슬로건 및 비전",
+            "인재상",
          ],
          link: [
-            "/",
-            "/",
-            "/",
-            "/",
-            "/",
-            "/",
+            "/company/ceo",
+            "/company/slogan-vision",
+            "/company/people",
          ]
       },
       {
-         title: "인증 분야",
+         title: "공간정리",
          category: [
-            "조달인증",
-            "품질인증",
-            "기술인증",
-            "경영인증",
+            "서비스소개",
          ],
          link: [
-            "/",
-            "/",
-            "/",
-            "/",
+            "/space-organization/service",
          ]
       },
       {
-         title: "원스톱 서비스",
+         title: "토탈홈케어",
          category: [
-            "서비스 내용",
-            "서비스 인력",
-            "세부내용",
+            "서비스소개",
          ],
          link: [
-            "/",
-            "/",
-            "/",
+            "/one-stop/service",
          ]
       },
       {
-         title: "고객지원",
+         title: "공간정원 연구소",
+         category: [
+            "공간 가드닝 연구",
+            "라이프오브제 연구",
+            "교육 기획",
+            "가드너즈 아카데미",
+         ],
+         link: [
+            "/space-lab/gardening",
+            "/space-lab/life",
+            "/space-lab/edu",
+            "/space-lab/academy",
+         ]
+      },
+      {
+         title: "커뮤니티",
          category: [
             "공지사항",
-            "정보공유",
-            "채용안내",
-            "자주묻는 질문",
+            "자주묻는질문",
             "문의하기",
+            "SNS",
+            "고객후기",
          ],
          link: [
-            "/",
-            "/",
-            "/",
-            "/",
-            "/",
+            "/community/notice",
+            "/community/faq",
+            "/community/sns",
+            "/community/review",
+            "/community/contact",
          ]
       },
    ]
@@ -118,55 +127,56 @@ export default function Footer() {
                <img className="logo xl:mb-20 mb-24" src={Logo} alt="logo" />
                <div className="contents_wrap xl:mb-24 mb-24 xl:pt-0 pt-24">
                   <div className="xl:flex">
-                     <p className="xl:block inline-block leading-1em xl:text-14 text-12">
-                        <strong className="xl:inline block xl:opacity-60 xl:w-auto text-white xl:pb-0 pb-8">회사명&nbsp;</strong>
-                        <span className="opacity-60 border_r text-white">&#40;주&#41;우수조달컨설팅</span>
+                     <p className="xl:block inline-block border_r leading-1em xl:text-14 text-12 text-subColor05">
+                        대표자&nbsp;:&nbsp;이정원
                      </p>
-                     <p className="xl:block inline-block leading-1em xl:text-14 text-12 opacity-60 text-white">
-                        <strong className="text-white">대표자명&nbsp;</strong>임기원
+                     <p className="xl:block inline-block leading-1em xl:text-14 text-12 text-subColor05">
+                        주소&nbsp;:&nbsp;경기도 하남시 신우실로 100 현대테라타워 705호
                      </p>
                   </div>
                   <div className="xl:flex xl:mt-12 mt-16">
-                     <p className="border_r border_pc leading-1em xl:text-14 text-12">
-                        <strong className="xl:opacity-60 xl:w-auto w-full text-white xl:pb-0 pb-8">본사&nbsp;</strong>
-                        <span className="opacity-60 text-white">경기도 수원시 영통구 신원로 55 테크트리영통 지식산업센터 913~914호</span>
+                     <p className="border_r border_pc leading-1em xl:text-14 text-12 text-subColor05">
+                        대표번호&nbsp;:&nbsp;
+                        <span className="text-subColor05">1522-5482</span>
                      </p>
-                     <p className="xl:block inline-block border_r leading-1em xl:text-14 text-12 opacity-60 text-white">TEL 031-234-2870</p>
-                     <p className="xl:block inline-block xl:text-14 text-12 leading-1em opacity-60 text-white">FAX 031-224-2870</p>
+                     <p className="xl:block inline-block leading-1em xl:text-14 text-12 text-subColor05">이메일&nbsp;:&nbsp;</p>
+                     <p className="xl:block inline-block xl:text-14 text-12 leading-1em text-subColor05">niceout86@naver.com</p>
                   </div>
                   <div className="xl:flex xl:mt-12 mt-16">
-                     <p className="border_r border_pc xl:flex leading-1em xl:text-14 text-12">
-                        <strong className="xl:opacity-60 xl:w-auto w-full text-white xl:pb-0 pb-8">부산지사&nbsp;</strong>
-                        <span className="xl:block inline-block xl:text-14 text-12 leading-1em opacity-60 text-white">부산광역시 부산진구 엄광로 386번길 33</span>
+                     <p className="xl:flex leading-1em xl:text-14 text-12 text-subColor05">
+                        사업자등록번호&nbsp;:&nbsp;472-50-00383
                      </p>
-                     <p className="xl:block inline-block border_r leading-1em xl:text-14 text-12 opacity-60 text-white">TEL 070-8801-5411 </p>
-                     <p className="xl:block inline-block xl:text-14 text-12 leading-1em opacity-60 text-white">FAX 070-4179-2871</p>
-                  </div>
-                  <div className="xl:flex xl:mt-12 mt-16">
-                     <p className="xl:flex xl:border_r leading-1em xl:text-14 text-12">
-                        <strong className="xl:opacity-60 xl:w-auto w-full text-white xl:pb-0 pb-8">광주지사&nbsp;</strong>
-                        <span className="xl:block inline-block border_r leading-1em xl:text-14 text-12 opacity-60 text-white">광주광역시 북구 첨단과기로 208번길 17-15, 306호&#40;오룡동&#41;3</span>
-                     </p>
-                     <p className="xl:block inline-block leading-1em xl:text-14 text-12 opacity-60 text-white">TEL 062-971-5688~9</p>
                   </div>
                </div>
-               <small className="xl:text-14 font-light opacity-60 text-white">Copyright &#40;주&#41;우수조달컨설팅 All Right Reserved.</small>
+               <div className="sns-wrap flex xl:gap-6">
+                  <Link to="">
+                     <img className="icon" src={sns01} alt="instagram" />
+                  </Link>
+                  <Link to="">
+                     <img className="icon" src={sns02} alt="blog" />
+                  </Link>
+                  <Link to="">
+                     <img className="icon" src={sns03} alt="youtube" />
+                  </Link>
+                  <Link to="">
+                     <img className="icon" src={sns04} alt="kakao" />
+                  </Link>
+               </div>
+               <small className="block xl:text-14 font-light xl:pt-16 text-subColor05">Copyright 2024 공간정원 All rights reserved.</small>
             </div>
             <div className="xl:flex hidden xl:gap-40">
-               {
-                  navItems.map((navItem, index) => (
-                     <div key={index} className="navitems_wrap">
-                        <h5 className="category_title xl:text-14 font-medium xl:pb-16 xl:mb-16 text-white">{navItem.title}</h5>
-                        <ul>
-                           <li>
-                              {navItem.category.map((category, categoryIndex) => (
-                                 <Link to={navItem.link[index]} className="xl:text-12 font-light xl:mb-12 text-white" key={categoryIndex}>{category}</Link>
-                              ))}
-                           </li>
-                        </ul>
-                     </div>
-                  ))
-               }
+               {navItems.map((navItem, index) => (
+                  <div key={index} className="navitems_wrap">
+                     <h5 className="category_title xl:text-14 font-medium xl:pb-16 xl:mb-16 text-white">{navItem.title}</h5>
+                     <ul>
+                        <li>
+                           {navItem.category.map((category, categoryIndex) => (
+                              <Link to={navItem.link[index]} className="xl:text-12 font-light xl:mb-12 text-white" key={categoryIndex}>{category}</Link>
+                           ))}
+                        </li>
+                     </ul>
+                  </div>
+               ))}
             </div>
          </div>
       </Container>
