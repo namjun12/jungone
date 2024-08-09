@@ -37,7 +37,7 @@ const Container = styled.footer`
          height: auto;
       }
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       .logo{
          width: 166px;
       }

@@ -107,7 +107,7 @@ const Container = styled.div`
       -moz-appearance: checkbox;
       appearance: checkbox;
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       .top_head_wrap {
          padding-bottom: 40px;
          margin-bottom: 24px;

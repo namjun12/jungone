@@ -23,15 +23,15 @@ const circleRotate = keyframes`
 const circleSacle = keyframes`
    0%{
       opacity: 1;
-      transform: scale(100%);
+      transform: translate(-50%, -50%) scale(100%);
    }
    80%{
-      opacity: 0.3;
-      transform: scale(600%);
+      opacity: 0.2;
+      transform: translate(-50%, -50%) scale(600%);
    }
    100%{
       opacity: 0;
-      transform: scale(600%);
+      transform: translate(-50%, -50%) scale(600%);
    }
 `
 const Container = styled.div`
@@ -191,10 +191,6 @@ const Container = styled.div`
       }
       .map-wrap{
          width: 960px;
-         height: 480px;
-         background-image: url(${image05});
-         background-size: 100% 100%;
-         background-position: center center;
          .spot-wrap{
             position: absolute;
             .text-box{
@@ -205,55 +201,64 @@ const Container = styled.div`
                width: 200px;
                height: 85px;
             }
+            .circle{
+               width: 8px;
+               height: 8px;
+               left: 50%;
+               transform: translateX(-50%);
+            }
             &.item01{
-               top: 220px;
+               top: 46%;
                left: 13%;
                & .circle{
                   top: -30px;
-                  right: 38%;
+                  /* right: 4.5vw; */
                }
             }
             &.item02{
-               top: 57px;
+               top: 10%;
                left: 41%;
                & .circle{
-                  bottom: -25px;
-                  left: 30%;
+                  bottom: -40%;
+                  /* left: 30%; */
                }
             }
             &.item03{
-               top: 243px;
+               top: 51%;
                right: 0%;
                & .circle{
                   top: -38px;
-                  left: 12%;
+                  /* left: 12%; */
                }
             }
             .circle{
                position: absolute;
+               &::before,
+               &::after{
+                  animation: ${circleSacle} 3s infinite;
+                  opacity: 0.4;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background-color: #926B6B;
+                  content: '';
+                  display: block;
+                  clear: both;
+               }
+               &::after{
+                  animation-delay: 1.5s;
+               }
                .fix-circle{
                   z-index: 9;
                   position: absolute;
                   width: 8px;
                   height: 8px;
                   border-radius: 50%;
-                  background-color: #ff0000;
-               }
-               .ani-circle01,
-               .ani-circle02{
-                  animation: ${circleSacle} 3s infinite;
-                  opacity: 0.4;
-                  position: absolute;
-                  top: 0px;
-                  left: 0px;
-                  transform: translate(-50%, -50%);
-                  width: 8px;
-                  height: 8px;
-                  border-radius: 50%;
-                  background-color: #926B6B;
-               }
-               .ani-circle02{
-                  animation-delay: 1.5s;
+                  background-color: red;
                }
             }
          }
@@ -395,10 +400,6 @@ const Container = styled.div`
       }
    }
    @media screen and (max-width: 1500px){
-      .container{
-         padding-left: 16px;
-         padding-right: 16px;
-      }
       .guard {
          align-items: flex-start;
          .main-image{
@@ -419,7 +420,7 @@ const Container = styled.div`
          }
       }
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       .main-banner{
          .mb-swiper{
             .navigation,
@@ -464,14 +465,6 @@ const Container = styled.div`
          }
          .map-wrap{
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            background-size: auto 100%;
-            .spot-wrap{
-               &.item03{
-                  
-               }
-            }
          }
       }
       .with {
@@ -762,13 +755,12 @@ const Home = () => {
                   </p>
                </div>
                <div className='map-wrap relative xl:mt-0 mt-32'>
+                  <img className='w-full' src={image05} alt="map" />
                   <div className='spot-wrap item01 absolute'>
                      <div className='circle hide-text'>
                         <div className='fix-circle'></div>
-                        <div className='ani-circle01'></div>
-                        <div className='ani-circle02'></div>
                      </div>
-                     <p className='xl:leading-26 xl:text-18 text-box text-white bg-pointColor01'>
+                     <p className='xl:leading-26 xl:text-18 text-12 text-box text-white bg-pointColor01'>
                         미국 진출<br />
                         &#40;~2029&#41;
                      </p>
@@ -776,10 +768,8 @@ const Home = () => {
                   <div className='spot-wrap item02 absolute'>
                      <div className='circle hide-text'>
                         <div className='fix-circle'></div>
-                        <div className='ani-circle01'></div>
-                        <div className='ani-circle02'></div>
                      </div>
-                     <p className='xl:leading-26 xl:text-18 text-box text-white bg-pointColor01'>
+                     <p className='xl:leading-26 xl:text-18 text-12 text-box text-white bg-pointColor01'>
                         유럽진출<br />
                         &#40;~2030&#41;
                      </p>
@@ -787,10 +777,8 @@ const Home = () => {
                   <div className='spot-wrap item03 absolute'>
                      <div className='circle hide-text'>
                         <div className='fix-circle'></div>
-                        <div className='ani-circle01'></div>
-                        <div className='ani-circle02'></div>
                      </div>
-                     <p className='xl:leading-26 xl:text-18 text-box text-white bg-pointColor01'>
+                     <p className='xl:leading-26 xl:text-18 text-12 text-box text-white bg-pointColor01'>
                         국내 15개 지사<br />
                         설립예정 &#40;~2026&#41;
                      </p>
@@ -801,7 +789,7 @@ const Home = () => {
          <section className='container with xl:mt-160 mt-80'>
             <div>
                <Title01 className='text-center'>
-                  <strong>공간정원과 </strong>함께하세요
+                  <strong>공간정원과&nbsp;</strong>함께하세요
                </Title01>
                <p className='text-center xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-32 mt-24'>
                   깔끔함에 국한된 기존 정리수납에서 벗어나 깔끔함과 더불어 편리함은 물론, 각 사용자 성향을 반영하여 집 전체의 리빌딩을 서비스합니다.
@@ -854,7 +842,7 @@ const Home = () => {
                      {consultingInfo.map((consultingInfo, index) => (
                         <li className='item' key={index}>
                            <div className='num-wrap'>
-                              <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>0{index+1}</p>
+                              <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>0{index + 1}</p>
                            </div>
                            <h4 className='text-center xl:text-22 font-bold xl:mt-16 mt-8'>{consultingInfo.title}</h4>
                            <div className='box flex flex-col justify-center items-center xl:gap-20 xl:mt-24 mt-16 bg-subColor07'>

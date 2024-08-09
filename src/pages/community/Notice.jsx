@@ -47,7 +47,7 @@ const Container = styled.div`
          background-color: var(--pointColor01);
       }
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       .notice{
          padding: 8px 16px;
       }

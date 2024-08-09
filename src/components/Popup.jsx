@@ -167,7 +167,7 @@ const PopupWrap = styled.div`
       height: 40px;
       background-color: black;
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       .pop {
          width: 310px;
       }
@@ -201,7 +201,7 @@ const PopupWrap = styled.div`
 const Popup = () => {
 
    // fetch Data
-   const [data, setData] = useState<PopupProps[]>();
+   const [data, setData] = useState();
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -216,7 +216,7 @@ const Popup = () => {
 
 
    // 쿠키 설정 함수
-   const setCookie = (name: string, value: any, days: number) => {
+   const setCookie = (name, value, days) => {
       const date = new Date();
       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
       const expires = "expires=" + date.toUTCString();
@@ -224,7 +224,7 @@ const Popup = () => {
    };
 
    // 쿠키 가져오기 함수
-   const getCookie = (name: string) => {
+   const getCookie = (name) => {
       const nameEQ = name + "=";
       const ca = document.cookie.split(';');
       for (let i = 0; i < ca.length; i++) {

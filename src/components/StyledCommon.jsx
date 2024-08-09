@@ -75,7 +75,7 @@ export const BtnViewmore = styled(Link)`
       padding-left: 15px;
       color: #fff;
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       font-size: 12px;
       gap: 24px;
       &::after{
@@ -94,7 +94,7 @@ export const Title01 = styled.h3`
    &>strong{
       color: var(--pointColor01);
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       line-height: 32px;
       font-size: 24px;
    }
@@ -123,7 +123,7 @@ export const StrokeTitle = styled.strong`
    font-weight: 700;
    -webkit-text-stroke: 1px var(--pointColor01);
    color: transparent;
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       font-size: 40px;
    }
 `

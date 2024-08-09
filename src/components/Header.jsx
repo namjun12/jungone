@@ -95,7 +95,7 @@ const Container = styled.header`
          white-space: nowrap;
       }
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       height: 50px;
       .btn_menu_wrap {
          .btn_menu{
@@ -151,7 +151,7 @@ const CategoryWrap = styled.ul`
    & .item_dep02_wrap{
       display: none;
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       display: none;
    }
 `;
@@ -164,7 +164,7 @@ const Logo = styled(Link)`
    &>img{
       height: 48px;
    }
-   @media screen and (max-width:1280px){
+   @media screen and (max-width:1279px){
       height: 50px;
    }
 `
