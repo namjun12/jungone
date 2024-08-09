@@ -156,7 +156,7 @@ export default function Contact() {
    const [formData, setFormData] = useState({
       name: '',
       contact: '',
-      company: '',
+      inquiry_category: '',
       email: '',
       message: '',
       agreement: false,
@@ -245,22 +245,9 @@ export default function Contact() {
                   </div>
                </div>
                <div className="item_01">
-                  <div className="company_wrap input_wrap">
-                     <label htmlFor="company" className="xl:mb-16 mb-8 xl:text-20 text-13 font-bold">
-                        회사명
-                     </label>
-                     <input
-                        value={formData.company}
-                        onChange={handleChange}
-                        name="company"
-                        id="company"
-                        type="company"
-                        placeholder="회사명을 입력해주세요."
-                     />
-                  </div>
                   <div className="email_wrap input_wrap">
                      <label htmlFor="email" className="xl:mb-16 mb-8 xl:text-20 text-13 font-bold">
-                        이메일 <strong className="point">*</strong>
+                        이메일
                      </label>
                      <input
                         value={formData.email}
@@ -269,21 +256,32 @@ export default function Contact() {
                         id="email"
                         type="email"
                         placeholder="이메일을 입력해주세요."
-                        required
+                     />
+                  </div>
+                  <div className="company_wrap input_wrap">
+                     <label htmlFor="inquiry_category" className="xl:mb-16 mb-8 xl:text-20 text-13 font-bold">
+                        상담분야
+                     </label>
+                     <input
+                        value={formData.inquiry_category}
+                        onChange={handleChange}
+                        name="inquiry_category"
+                        id="inquiry_category"
+                        type="inquiry_category"
+                        placeholder="상담분야를 입력해주세요."
                      />
                   </div>
                </div>
                <div className="message_wrap input_wrap">
                   <label htmlFor="content" className="xl:mb-16 mb-8 xl:text-20 text-13 font-bold">
-                     문의내용 <strong className="point">*</strong>
+                     문의내용
                   </label>
                   <textarea
                      value={formData.message}
                      onChange={handleChange}
                      name="message"
                      id="content"
-                     placeholder="문의내용을 기재해주세요.(필수)"
-                     required
+                     placeholder="문의내용을 기재해주세요."
                   />
                </div>
                <div className="privacy_wrap">

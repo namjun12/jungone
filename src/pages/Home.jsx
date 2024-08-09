@@ -36,10 +36,6 @@ const circleSacle = keyframes`
 `
 const Container = styled.div`
    overflow-x: hidden;
-   .container{
-      padding-left: 16px;
-      padding-right: 16px;
-   }
    .has-simbol{ 
       position: relative;
       &::after{
@@ -399,6 +395,10 @@ const Container = styled.div`
       }
    }
    @media screen and (max-width: 1500px){
+      .container{
+         padding-left: 16px;
+         padding-right: 16px;
+      }
       .guard {
          align-items: flex-start;
          .main-image{
@@ -429,22 +429,29 @@ const Container = styled.div`
          }
       }
       .guard{
-         display: block;
+         align-items: center;
          .main-image{
-            width: 100%;
+            width: 50%;
             max-width: 100%;
          }
       }
       .ceo{
-         flex-direction: column;
-         .img-wrap{
-            order: 0;
-         }
          .text-wrap{
-            order: 1;
+            padding-right: 32px;
             .title-stroke{
                margin-left: 0px;
                margin-bottom: -13px;
+            }
+         }
+         .img-wrap{
+            height: 480px;
+            .ceo-photo-wrap{
+               .ceo-photo{
+                  width: 50%;
+               }
+               .circle{
+                  width: 50%;
+               }
             }
          }
       }
@@ -456,8 +463,15 @@ const Container = styled.div`
             max-width: 100%;
          }
          .map-wrap{
+            width: 100%;
             margin-left: auto;
             margin-right: auto;
+            background-size: auto 100%;
+            .spot-wrap{
+               &.item03{
+                  
+               }
+            }
          }
       }
       .with {
@@ -683,7 +697,7 @@ const Home = () => {
                   지금 당신의 공간을 <strong>가드닝</strong>하세요
                </Title01>
                <div className='hide-text xl:block hidden line xl:mt-24 xl:mb-32'>line</div>
-               <p className='xl:leading32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
+               <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
                   만약 우리가 생활하는 모든 공간이 정원이라면,<br className='xl:block hidden' />
                   잡초가 자라고 화초가 시들어가는 모습을 그냥 두거나 방치하지 않을겁니다.<br className='xl:block hidden' />
                   화초에 물을 주고 사랑을 주며 가꾸는것처럼 우리의 생활공간도 가드닝 해주셔야 됩니다.<br />
@@ -747,7 +761,7 @@ const Home = () => {
                      삶의 질 향상에 기여하겠습니다
                   </p>
                </div>
-               <div className='map-wrap relative'>
+               <div className='map-wrap relative xl:mt-0 mt-32'>
                   <div className='spot-wrap item01 absolute'>
                      <div className='circle hide-text'>
                         <div className='fix-circle'></div>
@@ -840,7 +854,7 @@ const Home = () => {
                      {consultingInfo.map((consultingInfo, index) => (
                         <li className='item' key={index}>
                            <div className='num-wrap'>
-                              <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>01</p>
+                              <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>0{index+1}</p>
                            </div>
                            <h4 className='text-center xl:text-22 font-bold xl:mt-16 mt-8'>{consultingInfo.title}</h4>
                            <div className='box flex flex-col justify-center items-center xl:gap-20 xl:mt-24 mt-16 bg-subColor07'>
