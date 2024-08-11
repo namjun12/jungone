@@ -39,15 +39,14 @@ const Container = styled.header`
          background-color: var(--pointColor01);
       }
    }
-   &.mouseover *{
+   &.mouseover *,
+   &.open *,
+   &.on *{
       color: var(--subColor01);
    }
    &.on{
       border-bottom: 1px solid var(--subColor05);
       background-color: #fff;
-   }
-   &.on *{
-      color: var(--subColor01);
    }
    &.on .btn_menu_wrap{
       & .btn_menu{
@@ -96,7 +95,7 @@ const Container = styled.header`
       }
    }
    @media screen and (max-width:1279px){
-      height: 50px;
+      height: 58px;
       .btn_menu_wrap {
          .btn_menu{
             font-size: 26px;
@@ -140,8 +139,8 @@ const Container = styled.header`
       .right_item_wrap{
          height: 50px;
          .btn_menu_wrap {
-            width: 50px;
-            height: 50px;
+            width: 58px;
+            height: 58px;
          }
       }
    }
@@ -165,7 +164,10 @@ const Logo = styled(Link)`
       height: 48px;
    }
    @media screen and (max-width:1279px){
-      height: 50px;
+      height: 100%;
+      &>img{
+         height: 26px;
+      }
    }
 `
 const CategoryItemDep01 = styled.p`
@@ -342,12 +344,12 @@ export default function Header() {
                </li>
             ))}
          </CategoryWrap>
-         <div className="right_item_wrap flex items-center xl:gap-20 xl:pr-40">
+         <div className="right_item_wrap flex justify-center items-center xl:gap-20 xl:pr-40">
             <a className="tel_wrap xl:flex hidden items-center xl:gap-8 xl:text-16" href="#" onClick={() => alert("준비 중입니다")}>
                공간정원 창업
             </a>
-            <MenuIcon onClick={() => headerIndex()} className="btn_menu_wrap xl:hidden block">
-               <i className="btn_menu xi-align-right text-white xl:text-30 text-26"></i>
+            <MenuIcon onClick={() => headerIndex()} className="btn_menu_wrap xl:hidden flex justify-center items-center">
+               <i className="btn_menu xi-apps text-white xl:text-30 text-26"></i>
             </MenuIcon>
          </div>
       </Container>

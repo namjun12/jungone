@@ -114,6 +114,13 @@ export const Title02 = styled.h3`
       background-image: url(${simbol});
       background-size: cover;
    }
+   @media screen and (max-width:1279px){
+      font-size: 24px;
+      &::before{
+         width: 15px;
+         height: 15px;
+      }
+   }
 `
 export const StrokeTitle = styled.strong`
    opacity: 0.4;

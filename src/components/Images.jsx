@@ -54,6 +54,13 @@ import image49 from "../images/space-lab/expert01.webp";
 import image50 from "../images/space-lab/expert02.webp";
 import image51 from "../images/space-lab/expert03.webp";
 import image52 from "../images/space-lab/expert04.webp";
+import image53 from "../images/company/mo-people01.png";
+// import image50 from "../images/";
+// import image50 from "../images/";
+// import image50 from "../images/";
+// import image50 from "../images/";
+// import image50 from "../images/";
+// import image50 from "../images/";
 // import image50 from "../images/";
 import mainBanner01 from "../images/common/main-banner01.webp"
 import mainBanner02 from "../images/common/main-banner02.webp"
@@ -142,6 +149,7 @@ export {
    image50,
    image51,
    image52,
+   image53,
    mainBanner01,
    mainBanner02,
    mainBanner03,

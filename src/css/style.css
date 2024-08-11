@@ -23,10 +23,6 @@
    color: inherit;
 }
 
-/* #root{
-   overflow: hidden;
-   width: 100%;
-} */
 .hide {
    position: absolute;
    left: -9999px;
@@ -44,7 +40,8 @@
    font-weight: 600;
    font-style: normal;
 }
-.swiper-button-disabled{
+
+.swiper-button-disabled {
    opacity: 0.5;
 }
 
@@ -57,4 +54,8 @@
 }
 
 /* tablet, mobile */
-@media screen and (max-width:1279px) {}
+@media screen and (max-width:1279px) {
+   #root .pc-only {
+      display: none
+   }
+}

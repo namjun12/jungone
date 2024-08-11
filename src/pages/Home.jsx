@@ -195,44 +195,41 @@ const Container = styled.div`
             position: absolute;
             .text-box{
                opacity: 0.7;
+               position: absolute;
+               left: 50%;
+               transform: translateX(-50%);
+               white-space: nowrap;
                display: flex;
                justify-content: center;
                align-items: center;
                width: 200px;
                height: 85px;
             }
+            &.item01{
+               top: 38%;
+               left: 26.5%;
+               .text-box{
+                  top: 35px;
+               }
+            }
+            &.item02{    
+               top: 34%;
+               left: 48%;
+               .text-box{
+                  top: -35px;
+                  transform: translate(-50%, -100%);
+               }
+            }
+            &.item03{    
+               top: 43%;
+               right: 17.5%;
+               .text-box{
+                  top: 35px;
+               }
+            }
             .circle{
                width: 8px;
                height: 8px;
-               left: 50%;
-               transform: translateX(-50%);
-            }
-            &.item01{
-               top: 46%;
-               left: 13%;
-               & .circle{
-                  top: -30px;
-                  /* right: 4.5vw; */
-               }
-            }
-            &.item02{
-               top: 10%;
-               left: 41%;
-               & .circle{
-                  bottom: -40%;
-                  /* left: 30%; */
-               }
-            }
-            &.item03{
-               top: 51%;
-               right: 0%;
-               & .circle{
-                  top: -38px;
-                  /* left: 12%; */
-               }
-            }
-            .circle{
-               position: absolute;
                &::before,
                &::after{
                   animation: ${circleSacle} 3s infinite;
@@ -255,8 +252,8 @@ const Container = styled.div`
                .fix-circle{
                   z-index: 9;
                   position: absolute;
-                  width: 8px;
-                  height: 8px;
+                  width: 100%;
+                  height: 100%;
                   border-radius: 50%;
                   background-color: red;
                }
@@ -376,7 +373,9 @@ const Container = styled.div`
       }
    }
    .youtube{
-
+      .thumbnail{
+         border-radius: 16px;
+      }
    }
    .review{
       .review-swiper{
@@ -396,6 +395,13 @@ const Container = styled.div`
                   margin-right: 16px;
                }
             }
+         }
+      }
+   }
+   @media screen and (max-width:1919px){
+      .ceo {
+         .text-wrap .title-stroke{
+            margin-left: 0px;
          }
       }
    }
@@ -421,6 +427,10 @@ const Container = styled.div`
       }
    }
    @media screen and (max-width:1279px){
+      .has-simbol::after{
+         width: 15px;
+         height: 15px;
+      }
       .main-banner{
          .mb-swiper{
             .navigation,
@@ -438,14 +448,14 @@ const Container = styled.div`
       }
       .ceo{
          .text-wrap{
+            width: 60%;
             padding-right: 32px;
             .title-stroke{
-               margin-left: 0px;
                margin-bottom: -13px;
             }
          }
          .img-wrap{
-            height: 480px;
+            height: 38vw;
             .ceo-photo-wrap{
                .ceo-photo{
                   width: 50%;
@@ -465,6 +475,31 @@ const Container = styled.div`
          }
          .map-wrap{
             width: 100%;
+            .spot-wrap{
+               .text-box{
+                  width: auto;
+                  height: auto;
+                  padding: 4px 12px;
+               }
+               &.item01>.text-box{
+                  top: 15px;
+               }
+               &.item02>.text-box{
+                  top: -15px;
+               }
+               &.item03>.text-box{
+                  top: 15px;
+               }
+               .circle{
+                  width: 4px;
+                  height: 4px;
+                  &::before,
+                  &::after{
+                     width: 4px;
+                     height: 4px;
+                  }
+               }
+            }
          }
       }
       .with {
@@ -502,9 +537,9 @@ const Container = styled.div`
                      z-index: -9;
                      position: absolute;
                      top: 15px;
-                     left: 0px;
+                     left: calc(30px + 12px);
                      transform: translateX(50%);
-                     width: 100%;
+                     width: calc(100% - 32px);
                      height: 1px;
                      background: linear-gradient(to right, #aeaeae 50%, rgba(255, 255, 255, 0) 0%);
                      background-size: 8px 1px;
@@ -513,15 +548,145 @@ const Container = styled.div`
             }
          }
       }
+      .professional{
+         *{
+            text-align: center;
+         }
+         .pro-swiper{
+            margin-left: auto;
+            margin-right: auto;
+            .swiper-slide{
+               height: auto;
+               box-sizing: border-box;
+               .slide-img{
+                  max-width: 400px;
+                  margin-left: auto;
+                  margin-right: auto;
+               }
+            }
+         }
+         .line{
+            width: 100%;
+         }
+      }
+      .people{
+         .contents-wrap{
+            width: 45%;
+            padding-right: 24px;
+            .icon-wrap{
+               width: 70px;
+               min-width: 70px;
+               height: 70px;
+               .icon{
+                  height: 40px;
+               }
+            }
+            .line{
+               width: 90%;
+            }
+         }
+         .main-img{
+            width: 50%;
+         }
+      }
+   }
+   @media screen and (min-width:1121px) and (max-width: 1279px){
+      .consulting {
+         .contents-wrap .item:nth-of-type(4){
+            .num-wrap::after{
+               content: none;
+            }
+         }
+      }
+   }
+   @media screen and (min-width:849px) and (max-width: 1120px){
+      .consulting {
+         .contents-wrap .item:nth-of-type(3){
+            .num-wrap::after{
+               content: none;
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 848px){
+      .consulting {
+         .contents-wrap{
+            .item{
+               width: calc(50% - 8px);
+               .box{
+                  width: 100%;
+                  height: auto;
+                  min-height: 140px;
+                  .icon{
+                     height: 40px;
+                  }
+               }
+               &:nth-of-type(2),
+               &:nth-of-type(4){
+                  .num-wrap::after{
+                     content: none;
+                  }
+               }
+            }
+         }
+      }
    }
    @media screen and (max-width: 767px){
+      .guard {
+         display: block;
+         .main-image{
+            width: 100%;
+         }
+      }
+      .ceo{
+         flex-direction: column;
+         .text-wrap{
+            order: 1;
+            width: 100%;
+         }
+         .img-wrap{
+            order: 0;
+            height: 350px;
+            margin-right: 0px;
+            .ceo-photo-wrap{
+               height: 100%;
+               .ceo-photo{
+                  top: auto;
+                  bottom: 20px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: auto;
+                  height: calc(100% - 20px);
+               }
+            }
+         }
+      }
       .with{
          .items-wrap{
             display: block;
             .item{
+               height: 240px;
                &:not(:last-of-type){
                   margin-bottom: 16px;
                }
+            }
+         }
+      }
+      .professional {
+         margin-bottom: 50%;
+      }
+      .people{
+         .container{
+            flex-direction: column;
+            *{
+               width: 100%;
+            }
+            .main-img{
+               order: 0;
+               margin-top: -50%;
+            }
+            .contents-wrap{
+               order: 1;
             }
          }
       }
@@ -742,7 +907,7 @@ const Home = () => {
                <img className='bg-pattern absolute' src={pattern01} alt="배경 패턴" />
             </div>
          </section>
-         <section className='bg-pointColor03'>
+         <section className='bg-pointColor04'>
             <div className='container world xl:flex items-center xl:mt-160 mt-80 xl:pt-80 pt-40 xl:pb-80 pb-40'>
                <div className='text-wrap'>
                   <Title01>
@@ -804,7 +969,7 @@ const Home = () => {
                   >
                      <div className='flex flex-col justify-center items-center'>
                         <img className='icon' src={withInfo.icon} alt="아이콘" />
-                        <p className='leading-1em xl:text-22 xl:mt-16 text-white'>{withInfo.text}</p>
+                        <p className='leading-1em xl:text-22 text-18 mt-16 text-white'>{withInfo.text}</p>
                      </div>
                   </li>
                ))}
@@ -815,7 +980,7 @@ const Home = () => {
                <Title01 className='text-center'>
                   <strong>공간정원의 컨설팅</strong>이 궁금하신가요?
                </Title01>
-               <p className='text-center xl:leading-36 xl:text-20 xl:mt-32'>사용자별 맞춤 공간컨설팅 상담을 공간정원에서 받아보세요.</p>
+               <p className='text-center xl:leading-36 xl:text-20 xl:mt-32 mt-24'>사용자별 맞춤 공간컨설팅 상담을 공간정원에서 받아보세요.</p>
                <div className='xl:mt-56 mt-40'>
                   <div className='xl:flex hidden num-wrap justify-center items-center'>
                      <div className='item flex justify-center items-center'>
@@ -845,10 +1010,10 @@ const Home = () => {
                               <p className='num text-13 xl:hidden flex justify-center items-center bg-pointColor01 font-bold text-white'>0{index + 1}</p>
                            </div>
                            <h4 className='text-center xl:text-22 font-bold xl:mt-16 mt-8'>{consultingInfo.title}</h4>
-                           <div className='box flex flex-col justify-center items-center xl:gap-20 xl:mt-24 mt-16 bg-subColor07'>
+                           <div className='box flex flex-col justify-center items-center xl:gap-20 gap-16 xl:mt-24 mt-16 bg-subColor07'>
                               <img className='icon' src={consultingInfo.image} alt="아이콘" />
                               <p
-                                 className='text-center xl:leading-22 xl:text-14'
+                                 className='text-center xl:leading-22 leading-18 xl:text-14 text-13'
                                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(consultingInfo.desc) }}
                               />
                            </div>
@@ -857,9 +1022,9 @@ const Home = () => {
                   </ul>
                </div>
             </div>
-            <BtnLink02 className='xl:mt-80' to="">컨설팅 문의하기</BtnLink02>
+            <BtnLink02 className='xl:mt-80 mt-40' to="">컨설팅 문의하기</BtnLink02>
          </section>
-         <section className='professional container flex justify-center items-center xl:mt-160'>
+         <section className='professional container xl:flex justify-center items-center xl:mt-160 mt-80'>
             <div>
                <div>
                   <Title01>
@@ -867,18 +1032,18 @@ const Home = () => {
                      <strong>공간정원 전문교육</strong>으로<br />
                      <strong>전문가</strong>가 될 수 있습니다
                   </Title01>
-                  <h4 className='leading-1em xl:text-28 font-bold xl:mt-48'>가드너즈 아카데미</h4>
-                  <p className='xl:leading-32 xl:text-20 xl:mt-48'>
+                  <h4 className='xl:block hidden leading-1em xl:text-28 font-bold xl:mt-48'>가드너즈 아카데미</h4>
+                  <p className='xl:block hidden xl:leading-32 xl:text-20 xl:mt-48'>
                      가드너즈 아카데미에서는<br className='xl:block hidden' />
                      공간정원과 함께할 정리전문가를 양성합니다.
                   </p>
-                  <BtnViewmore className='xl:mt-40'>
+                  <BtnViewmore className='pc-only xl:mt-40'>
                      <p className="txt">자세히 보기</p>
                      <i className="xi-long-arrow-right"></i>
                   </BtnViewmore>
                </div>
-               <div className='line hide-text'>line</div>
-               <div className='navigation flex xl:gap-24 xl:pt-48'>
+               <div className='xl:block hidden line hide-text'>line</div>
+               <div className='xl:flex hidden navigation xl:gap-24 xl:pt-48'>
                   <button className="pro-btn-prev">
                      <i className='xl:text-42 font-light xi-angle-left-thin'></i>
                   </button>
@@ -889,13 +1054,20 @@ const Home = () => {
             </div>
             <Swiper
                className='pro-swiper'
-               slidesPerView={"auto"}
                navigation={{
                   prevEl: ".pro-btn-prev",
                   nextEl: ".pro-btn-next",
                }}
                loop={true}
                modules={[Navigation]}
+               breakpoints={{
+                  1280: { // 1280px 이상
+                     slidesPerView: "auto",
+                  },
+                  768: { // 768px 이하
+                     slidesPerView: 1,
+                  },
+               }}
             >
                <SwiperSlide className='box-content p-32'>
                   <img className='slide-img' src={image09} alt="슬라이드 이미지" />
@@ -910,27 +1082,47 @@ const Home = () => {
                   <img className='slide-img' src={image10} alt="슬라이드 이미지" />
                </SwiperSlide>
             </Swiper>
+            <div className='xl:hidden'>
+               <h4 className='leading-1em xl:text-28 text-20 font-bold xl:mt-48'>가드너즈 아카데미</h4>
+               <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-48 mt-24'>
+                  가드너즈 아카데미에서는<br />
+                  공간정원과 함께할 정리전문가를 양성합니다.
+               </p>
+               <BtnViewmore className='xl:mt-40 mt-24 ml-auto mr-auto'>
+                  <p className="txt">자세히 보기</p>
+                  <i className="xi-long-arrow-right"></i>
+               </BtnViewmore>
+               <div className='line hide-text'>line</div>
+               <div className='flex navigation justify-center xl:gap-24 gap-16 xl:pt-48 pt-24'>
+                  <button className="pro-btn-prev">
+                     <i className='xl:text-42 text-21 font-light xi-angle-left-thin'></i>
+                  </button>
+                  <button className="pro-btn-next">
+                     <i className='xl:text-42 text-21 xi-angle-right-thin'></i>
+                  </button>
+               </div>
+            </div>
          </section>
-         <section className='people xl:pt-80 xl:pb-80'>
+         <section className='people xl:pt-80 pt-60 xl:pb-80 pb-60 mt-80'>
             <div className='container flex justify-between items-center'>
-               <div>
-                  <div>
+               <div className='contents-wrap'>
+                  <div className='xl:mt-0 mt-40'>
                      <Title01>
                         공간정원은<br />
-                        <strong>이러한 인재</strong>와 함께합니다
+                        <strong className='inline'>이러한 인재</strong>와 함께합니다
                      </Title01>
                   </div>
-                  <div className='line hide-text xl:mt-24'>line</div>
+                  <div className='line hide-text mt-24'>line</div>
                   <ul>
                      {peopleInfo.map((peopleInfo, index) => (
-                        <li className='flex items-center xl:gap-24 xl:mt-32' key={index}>
+                        <li className='flex items-center xl:gap-24 gap-16 xl:mt-32 mt-18' key={index}>
                            <div className='icon-wrap flex justify-center items-center bg-pointColor01'>
                               <img className='icon' src={peopleInfo.icon} alt="아이콘" />
                            </div>
                            <div>
-                              <h4 className='leading-1em xl:text-22 font-bold'>{peopleInfo.title}</h4>
+                              <h4 className='leading-1em xl:text-22 text-18 font-bold'>{peopleInfo.title}</h4>
                               <p
-                                 className='xl:leading-26 xl:text-18 xl:mt-12'
+                                 className='xl:leading-26 leading-18 xl:text-18 text-13 xl:mt-12 mt-8'
                                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(peopleInfo.desc) }}
                               />
                            </div>
@@ -941,22 +1133,33 @@ const Home = () => {
                <img className='main-img' src={image04} alt="사람들" />
             </div>
          </section>
-         <section className='youtube container xl:mt-235'>
+         <section className='youtube container xl:mt-235 mt-80'>
             <div>
                <Title01 className='text-center'>
                   영상으로 만나는 <strong>공간정원</strong>
                </Title01>
-               <p className='text-center xl:leading-28 xl:text-18 xl:mt-32'>공간정리를 통해 정리시스템을 구축하고 사용자별 라이프스타일을 반영하여 공간 전체의 리빌딩을 서비스합니다</p>
+               <p className='text-center xl:leading-28 leading-18 xl:text-18 text-13 xl:mt-32 mt-24'>공간정리를 통해 정리시스템을 구축하고 사용자별 라이프스타일을 반영하여 공간 전체의 리빌딩을 서비스합니다</p>
             </div>
             <Swiper
-               className='xl:mt-48'
-               slidesPerView={3}
+               className='xl:mt-48 mt-40'
+               breakpoints={{
+                  1280: {
+                     slidesPerView: 3,
+                  },
+                  768: {
+                     slidesPerView: 3,
+                  },
+                  0: {
+                     centeredSlides: true,
+                     slidesPerView: 1.2
+                  }
+               }}
             >
                <SwiperSlide>
                   <Link to="">
                      <img className='thumbnail w-full h-auto' src={testImg} alt="썸네일" />
-                     <h4 className='max-line1 font-bold xl:mt-32'>사람들의 삶을 바꾸는 마법의 손! 정리전문가 이정원!</h4>
-                     <p className='leading-1em xl:text-14 xl:mt-16 text-subColor04'>2024.10.10</p>
+                     <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>사람들의 삶을 바꾸는 마법의 손! 정리전문가 이정원!</h4>
+                     <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>2024.10.10</p>
                   </Link>
                </SwiperSlide>
                <div className="navigation">
@@ -966,29 +1169,40 @@ const Home = () => {
                <div className="pagination" />
             </Swiper>
          </section>
-         <section className='review xl:mt-80 bg-pointColor03'>
-            <div className='container xl:pt-120 xl:pb-120'>
+         <section className='review mt-80 bg-pointColor04'>
+            <div className='container xl:pt-120 pt-40 xl:pb-120 pb-80'>
                <Title01 className='text-center'>공간정원을 경험해본, <strong>고객님 후기</strong></Title01>
                <Swiper
-                  className='review-swiper xl:mt-48'
-                  slidesPerView={3}
+                  className='review-swiper xl:mt-48 mt-40'
                   spaceBetween={24}
+                  breakpoints={{
+                     1280: {
+                        slidesPerView: 3
+                     },
+                     768: {
+                        slidesPerView: 3
+                     },
+                     0: {
+                        centeredSlides: true,
+                        slidesPerView: 1.2
+                     }
+                  }}
                >
                   <SwiperSlide>
                      <div className='thumbnail-wrap'>
                         <img className='w-full h-full object-cover thumbnail' src={testImg} alt="" />
                      </div>
                      <div className='text-wrap'>
-                        <h4 className='leading-1em xl:text-24 font-semibold'>이정원 정리수납은 차원이 다릅니다!</h4>
-                        <p className='xl:leading-26 xl:text-16 xl:mt-24'>
+                        <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>이정원 정리수납은 차원이 다릅니다!</h4>
+                        <p className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'>
                            수납장이 많아도 물건이 너무 많아서 주방이 너무 어지러워서
                            주방에 갈 엄두가 나지 않더라구요~ㅠㅠ
                            그러던 찰나에 공간정원 정리서비스를 알게 되었고 고민없이 신청하게 되었습니다~! 상담받는 내내 친절하게 응대해주시고
                            어떤식으로 정리해야 효율적인지 원인과 방법을 전부 알려주셨어요~^^ 확실히 전문가의 컨설팅을 받고나니 전보다 정리하기 수월해지고 지금까지도 깨끗한 주방 유지중이랍니다! 고민하시는 분들 전부 후회 없으실거에요!
                         </p>
-                        <div className='category-wrap flex xl:mt-32'>
-                           <p className='category leading-1em xl:text-16 font-medium text-subColor04'>부분 정리수납</p>
-                           <p className='category leading-1em xl:text-16 font-medium text-subColor04'>30평대</p>
+                        <div className='category-wrap flex xl:mt-32 mt-16'>
+                           <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>
+                           <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>30평대</p>
                         </div>
                      </div>
                   </SwiperSlide>
@@ -998,7 +1212,7 @@ const Home = () => {
                   </div>
                   <div className="pagination" />
                </Swiper>
-               <BtnLink02 className='xl:mt-80'>후기 더 보러가기</BtnLink02>
+               <BtnLink02 className='xl:mt-80 mt-40'>후기 더 보러가기</BtnLink02>
             </div>
          </section>
       </Container>

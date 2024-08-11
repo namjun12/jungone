@@ -11,7 +11,7 @@ const CompanyLayout = () => {
 
    const bannerInfo = {
       title: "회사소개",
-      subText: "사람이 성장하는 공간을 만들어가는 공간 리빌딩 전문기업 공간정원입니다.",
+      subText: "사람이 성장하는 공간을 만들어가는 <br class='xl:hidden' />공간 리빌딩 전문기업 공간정원입니다.",
       bgImgPath: mainBanner01,
    }
    const tabInfo = [
