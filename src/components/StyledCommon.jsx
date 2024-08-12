@@ -143,9 +143,32 @@ export const SubBanner01 = styled.div`
       width: auto;
       height: 22px;
    }
+   .desc{
+      text-align: center;
+      line-height: 36px;
+      font-size: 24px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      color: #fff;
+   }
+   @media screen and (max-width:1279px){
+      height: 300px;
+      padding: 0px 12px;
+      .icon{
+         height: 12px;
+      }
+      .desc{
+         line-height: 22px;
+         font-size: 16px;
+         margin-top: 16px;
+         margin-bottom: 16px;
+      }
+   }
 `
 export const Desc01 = styled.p`
    position: relative;
+   line-height: 36px;
+   font-size: 24px;
    &::after{
       content: '';
       display: block;
@@ -161,17 +184,14 @@ export const Desc01 = styled.p`
    }
    .point{
       position: relative;
+      box-shadow: inset 0px -0.9em 0px var(--pointColor03);
+   }
+   @media screen and (max-width:1279px){
+      line-height: 22px;
+      font-size: 16px;
       &::after{
-         content: '';
-         display: block;
-         clear: both;
-         z-index: -9;
-         position: absolute;
-         top: 5px;
-         left: 0px;
-         width: 100%;
-         height: 21px;
-         background-color: var(--pointColor03);
+         top: -12px;
+         height: 80px;
       }
    }
 `

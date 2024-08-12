@@ -42,7 +42,7 @@
 }
 
 .swiper-button-disabled {
-   opacity: 0.5;
+   opacity: 0.2;
 }
 
 /*  */
@@ -57,5 +57,24 @@
 @media screen and (max-width:1279px) {
    #root .pc-only {
       display: none
+   }
+}
+
+@media screen and (max-width:767px){
+   .top-nav{
+      flex-direction: column;
+   }
+   .top-nav .text_count{
+      order: 1;
+      width: 100%;
+   }
+   .top-nav .search_from{
+      order: 0;
+      width: 100%;
+   }
+   #root .top-nav .search_from .search_box{
+      width: 100%;
+      font-size: 14px;
+      padding: 0px 16px;
    }
 }

@@ -1,4 +1,5 @@
 import testImg from "../images/common/testimg.jpg"
+import noImg from "../images/common/noimg.jpg"
 import simbol from "../images/common/simbol.png"
 import pattern01 from "../images/common/pattern01.webp"
 import pattern02 from "../images/common/pattern02.png"
@@ -9,6 +10,7 @@ import image03 from "../images/home/circle01.png"
 import image04 from "../images/home/people.webp"
 import image05 from "../images/home/world-bg.webp"
 import image06 from "../images/home/with01.webp"
+import image07 from "../images/home/with02.webp"
 import image08 from "../images/home/with03.webp"
 import image09 from "../images/home/professional01.webp"
 import image10 from "../images/home/professional02.webp"
@@ -94,6 +96,7 @@ import icon19 from "../images/common/icon/icon19.png"
 export {
    simbol,
    testImg,
+   noImg,
    pattern01,
    pattern02,
    contactBanner,
@@ -103,7 +106,7 @@ export {
    image04,
    image05,
    image06,
-   // image07,
+   image07,
    image08,
    image09,
    image10,

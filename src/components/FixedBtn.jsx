@@ -81,7 +81,7 @@ const TopBtn = () => {
 
             const progressBar = topScrollBtn.querySelector('.progress_bar');;
             if (progressBar) {
-               progressBar.style.background = `conic-gradient(${color} 0% ${scrollPercent}%, #fff ${scrollPercent}% 100%)`;
+               progressBar.style.background = `conic-gradient(${color} 0% ${scrollPercent}%, #79926B ${scrollPercent}% 100%)`;
             }
          });
       }
@@ -138,16 +138,16 @@ const Contact = () => {
             >
                <img src={fixedClose} alt="" />
             </button>
-            <a className="btn" href="tel:031-234-2870">
+            <a className="btn" href="tel:1522-5482">
                <img src={sns01} alt="" />
             </a>
-            <a className="btn" href="http://pf.kakao.com/_DnVQG" target="_blank" rel="noreferrer">
+            <a className="btn" href="#" target="_blank" rel="noreferrer">
                <img src={sns02} alt="" />
             </a>
-            <a className="btn" href="https://www.youtube.com/@EXCELLENTJODAL" target="_blank" rel="noreferrer">
+            <a className="btn" href="#" target="_blank" rel="noreferrer">
                <img src={sns03} alt="" />
             </a>
-            <a className="btn" href="https://blog.naver.com/rhim1218" target="_blank" rel="noreferrer">
+            <a className="btn" href="#" target="_blank" rel="noreferrer">
                <img src={sns04} alt="" />
             </a>
          </div>}

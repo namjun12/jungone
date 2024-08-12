@@ -69,12 +69,10 @@ const ListWrap = styled.ul`
       gap: 34px;
       padding: 24px 20px;
    }
-
    & .btn-link:hover,
    & .btn-link:focus {
       background-color: #f5faff;
    }
-
    & .btn-link .notice {
       width: fit-content;
       border: 1px solid var(--pointColor01);
@@ -82,7 +80,6 @@ const ListWrap = styled.ul`
       padding: 8px 16px;
       color: var(--pointColor01);
    }
-
    & .btn-link .date {
       color: var(--subColor04);
    }
@@ -92,6 +89,12 @@ const ListWrap = styled.ul`
          height: 32px;
          border: 1px solid var(--subColor04);
          border-radius: 50%;
+      }
+   }
+   @media screen and (max-width:767px){
+      .btn-link .icon-wrap{
+         width: 30px;
+         height: 30px;
       }
    }
 `
@@ -140,6 +143,7 @@ const Notice = () => {
          try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/announcement/?page=${pageIndex}&search=${searchTerm}`);
             setData(response.data.data);
+            console.log("notice", response.data.data)
             if (response.data.success === false) {
                alert(response.data.message)
             }
@@ -156,9 +160,9 @@ const Notice = () => {
 
 
    return (
-      <Container className="type_notice">
-         <Title02 className="xl:mt-120">공지사항</Title02>
-         <div className="top-nav container xl:mt-80">
+      <Container className="type_notice container">
+         <Title02 className="xl:mt-120 mt-80">공지사항</Title02>
+         <div className="top-nav xl:mt-80 mt-24">
             <p className="text_count xl:text-18 xl:mt-0 mt-40">총 {data && <strong className="point">{data.total}</strong>}개의 게시물</p>
             <form className="search_from" onSubmit={handleSubmit}>
                <fieldset>
@@ -179,7 +183,7 @@ const Notice = () => {
                </fieldset>
             </form>
          </div>
-         <ListWrap className="container list_wrap xl:mb-40">
+         <ListWrap className="list_wrap xl:mb-40">
             {data ? (
                data.total === 0 ? (
                   <li className="item noitem txt_align_center">게시글이 없습니다.</li>
@@ -201,7 +205,7 @@ const Notice = () => {
                                     <p className="date xl:text-16 text-12">{list.created_at_formatted}</p>
                                  </div>
                                  <div className="icon-wrap flex justify-center items-center pc">
-                                    <i className="icon xi-angle-right text-subColor04"></i>
+                                    <i className="icon xi-angle-right xl:text-16 text-14 text-subColor04"></i>
                                  </div>
                               </Link>
                            </li>

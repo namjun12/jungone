@@ -18,16 +18,24 @@ const ContactBannerWrap = styled.div`
       height: 53px;
       border-radius: 9999px;
    }
+   @media screen and (max-width:1279px){
+      height: 265px;
+      .btn{
+         width: auto;
+         height: auto;
+         padding: 8px 24px;
+      }
+   }
 `
 
 const ContactBanner = () => {
    return (
       <ContactBannerWrap>
-         <strong className='xl:leading-48 text-center xl:text-32 font-bold text-white'>
+         <strong className='xl:leading-48 ledaing-32 text-center xl:text-32 text-20 font-bold text-white'>
             공간정원은 생활형태별, 사용자의 성향별, 생활 패턴별, 공간의 목적별로 <br className='xl:block hidden' />
             정리수납의 다양한 방법을 제공합니다.
          </strong>
-         <Link className='btn flex justify-center items-center xl:mt-48 text-white bg-pointColor01'>문의하기</Link>
+         <Link to="/community/contact" className='btn flex justify-center items-center leading-1em xl:text-16 text-14 xl:mt-48 mt-40 text-white bg-pointColor01'>문의하기</Link>
       </ContactBannerWrap>
    )
 }

@@ -23,13 +23,36 @@ const EduPlanningWrap = styled.div`
          width: 100%;
          max-width: 700px;
          height: 380px;
-         border-top: 1px solid var(--subColor04);
-         border-bottom: 1px solid var(--subColor04);
+         border-top: 1px solid var(--subColor05);
+         border-bottom: 1px solid var(--subColor05);
          *{
             text-align: center;
          }
          .title>.point{
             color: var(--pointColor01);
+         }
+      }
+   }
+   @media screen and (max-width:1279px){
+      .item{
+         .main-img{
+            width: 50%;
+            height: auto;
+         }
+         .text-wrap{
+            height: auto;
+         }
+      }
+   }
+   @media screen and (max-width:767px){
+      .item{
+         flex-direction: column;
+         gap: 16px;
+         .main-img{
+            width: 100%;
+         }
+         .text-wrap{
+            padding: 24px 16px;
          }
       }
    }
@@ -68,25 +91,25 @@ const EduPlanning = () => {
    ]
 
    return (
-      <EduPlanningWrap className='xl:pb-120'>
+      <EduPlanningWrap className='xl:pb-120 pb-80'>
          <SpaceLab01
             info={SpaceLab01Info}
          />
-         <div className='xl:pt-120'>
+         <div className='xl:pt-120 pt-80'>
             <Title02>공간정원의 교육 기획</Title02>
-            <ul className='item-wrap container xl:mt-80'>
+            <ul className='item-wrap container xl:mt-80 mt-40'>
                {eduItems.map((eduItems, index) => (
-                  <li className='item flex xl:gap-40 xl:mb-48' key={index}>
+                  <li className='item flex gap-40 xl:mb-48 mb-40' key={index}>
                      <img className='main-img' src={eduItems.img} alt="공간정원의 교육 기획" />
                      <div className='text-wrap flex flex-col justify-center items-center'>
-                        <p className='leading-1em xl:text-48 font-thin text-pointColor01'>0{index + 1}</p>
-                        <p className='leading-1em xl:text-16 xl:mt-16 text-subColor04'>{eduItems.subTitle}</p>
+                        <p className='leading-1em xl:text-48 text-28 font-thin text-pointColor01'>0{index + 1}</p>
+                        <p className='leading-1em xl:text-16 text-13 mt-16 text-subColor04'>{eduItems.subTitle}</p>
                         <h4
-                           className='title leading-1em xl:text-32 font-bold xl:mt-16'
+                           className='title leading-1em xl:text-32 text-20 font-bold xl:mt-16 mt-8'
                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(eduItems.title) }}
                         />
                         <p
-                           className='xl:leading-26 xl:text-18 xl:mt-24 text-subColor03'
+                           className='xl:leading-26 leading-18 xl:text-18 text-13 xl:mt-24 mt-16 text-subColor03'
                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(eduItems.desc) }}
                         />
                      </div>

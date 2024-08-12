@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from 'swiper/modules';
-
-// Props
-import { PopupProps } from "../model/data";
 
 // css Start
 import 'swiper/css';

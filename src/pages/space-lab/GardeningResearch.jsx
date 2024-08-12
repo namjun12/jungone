@@ -53,20 +53,39 @@ const CategoryWrap = styled.div`
             .title{
                &>.point{
                   position: relative;
+                  box-shadow: inset 0px -0.9em 0px var(--pointColor03);
                   color: var(--pointColor01);
-                  &::before{
-                     content: '';
-                     display: block;
-                     clear: both;
-                     z-index: -9;
-                     position: absolute;
-                     top: 0px;
-                     left: 0px;
-                     transform: translateY(80%);
-                     width: 100%;
-                     height: 21px;
-                     background-color: var(--pointColor03);
-                  }
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width:1279px){
+      .category{
+         .item{
+            .text-wrap>.bg-pattern{
+               width: 50px;
+               margin-bottom: 0px;
+            }
+            .main-img{
+               width: 50%;
+            }
+         }
+      }
+   }
+   @media screen and (max-width:767px){
+      .category{
+         .item{
+            flex-direction: column;
+            &:nth-of-type(2n) .main-img{
+               order: -1;
+            }
+            .main-img{
+               width: 100%;
+            }
+            .text-wrap{
+               .bg-pattern{
+                  margin-bottom: -50px;
                }
             }
          }
@@ -106,8 +125,8 @@ const GardeningResearch = () => {
          desc: `
             부모님과 어른들을 위한 공간구성 및 정리법은 젊은이를 위한 정리법과 분명히 달라야 합니다 <br class='xl:block hidden'/>
             편리함에 초점을 두고 현재의 건강 상태에 따라 차별화되는 맞춤 공간과 <br class='xl:block hidden'/>
-            특수한 기능의 공간으로 재구성 해드리는 서비스 입니다 <br class='xl:block hidden'/>
-            <br class='xl:block hidden'/>
+            특수한 기능의 공간으로 재구성 해드리는 서비스 입니다 <br />
+            <br />
             *특수기능의 공간 : 시니어의 건강이나 신체 상태에따라 국가에서 지원하는 생활 보조 설비, 기구들을 반영한 공간 구성방법
             필요시 국가에서 지원되는 생활보조 설비나 기구중 적합한 항목들을 알려드리고 혜택을 받을수 있게 도와드립니다
             (항목별로 50~100%의 국가지원)
@@ -167,26 +186,26 @@ const GardeningResearch = () => {
    ]
 
    return (
-      <CategoryWrap className='container xl:pb-120'>
+      <CategoryWrap className='xl:pb-120 pb-80'>
          <SpaceLab01
             info={SpaceLab01Info}
          />
-         <div className='category xl:mt-120'>
+         <div className='category container xl:mt-120 mt-80'>
             <Title02>가드닝 연구 분야</Title02>
             {categoryInfo &&
-               <ul className='xl:mt-80'>
+               <ul className='xl:mt-80 mt-40'>
                   {categoryInfo.map((categoryInfo, index) => (
-                     <li className='item flex xl:gap-32 xl:mt-80' key={index}>
+                     <li className='item flex xl:gap-32 gap-48 xl:mt-80 mt-40' key={index}>
                         <img className='main-img w-full' src={categoryInfo.img} alt="" />
                         <div className='text-wrap'>
                            <img className='bg-pattern xl:mb-32' src={pattern02} alt="배경 패턴" />
-                           <p className='leading-1em xl:text-48 font-thin text-pointColor01'>0{index + 1}</p>
+                           <p className='leading-1em xl:text-48 text-28 font-thin text-pointColor01'>0{index + 1}</p>
                            <p
-                              className='title xl:leading-1em xl:text-32 font-bold xl:mt-32'
+                              className='title xl:leading-1em xl:text-32 text-20 font-bold xl:mt-32 mt-16'
                               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(categoryInfo.title) }}
                            />
                            <p
-                              className='xl:leading-24 xl:text-16 xl:mt-24 text-subColor03'
+                              className='xl:leading-24 leading-18 xl:text-16 text-13 xl:mt-24 mt-16 text-subColor03'
                               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(categoryInfo.desc) }}
                            />
                         </div>

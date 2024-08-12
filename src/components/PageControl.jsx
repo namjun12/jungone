@@ -34,7 +34,7 @@ export default function PageControl({ data, pageIndex, setPageIndex, loading }) 
    }
 
    return (
-      <PaginationWrap className="xl:mt-40 mt-30 xl:mb-110">
+      <PaginationWrap className="xl:mt-40 mt-30 xl:mb-110 mb-80">
          {loading ? (
             <div style={{ backgroundColor: 'red' }} className="h-105">Loading ...</div>
          ) : (

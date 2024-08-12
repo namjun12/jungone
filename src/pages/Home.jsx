@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,9 +7,11 @@ import { Navigation, Pagination } from 'swiper/modules'
 
 // Components
 import { Title01, StrokeTitle, BtnLink, BtnLink02, BtnViewmore } from '../components/StyledCommon'
+import Popup from '../components/Popup'
 
 // Images
-import { simbol, testImg, pattern01, image01, image02, image03, image04, image05, image06, image08, image09, image10, image11, icon01, icon02, icon03, icon04, icon05, icon06, icon07, icon08, icon09, icon10, icon11 } from '../components/Images'
+import { simbol, pattern01, image01, image02, image03, image04, image05, image06, image07, image08, image09, image10, image11, icon01, icon02, icon03, icon04, icon05, icon06, icon07, icon08, icon09, icon10, icon11 } from '../components/Images'
+import axios from 'axios'
 
 // Styled
 const circleRotate = keyframes`
@@ -632,6 +634,14 @@ const Container = styled.div`
       }
    }
    @media screen and (max-width: 767px){
+      .main-banner{
+         .mb-swiper{
+            .contents-wrap{
+               width: 100%;
+               padding: 0px 36px;
+            }
+         }
+      }
       .guard {
          display: block;
          .main-image{
@@ -697,28 +707,21 @@ const Home = () => {
 
    const isMobile = document.documentElement.clientWidth < 1280
 
-   const data = {
-      banner: [
-         {
-            title: "당신의 공간을 가드닝 하세요",
-            sub_title: "공간정원은 깔끔하고 편리한 정리수납과 더불어 공간이 사람에게 미치는 영향까지 분석하여 전체적인 공간 리빌딩을 통해, 정리수납의 새로운 패러다임을 이끌고자 합니다.",
-            image: testImg,
-            image_type: 0,
-            mobile_image: testImg,
-            mobile_image_type: 0,
-            path: "/test",
-         },
-         {
-            title: "당신의 공간을 가드닝 하세요",
-            sub_title: "공간정원은 깔끔하고 편리한 정리수납과 더불어 공간이 사람에게 미치는 영향까지 분석하여 전체적인 공간 리빌딩을 통해, 정리수납의 새로운 패러다임을 이끌고자 합니다.",
-            image: testImg,
-            image_type: 0,
-            mobile_image: testImg,
-            mobile_image_type: 0,
-            path: null,
+   // Data
+   const [data, setData] = useState();
+   useEffect(() => {
+      const fetchData = async () => {
+         const response = await axios.get(`${process.env.REACT_APP_API_URL}/main`)
+         try {
+            setData(response.data.data)
+            console.log(response.data.data)
+         } catch (error) {
+            console.log(error)
          }
-      ],
-   }
+      }
+      fetchData();
+   }, [])
+
    const consultingInfo = [
       {
          title: "상담문의",
@@ -755,7 +758,7 @@ const Home = () => {
       {
          icon: icon05,
          text: "원스톱 토탈서비스",
-         bg: image06,
+         bg: image07,
       },
       {
          icon: icon06,
@@ -783,6 +786,7 @@ const Home = () => {
 
    return (
       <Container>
+         <Popup />
          <section className='main-banner'>
             <Swiper
                className="mb-swiper"
@@ -894,7 +898,7 @@ const Home = () => {
                   세계의 각 문화와 생활환경에 맞는 모든 사람들의<br className='xl:block hidden' />
                   더 나은 생활을 선도해 가겠습니다.
                </p>
-               <BtnViewmore className='xl:mt-40 mt-32' to="">
+               <BtnViewmore className='xl:mt-40 mt-32' to="/company/ceo">
                   <p className="txt">View More</p>
                   <i className="xi-long-arrow-right"></i>
                </BtnViewmore>
@@ -1022,7 +1026,7 @@ const Home = () => {
                   </ul>
                </div>
             </div>
-            <BtnLink02 className='xl:mt-80 mt-40' to="">컨설팅 문의하기</BtnLink02>
+            <BtnLink02 className='xl:mt-80 mt-40' to="/community/contact">컨설팅 문의하기</BtnLink02>
          </section>
          <section className='professional container xl:flex justify-center items-center xl:mt-160 mt-80'>
             <div>
@@ -1037,7 +1041,7 @@ const Home = () => {
                      가드너즈 아카데미에서는<br className='xl:block hidden' />
                      공간정원과 함께할 정리전문가를 양성합니다.
                   </p>
-                  <BtnViewmore className='pc-only xl:mt-40'>
+                  <BtnViewmore to="/space-lab/academy" className='pc-only xl:mt-40'>
                      <p className="txt">자세히 보기</p>
                      <i className="xi-long-arrow-right"></i>
                   </BtnViewmore>
@@ -1155,13 +1159,19 @@ const Home = () => {
                   }
                }}
             >
-               <SwiperSlide>
-                  <Link to="">
-                     <img className='thumbnail w-full h-auto' src={testImg} alt="썸네일" />
-                     <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>사람들의 삶을 바꾸는 마법의 손! 정리전문가 이정원!</h4>
-                     <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>2024.10.10</p>
-                  </Link>
-               </SwiperSlide>
+               {data && data.youtube.map((youtube, index) => (
+                  <SwiperSlide key={index}>
+                     <Link
+                        to={`https://www.youtube.com/watch?v=${youtube.video_id}`}
+                        target='_blank'
+                        rel='norefererr'
+                     >
+                        <img className='thumbnail w-full h-auto' src={`https://img.youtube.com/vi/${youtube.video_id}/mqdefault.jpg`} alt="썸네일" />
+                        <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>{youtube.title}</h4>
+                        <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>{youtube.created_at_formatted}</p>
+                     </Link>
+                  </SwiperSlide>
+               ))}
                <div className="navigation">
                   <div className="youtube-btn-prev"></div>
                   <div className="youtube-btn-next"></div>
@@ -1188,31 +1198,31 @@ const Home = () => {
                      }
                   }}
                >
-                  <SwiperSlide>
-                     <div className='thumbnail-wrap'>
-                        <img className='w-full h-full object-cover thumbnail' src={testImg} alt="" />
-                     </div>
-                     <div className='text-wrap'>
-                        <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>이정원 정리수납은 차원이 다릅니다!</h4>
-                        <p className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'>
-                           수납장이 많아도 물건이 너무 많아서 주방이 너무 어지러워서
-                           주방에 갈 엄두가 나지 않더라구요~ㅠㅠ
-                           그러던 찰나에 공간정원 정리서비스를 알게 되었고 고민없이 신청하게 되었습니다~! 상담받는 내내 친절하게 응대해주시고
-                           어떤식으로 정리해야 효율적인지 원인과 방법을 전부 알려주셨어요~^^ 확실히 전문가의 컨설팅을 받고나니 전보다 정리하기 수월해지고 지금까지도 깨끗한 주방 유지중이랍니다! 고민하시는 분들 전부 후회 없으실거에요!
-                        </p>
-                        <div className='category-wrap flex xl:mt-32 mt-16'>
-                           <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>
-                           <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>30평대</p>
+                  {data && data.reviews.map((reviews, index) => (
+                     <SwiperSlide key={index}>
+                        <div className='thumbnail-wrap'>
+                           <img className='w-full h-full object-cover thumbnail' src={reviews.image} alt="" />
                         </div>
-                     </div>
-                  </SwiperSlide>
+                        <div className='text-wrap'>
+                           <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>{reviews.title}</h4>
+                           <p
+                              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(reviews.content) }}
+                              className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'
+                           />
+                           <div className='category-wrap flex xl:mt-32 mt-16'>
+                              <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>
+                              <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>30평대</p>
+                           </div>
+                        </div>
+                     </SwiperSlide>
+                  ))}
                   <div className="navigation">
                      <div className="btn-prev"></div>
                      <div className="btn-next"></div>
                   </div>
                   <div className="pagination" />
                </Swiper>
-               <BtnLink02 className='xl:mt-80 mt-40'>후기 더 보러가기</BtnLink02>
+               <BtnLink02 to="/community/review" className='xl:mt-80 mt-40'>후기 더 보러가기</BtnLink02>
             </div>
          </section>
       </Container>

@@ -59,10 +59,12 @@ const Container = styled.header`
    & .logo_white{
       display: block;
    }
-   &.on .logo_normal{
+   &.on .logo_normal,
+   &.open .logo_normal{
       display: block;
    }
-   &.on .logo_white{
+   &.on .logo_white,
+   &.open .logo_white{
       display: none;
    }
    & .tel_wrap{
@@ -102,13 +104,14 @@ const Container = styled.header`
          }
       }
       &.open{
-         height: auto;
+         /* height: auto; */
+         background-color: #fff;
       }
       &.open .category_wrap{
          overflow: scroll;
          display: block;
          position: absolute;
-         top: 50px;
+         top: 58px;
          left: 0px;
          width: 100%;
          height: calc(100vh - 50px);

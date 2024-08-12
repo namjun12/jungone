@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 
 // Components
@@ -14,37 +14,6 @@ const ServiceWrap = styled.div`
    .banner{
       background-image: url(${image21});
    }
-   /* .desc{
-      position: relative;
-      &::after{
-         content: '';
-         display: block;
-         clear: both;
-         z-index: 9;
-         position: absolute;
-         top: -24px;
-         left: 50%;
-         transform: translate(-50%, -100%);
-         width: 2px;
-         height: 100px;
-         background-color: var(--subColor05);
-      }
-      .point{
-         position: relative;
-         &::after{
-            content: '';
-            display: block;
-            clear: both;
-            z-index: -9;
-            position: absolute;
-            top: 5px;
-            left: 0px;
-            width: 100%;
-            height: 21px;
-            background-color: var(--pointColor03);
-         }
-      }
-   } */
    .tab-wrap{
       box-shadow: inset 0px 0px 0px 1px var(--subColor04);
       .btn-tab{
@@ -136,6 +105,72 @@ const ServiceWrap = styled.div`
          }
       }
    }
+   @media screen and (max-width:1279px){
+      .tab-wrap.container{
+         padding-left: 0px;
+         padding-right: 0px;
+         width: calc(100% - 32px);
+      }
+      .style{
+         .items-wrap{
+            .item.on{
+               margin-top: 0px;
+            }
+         }
+      }
+      .consulting{
+         .items-wrap{
+            flex-wrap: wrap;
+            justify-content: center;
+            .item{
+               width: 33.3%;
+               &::before{
+                  left: 0px;
+                  transform: translateX(50%);
+                  width: 100%;
+               }
+               &::after{
+                  margin-top: auto;
+               }
+               &:nth-of-type(1),
+               &:nth-of-type(3),
+               &:nth-of-type(5){
+                  height: 125px;
+                  margin-bottom: 32px;
+               }
+               &:nth-of-type(7),
+               &:nth-of-type(9){
+                  height: 100px;
+               }
+               &:nth-of-type(5){
+                  &::before{
+                     content: none;
+                  }
+               }
+               .icon{
+                  height: 40px;
+               }
+            }
+            .item-icon{
+               display: none;
+            }
+         }
+      }
+   }
+   @media screen and (max-width: 767px){
+      .style{
+         .items-wrap{
+            display: flex;
+            flex-direction: column;
+            .item{
+               height: 290px;
+               .text-wrap{
+                  height: 100px;
+               }
+            }
+         }
+      }
+   }
 `
 
 const Service = () => {
@@ -193,7 +228,7 @@ const Service = () => {
       return (
          <>
             <p className='text-center xl:text-16 text-pointColor01'>{currentContent.subTitle}</p>
-            <h3 className='text-center xl:text-44 font-bold xl:mt-16'>{currentContent.title}</h3>
+            <h3 className='text-center xl:text-44 font-bold xl:mt-16 mt-12'>{currentContent.title}</h3>
             <div className='desc-wrap'>
                <p
                   className='text-center xl:leading-26 xl:text-18'
@@ -201,93 +236,93 @@ const Service = () => {
                />
                {currentContent.desc02 &&
                   <p
-                     className='text-center xl:leading-26 xl:text-16 xl:mt-24 text-subColor03'
+                     className='text-center xl:leading-26 xl:text-16 xl:mt-24 mt-16 text-subColor03'
                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentContent.desc02) }}
                   />
                }
             </div>
-            <img className='w-full xl:mt-48' src={currentContent.img} alt="서비스사진" />
+            <img className='w-full xl:mt-48 mt-32' src={currentContent.img} alt="서비스사진" />
          </>
       )
    }
 
    return (
-      <ServiceWrap className='xl:mt-120'>
+      <ServiceWrap className='xl:mt-120 mt-80'>
          <div className='container'>
             <Title02>공간정리</Title02>
-            <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40'>
+            <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
-               <p className='text-center xl:leading-36 xl:text-24 xl:mt-24 xl:mb-24 text-white'>
+               <p className='desc'>
                   공간정원의 다년간의 정리 연구와 개발을 통해 <strong>사용자 개개인의 생활패턴</strong>과 <strong>성향</strong>에 맞는 편리하고 세련된 환경으로 재구성하며,
                   나아가 <strong>사용자에게 필요한 공간의 기능들을 부여하여 성장과 발전을 돕는 공간</strong>으로 만들어 드리는 정리수납 서비스입니다.
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />
             </SubBanner01>
          </div>
-         <div className='container desc xl:mt-105'>
-            <Desc01 className='desc xl:leading-36 text-center xl:text-24 font-medium'>
+         <div className='container desc xl:mt-105 mt-60'>
+            <Desc01 className='desc text-center font-medium'>
                사용자의 현재 생활과 가족구성원의 패턴 및 성향을 분석하여 맞춤형 공간 재구성 및 정리수납을 하는 가장 선진화된 정리수납<br className='xl:block hidden' />
                현재 전세계에서 <span className='point font-bold text-pointColor01'>가장 선진화된 정리기법을 연구하고 서비스 하는 곳</span>은 공간정원이 유일합니다
             </Desc01>
          </div>
-         <div className='tab-wrap container xl:mt-90 xl:pb-120'>
+         <div className='tab-wrap container xl:mt-90 mt-80 xl:pb-120 pb-40'>
             <div className='tab grid grid-cols-3'>
                {tabData.map((tabData, index) => (
                   <button
                      onClick={() => { setCurrentPage(index) }}
-                     className={`${currentPage === index ? "on" : ""} btn-tab leading-1em xl:text-18 font-semibold`}
+                     className={`${currentPage === index ? "on" : ""} btn-tab xl:leading-1em leading-18 xl:text-18 text-13 font-semibold xl:p-0 pl-12 pr-12`}
                      key={index}
                   >
                      {tabData}
                   </button>
                ))}
             </div>
-            <div className='contents-wrap xl:p-80'>
+            <div className='contents-wrap xl:p-80 pt-40 pb-40 pl-16 pr-16'>
                {renderContent()}
             </div>
-            <div className='consulting xl:mt-48'>
+            <div className='consulting mt-48'>
                <div>
-                  <p className='text-center xl:text-16 text-pointColor01'>Consulting Procedures</p>
-                  <h3 className='text-center xl:text-44 font-bold xl:mt-16'>컨설팅 절차</h3>
+                  <p className='text-center xl:text-16 text-14 text-pointColor01'>Consulting Procedures</p>
+                  <h3 className='text-center xl:text-44 text-18 font-bold xl:mt-16 mt-12'>컨설팅 절차</h3>
                </div>
-               <ul className='flex items-start items-wrap xl:mt-68'>
+               <ul className='flex items-start items-wrap xl:mt-68 mt-40'>
                   <li className='item flex flex-col items-center'>
                      <img className='icon' src={icon15} alt="아이콘" />
-                     <p className='leading-1em xl:text-18 xl:mt-32'>전화상담</p>
+                     <p className='xl:leading-1em leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-20'>전화상담</p>
                   </li>
                   <li className='item-icon xi-angle-right-min xl:text-24'></li>
                   <li className='item flex flex-col items-center'>
                      <img className='icon' src={icon16} alt="아이콘" />
-                     <p className='leading-1em xl:text-18 xl:mt-32'>방문진단</p>
+                     <p className='xl:leading-1em leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-20'>방문진단</p>
                   </li>
                   <li className='item-icon xi-angle-right-min xl:text-24'></li>
                   <li className='item flex flex-col items-center'>
                      <img className='icon' src={icon17} alt="아이콘" />
-                     <p className='leading-1em xl:text-18 xl:mt-32'>계약&#40;컨설팅 일정 및 인원수 결정&#41;</p>
+                     <p className='xl:leading-1em leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-20'>계약&#40;컨설팅 일정 및 인원수 결정&#41;</p>
                   </li>
                   <li className='item-icon xi-angle-right-min xl:text-24'></li>
                   <li className='item flex flex-col items-center'>
                      <img className='icon' src={icon18} alt="아이콘" />
-                     <p className='leading-1em xl:text-18 xl:mt-32'>컨설팅</p>
+                     <p className='xl:leading-1em leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-20'>컨설팅</p>
                   </li>
                   <li className='item-icon xi-angle-right-min xl:text-24'></li>
                   <li className='item flex flex-col items-center'>
                      <img className='icon' src={icon19} alt="아이콘" />
-                     <p className='leading-1em xl:text-18 xl:mt-32'>해피콜</p>
+                     <p className='xl:leading-1em leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-20'>해피콜</p>
                   </li>
                </ul>
             </div>
          </div>
-         <div className='style xl:mt-80 xl:pt-80 xl:pb-105'>
+         <div className='style mt-80 pt-80 xl:pb-105 pb-80'>
             <div className='container'>
                <div>
                   <Title02>공간 스타일링</Title02>
-                  <p className='text-center xl:leading-26 xl:text-18 xl:mt-24'>
+                  <p className='text-center xl:leading-26 leading-18 xl:text-18 text-13 mt-24'>
                      사용자가 원하는 공간의 목적이나 추구하는 니즈를 토대로 현재 공간을 진단하고 디자인을 진행합니다. <br className='xl:block hidden' />
                      디자인된 공간에 딱 맞춘 가구나 용품의 추천이 진행되며 이를 토대로 공간의 스타일링을 진행해드리는 서비스입니다.
                   </p>
                </div>
-               <ul className='items-wrap grid grid-cols-3 xl:gap-24 xl:mt-48'>
+               <ul className='items-wrap grid grid-cols-3 xl:gap-24 gap-16 xl:mt-48 mt-40'>
                   {styleInfo.map((styleInfo, index) => (
                      <li
                         style={{ backgroundImage: `url(${styleInfo.bgImg})` }}
@@ -295,41 +330,14 @@ const Service = () => {
                         key={index}
                      >
                         <div className='text-wrap flex flex-col justify-center items-center'>
-                           <h4 className='leading-1em xl:text-24 font-bold text-white'>{styleInfo.title}</h4>
+                           <h4 className='leading-1em xl:text-24 text-18 font-bold text-white'>{styleInfo.title}</h4>
                            <p
-                              className='text-center xl:leading-26 xl:text-18 xl:mt-24 text-white'
+                              className='text-center xl:leading-26 leading-18 xl:text-18 text-13 xl:p-0 pl-24 pr-24 xl:mt-24 mt-16 text-white'
                               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(styleInfo.desc) }}
                            />
                         </div>
                      </li>
                   ))}
-                  {/* <li className='item'>
-                     <div className='text-wrap'>
-                        <h4>공간 스타일링 디자인</h4>
-                        <p>
-                           공간 진단 + 디자인 및 가구, <br className='xl:block hidden' />
-                           용품 추천 서비스
-                        </p>
-                     </div>
-                  </li>
-                  <li className='item'>
-                     <div className='text-wrap'>
-                        <h4>공간 스타일링 컨설팅</h4>
-                        <p>
-                           공간 진단 + 디자인 및 가구, 용품 + <br className='xl:block hidden' />
-                           인테리어 조명&#40;선택&#41; + 공간 재구성 및 정리 서비스
-                        </p>
-                     </div>
-                  </li>
-                  <li className='item'>
-                     <div className='text-wrap'>
-                        <h4>공간 스타일링 패키지</h4>
-                        <p>
-                           공간 디자인이 이미 완성되어 판매되는 패키지로 <br className='xl:block hidden' />
-                           빠르게 선택이 가능한 서비스
-                        </p>
-                     </div>
-                  </li> */}
                </ul>
             </div>
          </div>

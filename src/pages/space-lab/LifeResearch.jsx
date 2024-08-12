@@ -40,25 +40,49 @@ const LifeResearchWrap = styled.div`
             }
             .title>.point{
                position: relative;
+               box-shadow: inset 0px -0.9em 0px var(--pointColor04);
                color: var(--pointColor01);
-               &::before{
-                  content: '';
-                  display: block;
-                  clear: both;
-                  z-index: -9;
-                  position: absolute;
-                  top: 0px;
-                  left: 0px;
-                  transform: translateY(80%);
-                  width: 100%;
-                  height: 17px;
-                  background-color: var(--pointColor04);
-               }
             }
          }
          .main-img{
             width: 100%;
             max-width: 700px;
+         }
+      }
+   }
+   @media screen and (max-width:1279px){
+      .items-wrap{
+         .item{
+            background-image: none;
+            .main-img{
+               width: 50%;
+               margin-left: 24px;
+            }
+            &:nth-of-type(2n){
+               .main-img{
+                  margin-left: 0px;
+                  margin-right: 24px;
+               }
+            }
+            .text-wrap{
+               .quot{
+                  width: 15px;
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width:767px){
+      .container>.items-wrap{
+         .item{
+            flex-direction: column;
+            gap: 40px;
+            .main-img{
+               order: -1;
+               width: 100%;
+               margin-left: 0px;
+               margin-right: 0px;
+            }
          }
       }
    }
@@ -103,26 +127,26 @@ const LifeResearch = () => {
    ]
 
    return (
-      <LifeResearchWrap className='xl:pb-120'>
+      <LifeResearchWrap className='xl:pb-120 pb-80'>
          <SpaceLab01
             info={SpaceLab01Info}
          />
-         <div className='container xl:pt-120'>
+         <div className='container xl:pt-120 pt-80'>
             <Title02>더 나은 삶을 선사하는 라이프 오브제</Title02>
-            <ul className='items-wrap xl:mt-40'>
+            <ul className='items-wrap xl:mt-40 mt-24'>
                {lifeItems.map((lifeItems, index) => (
-                  <li className='item flex justify-between items-center xl:pt-24 xl:pb-24' key={index}>
+                  <li className='item flex justify-between items-center pt-24 pb-24' key={index}>
                      <div className='text-wrap'>
                         <div className='title-wrap'>
                            <img className='quot' src={iconQuotation01} alt="따옴표" />
                            <p
-                              className='title xl:leading-36 xl:text-24 font-bold xl:mt-24 xl:mb-24'
+                              className='title xl:leading-36 leading-28 xl:text-24 text-20 font-bold xl:mt-24 xl:mb-24 mt-16 mb-16'
                               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(lifeItems.title) }}
                            />
                            <img className='quot' src={iconQuotation02} alt="따옴표" />
                         </div>
                         <p
-                           className='xl:leading-26 xl:text-18 xl:mt-42 text-subColor03'
+                           className='xl:leading-26 leading-18 xl:text-18 text-13 xl:mt-42 mt-24 text-subColor03'
                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(lifeItems.desc) }}
                         />
                      </div>

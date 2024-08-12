@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
 import styled from 'styled-components';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Components
 import { Title02 } from '../../components/StyledCommon';
@@ -17,6 +18,9 @@ const ReviewWrap = styled.div`
          padding: 24px 0px;
          &.area{
             border-top: 1px solid var(--subColor05);
+         }
+         .swiper{
+            margin-left: 0px;
          }
          .btn-control-wrap{
             .btn{
@@ -91,6 +95,46 @@ const ReviewWrap = styled.div`
          }
       }
    }
+   @media screen and (max-width:1279px){
+      .filter{
+         border-width: 1px;
+         .filter-item.area{
+            .btn-control-wrap{
+               width: fit-content;
+               margin-top: 24px;
+               margin-left: auto;
+            }
+         }
+      }
+   }
+   @media screen and (max-width:767px){
+      .filter{
+         .filter-item{
+            padding: 16px 0px;
+            &.area{
+               .btn-control-wrap{
+                  width: 100%;
+                  .btn{
+                     width: 50%;
+                  }
+               }
+            }
+         }
+      }
+      .review-wrap{
+         .review-item{
+            .btn-link{
+               flex-direction: column;
+               .thumbnail{
+                  max-width: 100%;
+               }
+            }
+         }
+         .contents-wrap .icon-wrap{
+            display: none;
+         }
+      }
+   }
 `
 
 const useQuery = () => {
@@ -119,7 +163,7 @@ const Review = () => {
             setData(response.data.data)
          } catch (error) {
             console.log(error)
-         } finally{
+         } finally {
             setLoading(false)
          }
       }
@@ -166,51 +210,69 @@ const Review = () => {
       5: "50평대 이상"
    };
    return (
-      <ReviewWrap className='container xl:pt-120'>
+      <ReviewWrap className='container xl:pt-120 pt-80'>
          <Title02>고객 후기</Title02>
-         <div className='filter xl:mt-24'>
-            <div className='filter-item category flex items-center xl:gap-40'>
-               <p className='leading-1em xl:text-20 font-semibold'>유형</p>
-               <ul className='items-wrap flex xl:gap-16'>
+         <div className='filter xl:mt-24 mt-16'>
+            <div className='filter-item category flex items-center xl:gap-40 gap-16'>
+               <p className='leading-1em xl:text-20 text-16 font-semibold'>유형</p>
+               <Swiper
+                  className='items-wrap'
+                  slidesPerView={"auto"}
+                  spaceBetween={8}
+                  breakpoints={{
+                     767: { // 767px 이상
+                        spaceBetween: 16
+                     }
+                  }}
+               >
                   {categoryInfo.map((categoryInfo, index) => (
-                     <li
-                        className={`btn-item xl:text-16 ${category === index ? "on" : ""}`}
+                     <SwiperSlide
+                        className={`btn-item xl:text-16 text-12 ${category === index ? "on" : ""}`}
                         key={index}
                         onClick={() => setCategory(index)}
                      >
                         <i className='icon xi-plus-min xl:mr-8 text-subColor04'></i>
                         {categoryInfo}
-                     </li>
+                     </SwiperSlide>
                   ))}
-               </ul>
+               </Swiper>
             </div>
-            <div className='filter-item area flex justify-between items-center'>
-               <div className='flex items-center xl:gap-40'>
-                  <p className='leading-1em xl:text-20 font-semibold'>평수</p>
-                  <ul className='items-wrap flex xl:gap-16'>
+            <div className='filter-item area xl:flex justify-between items-center'>
+               <div className='flex items-center xl:gap-40 gap-16'>
+                  <p className='leading-1em xl:text-20 text-16 font-semibold'>평수</p>
+                  <Swiper
+                     className='items-wrap'
+                     slidesPerView={"auto"}
+                     spaceBetween={8}
+                     breakpoints={{
+                        767: { // 767px 이상
+                           spaceBetween: 16
+                        }
+                     }}
+                  >
                      {areaInfo.map((categoryInfo, index) => (
-                        <li
-                           className={`btn-item xl:text-16 ${area === index ? "on" : ""}`}
+                        <SwiperSlide
+                           className={`btn-item xl:text-16 text-12 ${area === index ? "on" : ""}`}
                            key={index}
                            onClick={() => setArea(index)}
                         >
                            <i className='icon xi-plus-min xl:mr-8 text-subColor04'></i>
                            {categoryInfo}
-                        </li>
+                        </SwiperSlide>
                      ))}
-                  </ul>
+                  </Swiper>
                </div>
-               <div className='btn-control-wrap flex xl:gap-8'>
+               <div className='btn-control-wrap flex gap-8'>
                   <button
                      onClick={() => filterReset()}
-                     className='reset btn flex justify-center items-center xl:gap-5'
+                     className='reset btn flex justify-center items-center xl:gap-5 gap-16'
                   >
                      <i className='xi-refresh xl:text-16'></i>
-                     <p className='leading-1em xl:text-16'>필터 새로고침</p>
+                     <p className='leading-1em xl:text-16 text-14'>필터 새로고침</p>
                   </button>
                   <button
                      onClick={() => handleSearchClick()}
-                     className='search btn leading-1em xl:text-16 text-white bg-pointColor01'
+                     className='search btn leading-1em xl:text-16 text-14 text-white bg-pointColor01'
                   >
                      조회하기
                   </button>
@@ -221,21 +283,21 @@ const Review = () => {
             {data && data.data.length > 0 ? (
                data.data.map((listInfo, index) => (
                   <li className='review-item xl:pr-40' key={index}>
-                     <Link to="" className='flex xl:gap-48 xl:pt-32 xl:pb-32'>
+                     <Link to="" className='btn-link flex xl:gap-48 gap-16 xl:pt-32 xl:pb-32 pt-24 pb-24'>
                         <img className='thumbnail' src={listInfo.image} alt="리뷰 썸네일" />
                         <div className='contents-wrap flex items-center xl:gap-24'>
                            <div className='text-wrap'>
                               <div className='category-wrap flex gap-8'>
-                                 <p className='item category leading-1em xl:text-13'>
+                                 <p className='item category leading-1em text-13'>
                                     {categoryMap[listInfo.filter_category]}
                                  </p>
-                                 <p className='item area leading-1em xl:text-13'>
+                                 <p className='item area leading-1em text-13'>
                                     {areaMap[listInfo.filter_area]}
                                  </p>
                               </div>
-                              <h6 className='max-line1 leading-1em xl:text-20 font-semibold xl:mt-20'>{listInfo.title}</h6>
+                              <h6 className='max-line1 leading-1em xl:text-20 font-semibold xl:mt-20 mt-16'>{listInfo.title}</h6>
                               <p
-                                 className='max-line4 xl:leading-28 xl:text-16 text-subColor04'
+                                 className='max-line4 xl:leading-28 xl:text-16 xl:mt-20 mt-16 text-subColor04'
                                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(listInfo.content) }}
                               />
                            </div>

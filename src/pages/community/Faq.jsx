@@ -6,6 +6,7 @@ import DOMPurify from "dompurify"
 
 // conponents Start
 import PageControl from "../../components/PageControl"
+import { Title02 } from "../../components/StyledCommon";
 
 // styled
 const QuestionBox = styled.div`
@@ -99,6 +100,23 @@ const Container = styled.div`
          }
       }
    }
+   @media screen and (max-width:1279px){
+      .list_wrap {
+         .item{
+            gap: 12px;
+            min-height: auto;
+            padding: 16px 0px;
+            &.item-answer.on{
+               padding: 24px 8px;
+            }
+            .tit{
+               width: 24px;
+               min-width: 24px;
+               height: 24px;
+            }
+         }
+      }
+   }
 `
 
 const useQuery = () => {
@@ -163,9 +181,9 @@ export default function Faq() {
 
    return (
       <Container className="contact_faq contact container">
-
-         <div className="top-nav container xl:mt-80">
-            <strong className="leading-1em xl:text-42 font-bold">자주 묻는 질문</strong>
+         <Title02 className="xl:mt-120 mt-80">자주 묻는 질문</Title02>
+         <div className="top-nav xl:mt-80 mt-24">
+            <p className="text_count xl:text-18 xl:mt-0 mt-40">총 {data && <strong className="point">{data.total}</strong>}개의 게시물</p>
             <form className="search_from" onSubmit={handleSubmit}>
                <fieldset>
                   <legend className="hide">검색</legend>
@@ -193,9 +211,9 @@ export default function Faq() {
                   data.data.map((data, index) => (
                      <div key={index} className="list_wrap">
                         <QuestionBox onClick={() => handelToggle(index)} className="list item question">
-                           <p className="tit flex justify-center items-center xl:text-32 text-18 font-bold">Q</p>
+                           <p className="tit flex justify-center items-center xl:text-32 text-14 font-bold">Q</p>
                            <p className="txt xl:leading-28 leading-24 xl:text-18 text-14 font-light">{data.title}</p>
-                           <i className={`icon xi-angle-down-thin xl:text-32 text-18 pc ${listActiveIndex === index ? 'on' : ''}`}></i>
+                           <i className={`icon xi-angle-down-thin xl:text-32 text-14 pc ${listActiveIndex === index ? 'on' : ''}`}></i>
                         </QuestionBox>
                         <div className={`item item-answer ${listActiveIndex === index ? 'on' : ''}`}>
                            <p className="tit xl:text-32 text-18 font-bold">A</p>

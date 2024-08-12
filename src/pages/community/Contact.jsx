@@ -20,9 +20,11 @@ const Container = styled.div`
       gap: 40px;
    }
    .inquire_from .input_wrap {
+      width: 50%;
       margin-bottom: 32px;
    }
    .inquire_from .input_wrap.message_wrap {
+      width: 100%;
       border-bottom: 1px solid #c5c5c5;
       padding-bottom: 40px;
       margin-bottom: 40px;
@@ -30,7 +32,8 @@ const Container = styled.div`
    .inquire_from .input_wrap input,
    .inquire_from .input_wrap textarea {
       display: block;
-      width: 700px;
+      /* width: 700px; */
+      width: 100%;
       height: 52px;
       border: 1px solid var(--subColor08);
       border-radius: 4px;
@@ -109,20 +112,20 @@ const Container = styled.div`
    }
    @media screen and (max-width:1279px){
       .top_head_wrap {
-         padding-bottom: 40px;
+         padding-bottom: 16px;
          margin-bottom: 24px;
       }
 
       .inquire_from .item_01 {
          display: block;
       }
-
-      .inquire_from .input_wrap input,
-      .inquire_from .input_wrap textarea {
+      .inquire_from .input_wrap{
          width: 100%;
-         font-size: 13px;
+         input,textarea{
+            width: 100%;
+            font-size: 13px;
+         }
       }
-
       .inquire_from .input_wrap input {
          height: 48px;
       }
@@ -204,10 +207,10 @@ export default function Contact() {
    };
 
    return (
-      <Container className="contact_inquire container xl:pt-120 xl:pb-120">
+      <Container className="contact_inquire container xl:pt-120 xl:pb-120 pt-80 pb-80">
          <div className="top_head_wrap">
             <h2 className="leading-1em xl:text-42 font-bold">문의하기</h2>
-            <p className="txt">
+            <p className="txt xl:block hidden">
                <span className="point">*</span> 필수 입력 항목
             </p>
          </div>
@@ -290,15 +293,15 @@ export default function Contact() {
                      <p className="xl:text-18 text-14 font-medium xl:mb-24 mb-16">개인정보 수집 • 이용 내역</p>
                      <ul className="list_wrap">
                         <li className="item xl:mb-16 mb-8">
-                           <p className="tit xl:text-16 text-12 font-light pc_only">항목 (필수항목)</p>
-                           <p className="txt xl:text-16 text-12 font-light pc_only">성명, 연락처, 이메일</p>
+                           <p className="tit xl:text-16 text-12 font-light xl:block hidden">항목 (필수항목)</p>
+                           <p className="txt xl:text-16 text-12 font-light xl:block hidden">성명, 연락처, 이메일</p>
                         </li>
                         <li className="item xl:mb-16 mb-8">
-                           <p className="tit xl:text-16 text-12 font-light pc_only">수집 • 이용 목적</p>
+                           <p className="tit xl:text-16 text-12 font-light xl:block hidden">수집 • 이용 목적</p>
                            <p className="txt md:leading-26 leading-18 xl:text-16 text-12 font-light">고객문의는 최소한의 개인정보만을 수집합니다. 상담내용확인 및 상담결과 회신 서비스 제공을 목적으로 개인정보 수집 이용 동의를 구합니다.</p>
                         </li>
                         <li className="item">
-                           <p className="tit xl:text-16 text-12 font-light pc_only">보유기간</p>
+                           <p className="tit xl:text-16 text-12 font-light xl:block hidden">보유기간</p>
                            <p className="txt md:leading-26 leading-18 xl:text-16 text-12 font-light">개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. (단, 타 법령에 의해 보존의무가 있는 경우 법령이 지정한 기간 동안 보존합니다.)</p>
                         </li>
                      </ul>

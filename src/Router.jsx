@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 // components
 import NotFound from "./components/NotFound";
-// import DetailPage from "./components/DetailPage";
+import DetailPage from "./components/subpage/DetailPage";
 
 // Pages 
 import Root from "./Root";
@@ -146,7 +146,11 @@ const router = createBrowserRouter([
                   element: <Contact/>,
                },
             ]
-         }
+         },
+         {
+            path: 'community/notice/:id',
+            element: <DetailPage />
+         },
       ],
       errorElement: <NotFound />
    },

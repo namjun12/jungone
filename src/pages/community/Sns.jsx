@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import styled from 'styled-components'
 
 // Images
-import { testImg } from '../../components/Images'
+import { noImg } from '../../components/Images'
 import { Navigation } from 'swiper/modules'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -20,12 +20,27 @@ const SnsWrap = styled.div`
    }
    .img-wrap{
       width: 100%;
-      height: 340px;
+      height: auto;
+      aspect-ratio: 1/1;
       .thumbnail{
          object-fit: cover;
          width: 100%;
          max-width: 340px;
          height: 100%;
+      }
+   }
+   .swiper-youtube{
+      .img-wrap{
+         aspect-ratio: 16/9;
+      }
+   }
+   @media screen and (max-width: 1279px){
+      .btn-nav{
+         width: 32px;
+         height: 32px;
+      }
+      .img-wrap{
+         height: auto;
       }
    }
 `
@@ -39,7 +54,6 @@ const Sns = () => {
          try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/sns`)
             setData(response.data.data)
-            console.log(response.data.data)
             if (response.data.success === false) {
                alert(response.data.message)
             }
@@ -51,7 +65,7 @@ const Sns = () => {
    }, [])
 
    return (
-      <SnsWrap className='container xl:pt-120 xl:pb-120'>
+      <SnsWrap className='container xl:pt-120 xl:pb-120 pt-80 pb-80'>
          <div className='instagram'>
             <div className='flex justify-between'>
                <h3 className='xl:text-32 montserrat font-semibold'>INSTAGRAM</h3>
@@ -64,18 +78,23 @@ const Sns = () => {
                   </button>
                </div>
             </div>
-            {data &&
-               <Swiper
-                  className='swiper-ins xl:mt-32'
-                  slidesPerView={4}
-                  spaceBetween={24}
-                  navigation={{
-                     nextEl: '.instagram .btn-next',
-                     prevEl: '.instagram .btn-prev',
-                  }}
-                  modules={[Navigation]}
-               >
-                  {data.instagram_posts.map((instagram, index) => (
+            <Swiper
+               className='swiper-ins xl:mt-32 mt-24'
+               slidesPerView={2}
+               spaceBetween={24}
+               navigation={{
+                  nextEl: '.instagram .btn-next',
+                  prevEl: '.instagram .btn-prev',
+               }}
+               modules={[Navigation]}
+               breakpoints={{
+                  767:{
+                     slidesPerView: 4
+                  }
+               }}
+            >
+               {data ? (
+                  data.instagram_posts.map((instagram, index) => (
                      <SwiperSlide className='slide' key={index}>
                         <Link to={instagram.permalink} target='_blank' rel='noreferrer'>
                            <div className='img-wrap'>
@@ -88,14 +107,22 @@ const Sns = () => {
                                              : ""
                                  }
                                  alt="인스타 썸네일"
+                                 loading="lazy"
                               />
                            </div>
                         </Link>
                      </SwiperSlide>
-                  ))}
-               </Swiper>}
+                  ))
+               ) : (
+                  <SwiperSlide>
+                     <div className='img-wrap'>
+                        <div className='thumbnail bg-subColor07' />
+                     </div>
+                  </SwiperSlide>
+               )}
+            </Swiper>
          </div>
-         <div className='youtube xl:mt-120'>
+         <div className='youtube xl:mt-120 mt-80'>
             <div className='flex justify-between'>
                <h3 className='xl:text-32 montserrat font-semibold'>YOUTUBE</h3>
                <div className='swiper-nav flex'>
@@ -108,27 +135,51 @@ const Sns = () => {
                </div>
             </div>
             <Swiper
-               className='swiper-youtube xl:mt-32'
-               slidesPerView={4}
+               className='swiper-youtube xl:mt-32 mt-24'
+               slidesPerView={1}
                spaceBetween={24}
                navigation={{
                   nextEl: '.youtube .btn-next',
                   prevEl: '.youtube .btn-prev',
                }}
                modules={[Navigation]}
+               breakpoints={{
+                  767:{
+                     slidesPerView: 4
+                  }
+               }}
             >
-               <SwiperSlide className='slide'>
-                  <Link to="">
+               {data ? (
+                  data.youtube_posts.map((youtube, index) => (
+                     <SwiperSlide className='slide' key={index}>
+                        <Link
+                           to={`https://www.youtube.com/watch?v=${youtube.videoId}`}
+                           target='_blank'
+                           rel='noreferrer'
+                        >
+                           <div className='img-wrap'>
+                              <img
+                                 className='thumbnail'
+                                 src={`https://img.youtube.com/vi/${youtube.videoId}/hqdefault.jpg`}
+                                 alt="YOUTUBE 썸네일"
+                                 loading="lazy"
+                              />
+                           </div>
+                           <p className='max-line1 xl:text-18 text-16 xl:mt-24 mt-16'>{youtube.title}</p>
+                           <p className='leading-1em xl:text-16 text-13 mt-16 text-subColor04'>{youtube.publishTime}</p>
+                        </Link>
+                     </SwiperSlide>
+                  ))
+               ) : (
+                  <SwiperSlide>
                      <div className='img-wrap'>
-                        <img className='thumbnail' src={testImg} alt="YOUTUBE 썸네일" />
+                        <div className='thumbnail bg-subColor07' />
                      </div>
-                     <p className='max-line1 xl:text-18 xl:mt-24'>영상의 제목이 들어가는 자리입니다.</p>
-                     <p className='leading-1em xl:text-16 xl:mt-16 text-subColor04'>2024-10-10</p>
-                  </Link>
-               </SwiperSlide>
+                  </SwiperSlide>
+               )}
             </Swiper>
          </div>
-         <div className='blog xl:mt-120'>
+         <div className='blog xl:mt-120 mt-80'>
             <div className='flex justify-between'>
                <h3 className='xl:text-32 montserrat font-semibold'>BLOG</h3>
                <div className='swiper-nav flex'>
@@ -141,22 +192,32 @@ const Sns = () => {
                </div>
             </div>
             {data && <Swiper
-               className='swiper-blog xl:mt-32'
-               slidesPerView={4}
+               className='swiper-blog xl:mt-32 mt-24'
+               slidesPerView={1}
                spaceBetween={24}
                navigation={{
                   nextEl: '.blog .btn-next',
                   prevEl: '.blog .btn-prev',
                }}
                modules={[Navigation]}
+               breakpoints={{
+                  767:{
+                     slidesPerView: 4
+                  }
+               }}
             >
                {data.blog_posts.map((blog, index) => (
                   <SwiperSlide className='slide' key={index}>
                      <Link to={blog.link} target='_blank' rel='noreferrer'>
                         <div className='img-wrap'>
-                           <img className='thumbnail' src={testImg} alt="blog 썸네일" />
+                           <img
+                              className='thumbnail'
+                              src={blog.image ? blog.image : noImg}
+                              alt="blog 썸네일"
+                              loading="lazy"
+                           />
                         </div>
-                        <p className='max-line1 xl:text-18 xl:mt-24'
+                        <p className='max-line1 xl:text-18 text-16 xl:mt-24 mt-16'
                            dangerouslySetInnerHTML={{
                               __html: DOMPurify.sanitize(blog.title, {
                                  ALLOWED_TAGS: [],
@@ -164,7 +225,7 @@ const Sns = () => {
                            }}
                         />
                         <p
-                           className='max-line3 xl:leading-24 xl:text-16 xl:mt-24 text-subColor03'
+                           className='max-line3 xl:leading-24 xl:text-16 text-13 xl:mt-24 mt-16 text-subColor03'
                            dangerouslySetInnerHTML={{
                               __html: DOMPurify.sanitize(blog.description, {
                                  ALLOWED_TAGS: [],

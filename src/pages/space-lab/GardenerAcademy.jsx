@@ -37,6 +37,31 @@ const GardenerAcademyWrap = styled.div`
          }
       }
    }
+   @media screen and (max-width:1279px){
+      .process .item{
+         padding: 16px;
+      }
+   }
+   @media screen and (max-width:767px){
+      .process{
+         .items-wrap{
+            display: flex;
+            flex-direction: column;
+         }
+      }
+      .expert{
+         .text-wrap{
+            display: block;
+            .desc{
+               margin-top: 16px;
+            }
+         }
+         .img-wrap{
+            display: flex;
+            flex-direction: column;
+         }
+      }
+   }
 `
 
 const GardenerAcademy = () => {
@@ -84,16 +109,16 @@ const GardenerAcademy = () => {
    ]
 
    return (
-      <GardenerAcademyWrap className='xl:pb-120'>
+      <GardenerAcademyWrap className='xl:pb-120 pb-80'>
          <SpaceLab01
             info={SpaceLab01Info}
          />
-         <div className='process container xl:pt-120'>
+         <div className='process container xl:pt-120 pt-80'>
             <div>
                <Title02>정리수납 전문가 자격과정</Title02>
-               <p className='xl:leading-26 text-center xl:text-18 xl:mt-32'>자격증 취득만이 목적이 아닌 실제 정리수납 현장에서 서비스를 진행할수 있도록 실무역량을 성장시키는 인큐베이팅 교육을 진행합니다 </p>
+               <p className='xl:leading-26 leading-18 text-center xl:text-18 text-13 xl:mt-32 mt-16'>자격증 취득만이 목적이 아닌 실제 정리수납 현장에서 서비스를 진행할수 있도록 실무역량을 성장시키는 인큐베이팅 교육을 진행합니다 </p>
             </div>
-            <ul className='items-wrap grid grid-cols-3 xl:gap-24 xl:mt-48'>
+            <ul className='items-wrap grid grid-cols-3 gap-24 xl:mt-48 mt-24'>
                {processItems.map((processItems, index) => (
                   <li
                      className='item flex items-end'
@@ -101,24 +126,24 @@ const GardenerAcademy = () => {
                      key={index}
                   >
                      <p
-                        className='text xl:leading-36 xl:text-24 font-bold text-white'
+                        className='text xl:leading-36 leading-26 xl:text-24 text-17 font-bold text-white'
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(processItems.text) }}
                      />
                   </li>
                ))}
             </ul>
          </div>
-         <div className='expert container xl:pt-120 xl:mt-120'>
+         <div className='expert container xl:pt-120 pt-40 xl:mt-120 mt-40'>
             {expertItems.map((expertItems, index) => (
-               <div className='item xl:mt-80' key={index}>
+               <div className='item xl:mt-80 mt-40' key={index}>
                   <div className='text-wrap flex justify-between'>
-                     <strong className='leading-1em xl:text-40 font-bold'>{expertItems.title}</strong>
+                     <strong className='leading-1em xl:text-40 text-24 font-bold'>{expertItems.title}</strong>
                      <p
-                        className='desc xl:leading-26 xl:text-18 text-subColor03'
+                        className='desc xl:leading-26 leading-18 xl:text-18 text-13 text-subColor03'
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(expertItems.desc) }}
                      />
                   </div>
-                  <div className='grid grid-cols-2 xl:gap-40 xl:mt-40'>
+                  <div className='img-wrap grid grid-cols-2 xl:gap-40 gap-16 xl:mt-40 mt-24'>
                      {expertItems.images.map((images, index) => (
                         <img className='w-full' src={images} alt="정리수납 전문가 1급/2급" key={index} />
                      ))}

@@ -61,6 +61,15 @@ const MainBannerWrap = styled.div`
          }
       }
    }
+   @media screen and (max-width:1500px){
+      .tab{
+         .tab-item{
+            .btn-tab{
+               width: 150px;
+            }
+         }
+      }
+   }
    @media screen and (max-width: 767px){
       background-position: bottom 48px left 12%;
       .banner{
@@ -140,11 +149,9 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
          const isScrollingDown = scrollTop > lastScrollY;
 
          if (scrollTop >= winHeight - (isMobile ? 48 : tabHeight)) {
-            console.log("on")
             tabEl.classList.add("on")
             MotabEl?.classList.add("fix")
          } else {
-            console.log("nope")
             tabEl.classList.remove("on")
             MotabEl?.classList.remove("fix")
          }
@@ -152,7 +159,6 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
          if (isAnimating) return;
 
          if (isScrollingDown && scrollTop < winHeight / 2) {
-            console.log("ani", scrollTop)
             setIsAnimating(true);
             gsap.to(window, {
                scrollTo: { y: winHeight, autoKill: false },

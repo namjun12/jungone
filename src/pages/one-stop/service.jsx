@@ -24,19 +24,7 @@ const ServiceWrap = styled.div`
             }
             .text{
                position: relative;
-               &::before{
-                  content: '';
-                  display: block;
-                  clear: both;
-                  z-index: -5;
-                  position: absolute;
-                  top: 0px;
-                  left: 0px;
-                  transform: translateY(50%);
-                  width: 100%;
-                  height: 20px;
-                  background-color: var(--pointColor03);
-               }
+               box-shadow: inset 0px -0.9em 0px var(--pointColor03);
             }
          }
          .arrow-wrap{
@@ -69,6 +57,33 @@ const ServiceWrap = styled.div`
                   &:first-of-type{
                      margin-top: 0px;
                   }
+               }
+            }
+         }
+      }
+   }
+   @media screen and (max-width:1279px){
+      .why{
+         .text-wrap{
+            .before-wrap>.icon{
+               width: 15px;
+            }
+            .result{
+               width: 100%;
+               height: auto;
+               text-align: center;
+               padding: 24px 0px;
+            }
+         }
+      }
+      .service-type{
+         .items-wrap{
+            grid-template-columns: repeat(2, 1fr);
+            .item>.text-wrap{
+               padding: 24px 6px;
+               .num{
+                  top: -7px;
+                  right: 8px;
                }
             }
          }
@@ -147,12 +162,12 @@ const OneStopService = () => {
    ]
 
    return (
-      <ServiceWrap className='xl:pt-120'>
+      <ServiceWrap className='xl:pt-120 pt-80'>
          <div className='container'>
             <Title02>원스톱 토탈서비스</Title02>
-            <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40'>
+            <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
-               <p className='text-center xl:leading-36 xl:text-24 xl:mt-24 xl:mb-24 text-white'>
+               <p className='desc'>
                   <strong>이사에서 부터 청소, 전문시공 및 공간가드닝</strong>까지 모두 알아서 해주는 편리한 <strong>원스톱 토탈서비스</strong>
                   국내 최초로 공간정원에서 시작 되었으며 소비자분들께 정말 큰 사랑을 받고있는 서비스입니다.
                   소비자의 현재 상태를 진단하여 최적의 효율과 퍼포먼스가 발생하는 서비스로 패키징 추천을 드리고 있으며
@@ -161,49 +176,49 @@ const OneStopService = () => {
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />
             </SubBanner01>
          </div>
-         <div className='container desc xl:pb-120 xl:mt-105'>
+         <div className='container desc xl:pb-120 xl:mt-105 mt-60 pb-40'>
             <Desc01 className='desc xl:leading-36 text-center xl:text-24 font-medium'>
                공간정원 원스톱 토탈서비스는 <span className='point font-bold text-pointColor01'>각 분야 최고 전문가</span>가 시공하고 있습니다.
             </Desc01>
-            <img className='w-full xl:mt-48' src={image26} alt="이사, 청소 등" />
+            <img className='w-full xl:mt-48 mt-36' src={image26} alt="이사, 청소 등" />
          </div>
-         <div className='why xl:pt-120 xl:pb-120 bg-pointColor06'>
+         <div className='why xl:pt-120 xl:pb-120 pt-40 pb-40 bg-pointColor06'>
             <div className='container'>
                <h3 className='xl:text-44 text-center font-bold'>
                   <span className='text-pointColor01'>원스톱 토탈서비스</span>가 사랑받는 이유
                </h3>
-               <img className='w-full xl:mt-80' src={image27} alt="원스톱 토탈서비스가 사랑받는 이유" />
-               <div className='text-wrap xl:mt-80'>
-                  <div className='before-wrap flex justify-center items-start xl:gap-8'>
+               <img className='w-full xl:mt-80 mt-40' src={image27} alt="원스톱 토탈서비스가 사랑받는 이유" />
+               <div className='text-wrap xl:mt-80 mt-48'>
+                  <div className='before-wrap flex justify-center items-start gap-8'>
                      <img className='icon' src={iconQuotation03} alt="따옴표" />
-                     <p className='text leading-1em text-center xl:text-28 font-semibold text-pointColor01'>이사 전,후 효율적인 서비스 제공</p>
+                     <p className='text leading-1em text-center xl:text-28 text-18 font-semibold text-pointColor01'>이사 전,후 효율적인 서비스 제공</p>
                      <img className='icon' src={iconQuotation04} alt="따옴표" />
                   </div>
-                  <div className='arrow-wrap flex flex-col justify-center items-center xl:mt-32'>
+                  <div className='arrow-wrap flex flex-col justify-center items-center mt-32'>
                      <i className='icon xi-angle-down-thin xl:text-40 text-pointColor01'></i>
                      <i className='icon type02 xi-angle-down-thin xl:text-40 text-pointColor01'></i>
                   </div>
-                  <div className='result w-fit leading-1em xl:text-24 font-bold xl:mt-32 ml-auto mr-auto'>
+                  <div className='result w-fit leading-1em xl:text-24 font-bold mt-32 ml-auto mr-auto'>
                      비용 및 시간절감으로 인한 삶의 질 상승
                   </div>
                </div>
             </div>
          </div>
-         <div className='service-type xl:pt-120 xl:pb-120'>
+         <div className='service-type xl:pt-120 xl:pb-120 pt-80 pb-80'>
             <div>
-               <span className='block leading-1em text-center xl:text-16 text-pointColor01'>One-stop Total Service</span>
-               <h3 className='leading-1em text-center xl:text-44 font-bold xl:mt-24'>서비스 종류</h3>
+               <span className='block leading-1em text-center xl:text-16 text-14 text-pointColor01'>One-stop Total Service</span>
+               <h3 className='leading-1em text-center xl:text-44 text-20 font-bold xl:mt-24 mt-8'>서비스 종류</h3>
             </div>
-            <ul className='items-wrap container grid grid-cols-4 xl:gap-24 xl:mt-48'>
+            <ul className='items-wrap container grid grid-cols-4 xl:gap-24 gap-8 xl:mt-48 mt-40'>
                {serviceType.map((serviceType, index) => (
                   <li className='item' key={index}>
                      <img className='main-img w-full' src={serviceType.img} alt="서비스 종류" />
                      <div className='text-wrap'>
-                        <span className='num leading-1em xl:text-56 font-bold text-pointColor04'>0{index + 1}</span>
-                        <strong className='text-center w-full leading-1em xl:text-24'>{serviceType.title}</strong>
-                        <ul className='xl:mt-24'>
+                        <span className='num leading-1em xl:text-56 text-32 font-bold text-pointColor04'>0{index + 1}</span>
+                        <strong className='text-center w-full leading-1em xl:text-24 text-16'>{serviceType.title}</strong>
+                        <ul className='xl:mt-24 mt-16'>
                            {serviceType.desc.map((desc, index) => (
-                              <li className='desc text-center xl:leading-26 xl:text-18 xl:mt-12 text-subColor03' key={index}>{desc}</li>
+                              <li className='desc text-center xl:leading-26 leading-18 xl:text-18 text-12 xl:mt-12 mt-8 text-subColor03' key={index}>{desc}</li>
                            ))}
                         </ul>
                      </div>
