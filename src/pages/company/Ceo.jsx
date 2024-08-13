@@ -118,7 +118,7 @@ const Ceo = () => {
          <div>
             <div>
                <Title02>대표소개</Title02>
-               <p className='text-center xl:leading-32 xl:text-20 text-13 xl:mt-32 mt-16'>집안의 모든 환경은 사용자별 맞춤 컨설팅을 통해 이상적인 생활 환경으로 변화되어야 합니다.</p>
+               <p className='opacity-60 text-center xl:leading-32 xl:text-20 text-13 xl:mt-32 mt-16'>집안의 모든 환경은 사용자별 맞춤 컨설팅을 통해 <br className='xl:hidden' />이상적인 생활 환경으로 변화되어야 합니다.</p>
             </div>
             <div className='intro container flex justify-between xl:items-end items-center xl:mt-48 mt-40'>
                <img className='ceo-photo' src={image12} alt="" />

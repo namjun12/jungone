@@ -151,6 +151,10 @@ const router = createBrowserRouter([
             path: 'community/notice/:id',
             element: <DetailPage />
          },
+         {
+            path: 'community/review/:id',
+            element: <DetailPage />
+         },
       ],
       errorElement: <NotFound />
    },

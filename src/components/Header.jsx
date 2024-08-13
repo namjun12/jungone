@@ -16,13 +16,14 @@ const Container = styled.header`
    justify-content: space-between;
    align-items: flex-start;
    width: 100%;
-   height: 80px;
+   /* height: 80px; */
+   max-height: 80px;
    border-bottom: 1px solid rgba(255,255,255,0.3);
    & *{
       color: #fff;
    }
    &.mouseover{
-      height: auto;
+      max-height: 999px;
       padding-bottom: 12px;
       background-color: #fff;
       & .logo_normal{
@@ -102,6 +103,9 @@ const Container = styled.header`
          .btn_menu{
             font-size: 26px;
          }
+      }
+      &.mouseover{
+         padding-bottom: 0px;
       }
       &.open{
          /* height: auto; */
@@ -197,7 +201,7 @@ export default function Header() {
    const pathname = useLocation().pathname;
    const [headerActive, setHeaderActive] = useState(0);
    const [categoryIndex, setCategoryIndex] = useState(null);
-   const isMobile = document.documentElement.clientWidth < 1280 ? true : false;
+   const isMobile = window.innerWidth < 1280 ? true : false;
 
    const headerIndex = () => {
       setHeaderActive((prev => prev === 0 ? 1 : 0))

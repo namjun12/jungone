@@ -700,12 +700,22 @@ const Container = styled.div`
             }
          }
       }
+      .youtube,
+      .review{
+         .container{
+            padding-left: 0px;
+            padding-right: 0px;
+            .swiper-slide .thumbnail-wrap{
+               height: 240px;
+            }
+         }
+      }
    }
 `
 
 const Home = () => {
 
-   const isMobile = document.documentElement.clientWidth < 1280
+   const isMobile = window.innerWidth < 1280
 
    // Data
    const [data, setData] = useState();
@@ -804,7 +814,7 @@ const Home = () => {
                   <SwiperSlide key={index}>
                      <div className='contents-wrap'>
                         <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
-                        <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.sub_title) }}></p>
+                        <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.subTitle) }}></p>
                         {bannerInfo.path &&
                            <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.path}>
                               더 알아보기
@@ -1146,6 +1156,7 @@ const Home = () => {
             </div>
             <Swiper
                className='xl:mt-48 mt-40'
+               spaceBetween={24}
                breakpoints={{
                   1280: {
                      slidesPerView: 3,
@@ -1155,7 +1166,8 @@ const Home = () => {
                   },
                   0: {
                      centeredSlides: true,
-                     slidesPerView: 1.2
+                     slidesPerView: 1.1,
+                     spaceBetween: 8
                   }
                }}
             >
@@ -1181,7 +1193,7 @@ const Home = () => {
          </section>
          <section className='review mt-80 bg-pointColor04'>
             <div className='container xl:pt-120 pt-40 xl:pb-120 pb-80'>
-               <Title01 className='text-center'>공간정원을 경험해본, <strong>고객님 후기</strong></Title01>
+               <Title01 className='text-center'>공간정원을 경험해본, <br className='xl:hidden' /><strong>고객님 후기</strong></Title01>
                <Swiper
                   className='review-swiper xl:mt-48 mt-40'
                   spaceBetween={24}
@@ -1194,7 +1206,8 @@ const Home = () => {
                      },
                      0: {
                         centeredSlides: true,
-                        slidesPerView: 1.2
+                        slidesPerView: 1.1,
+                        spaceBetween: 8
                      }
                   }}
                >

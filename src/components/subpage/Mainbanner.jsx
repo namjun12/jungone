@@ -11,12 +11,12 @@ const MainBannerWrap = styled.div`
    position: relative;
    height: 100vh;
    max-height: 1080px;
-   background-size: cover;
-   background-position: bottom 60px center;
-   background-attachment: fixed;
-   background-image: url(${props => props.bg});
    .banner{
       height: calc(100vh - 60px);
+      background-size: cover;
+      background-position: bottom center;
+      /* background-attachment: fixed; */
+      background-image: url(${props => props.bg});
       .text-wrap{
          position: absolute;
          top: 50%;
@@ -71,9 +71,9 @@ const MainBannerWrap = styled.div`
       }
    }
    @media screen and (max-width: 767px){
-      background-position: bottom 48px left 12%;
       .banner{
          height: calc(100vh - 48px);
+         background-position: bottom left 12%;
          .text-wrap{
             width: 100%;
          }
@@ -85,6 +85,7 @@ const MainBannerWrap = styled.div`
          display: none;
       }
       .mo-tab-wrap{
+         display: block;
          width: 100%;
          &.fix{
             z-index: 999;
@@ -102,6 +103,9 @@ const MainBannerWrap = styled.div`
             background-color: #fff;
             &.on{
                overflow: visible;
+               position: fixed;
+               top: 0px;
+               left: 0px;
                height: auto;
                .icon{
                   transform: rotate(180deg);
@@ -132,7 +136,7 @@ const MainBannerWrap = styled.div`
 `
 
 const Mainbanner = ({ bannerInfo, tabInfo }) => {
-   const isMobile = document.documentElement.clientWidth < 768 ? true : false;
+   const isMobile = window.innerWidth < 768 ? true : false;
    const pathname = useLocation().pathname
    const [lastScrollY, setLastScrollY] = useState(0);
    const [isAnimating, setIsAnimating] = useState(false);
@@ -166,14 +170,6 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
                onComplete: () => setIsAnimating(false),
             });
          }
-         // if (!isScrollingDown && scrollTop < winHeight / 5) {
-         //    setIsAnimating(true);
-         //    gsap.to(window, {
-         //       scrollTo: { y: 0, autoKill: false },
-         //       duration: duration,
-         //       onComplete: () => setIsAnimating(false),
-         //    });
-         // }
          setLastScrollY(scrollTop);
       };
 
@@ -222,29 +218,27 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
                </li>
             ))}
          </ul>
-         {isMobile &&
-            <div className='mo-tab-wrap'>
-               <ul
-                  onClick={() => tabClick()}
-                  className={`${tabShow ? "on" : ""} mo-tab`}
-               >
-                  {tabInfo.map((tabInfo, index) => (
-                     <li
-                        className={`${pathname === tabInfo.path ? "on" : ""} list`}
-                        key={index}
+         <div className='mo-tab-wrap hidden'>
+            <ul
+               onClick={() => tabClick()}
+               className={`${tabShow ? "on" : ""} mo-tab`}
+            >
+               {tabInfo.map((tabInfo, index) => (
+                  <li
+                     className={`${pathname === tabInfo.path ? "on" : ""} list`}
+                     key={index}
+                  >
+                     <Link
+                        className="item text-14 font-semibold text-pointColor01"
+                        to={tabInfo.path}
                      >
-                        <Link
-                           className="item text-14 font-semibold text-pointColor01"
-                           to={tabInfo.path}
-                        >
-                           <p>{tabInfo.title}</p>
-                           {pathname === tabInfo.path && <i className='icon xi-caret-down-circle-o text-18 text-pointColor01'></i>}
-                        </Link>
-                     </li>
-                  ))}
-               </ul>
-            </div>
-         }
+                        <p>{tabInfo.title}</p>
+                        {pathname === tabInfo.path && <i className='icon xi-caret-down-circle-o text-18 text-pointColor01'></i>}
+                     </Link>
+                  </li>
+               ))}
+            </ul>
+         </div>
       </MainBannerWrap>
    )
 }

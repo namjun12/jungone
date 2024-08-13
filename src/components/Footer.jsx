@@ -44,8 +44,8 @@ const Container = styled.footer`
       }
    }
    @media screen and (max-width:1279px){
-      .logo{
-         width: 166px;
+      .container .logo{
+         width: 102px;
       }
       .contents_wrap{
          border-top: 1px solid #fff;
@@ -112,15 +112,15 @@ export default function Footer() {
          category: [
             "공지사항",
             "자주묻는질문",
-            "문의하기",
-            "SNS",
             "고객후기",
+            "SNS",
+            "문의하기",
          ],
          link: [
             "/community/notice",
             "/community/faq",
-            "/community/sns",
             "/community/review",
+            "/community/sns",
             "/community/contact",
          ]
       },
@@ -177,7 +177,7 @@ export default function Footer() {
                      <ul>
                         <li>
                            {navItem.category.map((category, categoryIndex) => (
-                              <Link to={navItem.link[index]} className="xl:text-12 font-light xl:mb-12 text-white" key={categoryIndex}>{category}</Link>
+                              <Link to={navItem.link[categoryIndex]} className="xl:text-12 font-light xl:mb-12 text-white" key={categoryIndex}>{category}</Link>
                            ))}
                         </li>
                      </ul>

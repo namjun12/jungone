@@ -109,12 +109,8 @@ const DetailPage = () => {
    useEffect(() => {
       if (targetName[2] === "notice") {
          setTargetResult("announcement");
-      } else if (targetName[2] === "youtube") {
-         setTargetResult("youtube");
-      } else if (targetName[2] === "notice") {
-         setTargetResult("announcement");
-      } else if (targetName[2] === "information") {
-         setTargetResult("share");
+      } else if (targetName[2] === "review") {
+         setTargetResult("review");
       }
    }, [targetName]);
 
@@ -124,6 +120,7 @@ const DetailPage = () => {
             try {
                const response = await axios.get(`${process.env.REACT_APP_API_URL}/${targetResult}/${id}`);
                setData(response.data.data);
+               console.log(response)
             } catch (error) {
                console.log(error);
             }
@@ -140,65 +137,103 @@ const DetailPage = () => {
       }
    }, [])
 
+
+   const categoryMap = {
+      0: "전체 정리수납",
+      1: "부분 정리수납",
+      2: "원스톱 토탈서비스"
+   };
+   const areaMap = {
+      0: "원룸",
+      1: "10평대",
+      2: "20평대",
+      3: "30평대",
+      4: "40평대",
+      5: "50평대 이상"
+   };
+
    return (
       <Container className="detail_common sub_page container xl:mt-160 mt-130">
-         {data && data.video_id &&
-            <div className='iframe_video_wrap'>
-               <iframe
-                  src={`https://www.youtube.com/embed/${data.video_id}`}
-                  width="100%"
-                  height="auto"
-                  title="YouTube video player"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-               />
-            </div>}
-         <div>
-            <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
-               {data && data.filter && <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>{data.filter}</p>}
-               <h3 className="tit text-center xl:text-24 text-18 font-bold xl:mb-24 mb-16">
-                  {data && data.title}
-               </h3>
-               <div className="sub_info_wrap xl:mt-24 mt-16">
-                  <div className="date_wrap">
-                     <p className="tit xl:text-16 text-13 font-semibold">Date</p>
-                     <p className="txtt xl:text-16 text-13">{data && data.created_at_formatted}</p>
-                  </div>
-                  <div className="views_wrap">
-                     <p className="tit xl:text-16 text-13 font-semibold">Views</p>
-                     <p className="txt xl:text-16 text-13">{data && data.views}</p>
+         {data ? (
+            <div>
+               <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
+                  {/* {<div>
+                     {data.filter_area &&
+                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                           {areaMap[data.filter_area]}
+                        </p>}
+                     {data.filter_category &&
+                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                           {areaMap[data.filter_category]}
+                        </p>}
+                  </div>} */}
+
+                  {<div className='flex gap-8 w-fit ml-auto mr-auto'>
+                     <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                        {categoryMap[data.filter_category]}
+                     </p>
+                     <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                        {areaMap[data.filter_area]}
+                     </p>
+                  </div>}
+                  <h3 className="tit text-center xl:text-24 text-18 font-bold xl:mb-24 mb-16">{data.title}</h3>
+                  <div className="sub_info_wrap xl:mt-24 mt-16">
+                     <div className="date_wrap">
+                        <p className="tit xl:text-16 text-13 font-semibold">Date</p>
+                        <p className="txtt xl:text-16 text-13">{data.created_at_formatted}</p>
+                     </div>
+                     <div className="views_wrap">
+                        <p className="tit xl:text-16 text-13 font-semibold">Views</p>
+                        <p className="txt xl:text-16 text-13">{data.views}</p>
+                     </div>
                   </div>
                </div>
+               <div className="contents_wrap type_01 ql-editor wrap">
+                  {<div
+                     dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(data.content, {
+                           ALLOWED_TAGS: ['img', 'iframe', 'p', 'div', 'a', 'span', 'b', 'i', 'u', 'br', 'strong', 'em'],
+                           ALLOWED_ATTR: ['src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen', 'class', 'id', 'style', 'href', 'title', 'alt']
+                        })
+                     }}
+                  />}
+                  {data.file_path &&
+                     <a href={`${process.env.REACT_APP_API_URL}/download?id=${data.id}&model=${targetResult}`} className="btn_download">
+                        <i className="icon xi-folder-open fs_type_11"></i>
+                        <p className="txt fs_type_11 fw_type_03 file_name">{data.file_name}</p>
+                        <i className="icon icon_download xi-download fs_type_11"></i>
+                     </a>
+                  }
+               </div>
+               {data && <NoticeDetailNav
+                  data={data}
+               />}
             </div>
-            <div className="contents_wrap type_01 ql-editor wrap">
-               {data && <div
-                  className=""
-                  dangerouslySetInnerHTML={{
-                     __html: DOMPurify.sanitize(data.content, {
-                        ALLOWED_TAGS: ['img', 'iframe', 'p', 'div', 'a', 'span', 'b', 'i', 'u', 'br', 'strong', 'em'],
-                        ALLOWED_ATTR: ['src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen', 'class', 'id', 'style', 'href', 'title', 'alt']
-                     })
-                  }}
-               ></div>}
-               {data ? (
-                  data.file_path &&
-                  <a href={`${process.env.REACT_APP_API_URL}/download?id=${data.id}&model=${targetResult}`} className="btn_download">
-                     <i className="icon xi-folder-open fs_type_11"></i>
-                     <p className="txt fs_type_11 fw_type_03 file_name">{data.file_name}</p>
-                     <i className="icon icon_download xi-download fs_type_11"></i>
-                  </a>
-               ) : (
-                  <div className="icon_loading_wrap">
-                     <i className="xi-spinner-2 xi-spin icon_loading"></i>
+         ) : (
+            <div>
+               <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
+                  <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'></p>
+                  <h3 className="hide-text tit text-center xl:text-24 text-18 font-bold xl:mb-24 mb-16">title</h3>
+                  <div className="sub_info_wrap xl:mt-24 mt-16">
+                     <div className="date_wrap">
+                        <p className="tit xl:text-16 text-13 font-semibold">Date</p>
+                        <p className="hide-text txt xl:text-16 text-13">2000.00.00</p>
+                     </div>
+                     <div className="views_wrap">
+                        <p className="tit xl:text-16 text-13 font-semibold">Views</p>
+                        <p className="hide-text txt xl:text-16 text-13">0</p>
+                     </div>
                   </div>
-               )
-               }
+               </div>
+               <div
+                  style={{ height: "100vh" }}
+                  className="contents_wrap type_01 ql-editor wrap"
+               />
+               {data && <NoticeDetailNav
+                  data={data}
+               />}
             </div>
-            {data && <NoticeDetailNav
-               data={data}
-            />}
-         </div>
+         )}
       </Container>
    )
 }

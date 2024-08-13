@@ -79,7 +79,10 @@ const NoticeDetailNav = ({ data }) => {
             </Link >
          )
          }
-         <Link className="btn_list flex justify-center items-center" to={`${baseUrl}?page=${page}&search=${search}`}>
+         <Link
+            className="btn_list flex justify-center items-center"
+            to={`${baseUrl}?page=${page}${search ? `&search=${search}` : ""}`}
+         >
             <i className="xi-bars xl:text-24 icon text-subColor04"></i>
          </Link>
          {

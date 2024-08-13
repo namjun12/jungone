@@ -169,7 +169,7 @@ const Review = () => {
       }
 
       fetchData();
-      navigate(`?filter_category=${category}&filter_area=${area}&page=${pageIndex}`);
+      // navigate(`?filter_category=${category}&filter_area=${area}&page=${pageIndex}`);
    }, [pageIndex, useApiCategory, useApiArea])
 
    const handleSearchClick = () => {
@@ -283,7 +283,10 @@ const Review = () => {
             {data && data.data.length > 0 ? (
                data.data.map((listInfo, index) => (
                   <li className='review-item xl:pr-40' key={index}>
-                     <Link to="" className='btn-link flex xl:gap-48 gap-16 xl:pt-32 xl:pb-32 pt-24 pb-24'>
+                     <Link
+                        to={`./${listInfo.id}?page=${pageIndex}`}
+                        className='btn-link flex xl:gap-48 gap-16 xl:pt-32 xl:pb-32 pt-24 pb-24'
+                     >
                         <img className='thumbnail' src={listInfo.image} alt="리뷰 썸네일" />
                         <div className='contents-wrap flex items-center xl:gap-24'>
                            <div className='text-wrap'>
