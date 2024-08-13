@@ -724,7 +724,6 @@ const Home = () => {
          const response = await axios.get(`${process.env.REACT_APP_API_URL}/main`)
          try {
             setData(response.data.data)
-            console.log(response.data.data)
          } catch (error) {
             console.log(error)
          }
@@ -869,7 +868,7 @@ const Home = () => {
                   지금 당신의 공간을 <strong>가드닝</strong>하세요
                </Title01>
                <div className='hide-text xl:block hidden line xl:mt-24 xl:mb-32'>line</div>
-               <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
+               <p className='opacity-60 xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
                   만약 우리가 생활하는 모든 공간이 정원이라면,<br className='xl:block hidden' />
                   잡초가 자라고 화초가 시들어가는 모습을 그냥 두거나 방치하지 않을겁니다.<br className='xl:block hidden' />
                   화초에 물을 주고 사랑을 주며 가꾸는것처럼 우리의 생활공간도 가드닝 해주셔야 됩니다.<br />

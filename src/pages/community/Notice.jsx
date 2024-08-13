@@ -143,7 +143,6 @@ const Notice = () => {
          try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/announcement/?page=${pageIndex}&search=${searchTerm}`);
             setData(response.data.data);
-            console.log("notice", response.data.data)
             if (response.data.success === false) {
                alert(response.data.message)
             }

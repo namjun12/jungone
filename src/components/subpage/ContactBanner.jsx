@@ -31,7 +31,7 @@ const ContactBannerWrap = styled.div`
 const ContactBanner = () => {
    return (
       <ContactBannerWrap>
-         <strong className='xl:leading-48 ledaing-32 text-center xl:text-32 text-20 font-bold text-white'>
+         <strong className='xl:leading-48 ledaing-32 text-center xl:text-32 text-20 font-bold pl-24 pr-24 text-white'>
             공간정원은 생활형태별, 사용자의 성향별, 생활 패턴별, 공간의 목적별로 <br className='xl:block hidden' />
             정리수납의 다양한 방법을 제공합니다.
          </strong>

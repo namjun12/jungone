@@ -120,7 +120,6 @@ const DetailPage = () => {
             try {
                const response = await axios.get(`${process.env.REACT_APP_API_URL}/${targetResult}/${id}`);
                setData(response.data.data);
-               console.log(response)
             } catch (error) {
                console.log(error);
             }
@@ -157,18 +156,7 @@ const DetailPage = () => {
          {data ? (
             <div>
                <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
-                  {/* {<div>
-                     {data.filter_area &&
-                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
-                           {areaMap[data.filter_area]}
-                        </p>}
-                     {data.filter_category &&
-                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
-                           {areaMap[data.filter_category]}
-                        </p>}
-                  </div>} */}
-
-                  {<div className='flex gap-8 w-fit ml-auto mr-auto'>
+                  {data.filter_category !== undefined && <div className='flex gap-8 w-fit ml-auto mr-auto'>
                      <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
                         {categoryMap[data.filter_category]}
                      </p>
@@ -197,7 +185,7 @@ const DetailPage = () => {
                         })
                      }}
                   />}
-                  {data.file_path &&
+                  {data.file &&
                      <a href={`${process.env.REACT_APP_API_URL}/download?id=${data.id}&model=${targetResult}`} className="btn_download">
                         <i className="icon xi-folder-open fs_type_11"></i>
                         <p className="txt fs_type_11 fw_type_03 file_name">{data.file_name}</p>

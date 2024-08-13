@@ -12,10 +12,9 @@ const MainBannerWrap = styled.div`
    height: 100vh;
    max-height: 1080px;
    .banner{
-      height: calc(100vh - 60px);
+      height: calc(100% - 60px);
       background-size: cover;
       background-position: bottom center;
-      /* background-attachment: fixed; */
       background-image: url(${props => props.bg});
       .text-wrap{
          position: absolute;
@@ -72,7 +71,7 @@ const MainBannerWrap = styled.div`
    }
    @media screen and (max-width: 767px){
       .banner{
-         height: calc(100vh - 48px);
+         height: calc(100% - 48px);
          background-position: bottom left 12%;
          .text-wrap{
             width: 100%;
@@ -136,7 +135,7 @@ const MainBannerWrap = styled.div`
 `
 
 const Mainbanner = ({ bannerInfo, tabInfo }) => {
-   const isMobile = window.innerWidth < 768 ? true : false;
+   const isMobile = window.innerWidth < 768;
    const pathname = useLocation().pathname
    const [lastScrollY, setLastScrollY] = useState(0);
    const [isAnimating, setIsAnimating] = useState(false);
@@ -145,24 +144,21 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
    useEffect(() => {
       const winHeight = window.innerHeight;
       const tabEl = document.querySelector(".tab")
-      const MotabEl = document.querySelector(".mo-tab-wrap")
       const tabHeight = tabEl.clientHeight;
 
       const handleScroll = () => {
          const scrollTop = document.documentElement.scrollTop
          const isScrollingDown = scrollTop > lastScrollY;
 
-         if (scrollTop >= winHeight - (isMobile ? 48 : tabHeight)) {
+         if (scrollTop >= winHeight - tabHeight) {
             tabEl.classList.add("on")
-            MotabEl?.classList.add("fix")
          } else {
             tabEl.classList.remove("on")
-            MotabEl?.classList.remove("fix")
          }
 
          if (isAnimating) return;
 
-         if (isScrollingDown && scrollTop < winHeight / 2) {
+         if (!isMobile && isScrollingDown && scrollTop < winHeight / 2) {
             setIsAnimating(true);
             gsap.to(window, {
                scrollTo: { y: winHeight, autoKill: false },
@@ -178,18 +174,42 @@ const Mainbanner = ({ bannerInfo, tabInfo }) => {
       return () => {
          window.removeEventListener('scroll', handleScroll);
       };
-   }, [lastScrollY, isAnimating]);
+   }, [lastScrollY, isAnimating, isMobile]);
+
+   useEffect(() => {
+      const moTabEl = document.querySelector(".mo-tab-wrap")
+      const winHeight = window.innerHeight;
+
+      const handleScroll = () => {
+         const scrollTop = document.documentElement.scrollTop
+         if (isMobile && scrollTop >= winHeight - 48) {
+            moTabEl.classList.add("fix")
+         } else {
+            moTabEl.classList.remove("fix")
+         }
+      }
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+         window.removeEventListener('scroll', handleScroll);
+      };
+   }, [isMobile])
+
+   useEffect(() => {
+      const winHeight = window.innerHeight;
+      document.getElementById("mb-wrap").style.height = `${winHeight}px`
+   }, [])
 
    // mobile tab
    const [tabShow, setTabShow] = useState(false);
-
    const tabClick = () => {
       setTabShow(prev => !prev)
    }
 
-
    return (
-      <MainBannerWrap bg={bannerInfo.bgImgPath}>
+      <MainBannerWrap id='mb-wrap' bg={bannerInfo.bgImgPath}
+      >
          <div className='banner'>
             <div className='text-wrap'>
                <h2 className='text-center leading-1em xl:text-68 text-32 font-bold text-white'>{bannerInfo.title}</h2>

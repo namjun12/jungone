@@ -1,4 +1,5 @@
 :root {
+   --vh: 100%;
    --pointColor01: #79926B;
    --pointColor02: #505B40;
    --pointColor03: #ECEAD0;
@@ -17,6 +18,11 @@
    --subColor10: #fbfbfe;
    --subColor11: #fbfbff;
    --subColor12: #f8f8f8;
+}
+html,
+body {
+    height: 100vh;
+    height: var(--vh);
 }
 
 * {

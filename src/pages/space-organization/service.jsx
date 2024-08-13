@@ -170,6 +170,13 @@ const ServiceWrap = styled.div`
             }
          }
       }
+      .tab-wrap{
+         .contents-wrap>.desc-wrap::before{
+            height: 40px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+         }
+      }
    }
 `
 
@@ -227,16 +234,16 @@ const Service = () => {
       const currentContent = currentPage === 0 ? contentsData.full : currentPage === 1 ? contentsData.partial : contentsData.office;
       return (
          <>
-            <p className='text-center xl:text-16 text-pointColor01'>{currentContent.subTitle}</p>
-            <h3 className='text-center xl:text-44 font-bold xl:mt-16 mt-12'>{currentContent.title}</h3>
+            <p className='text-center xl:text-16 text-14 text-pointColor01'>{currentContent.subTitle}</p>
+            <h3 className='text-center xl:text-44 text-18 font-bold xl:mt-16 mt-12'>{currentContent.title}</h3>
             <div className='desc-wrap'>
                <p
-                  className='text-center xl:leading-26 xl:text-18'
+                  className='text-center xl:leading-26 leading-18 xl:text-18 text-13'
                   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentContent.desc01) }}
                />
                {currentContent.desc02 &&
                   <p
-                     className='text-center xl:leading-26 xl:text-16 xl:mt-24 mt-16 text-subColor03'
+                     className='text-center xl:leading-26 leading-16 xl:text-16 text-12 xl:mt-24 mt-16 text-subColor03'
                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentContent.desc02) }}
                   />
                }
