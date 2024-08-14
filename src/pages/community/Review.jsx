@@ -97,7 +97,8 @@ const ReviewWrap = styled.div`
    }
    @media screen and (max-width:1279px){
       .filter{
-         border-width: 1px;
+      border-top: 1px solid var(--subColor01);
+      border-bottom: 1px solid var(--subColor01);
          .filter-item.area{
             .btn-control-wrap{
                width: fit-content;
