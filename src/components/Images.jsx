@@ -57,10 +57,12 @@ import image50 from "../images/space-lab/expert02.webp";
 import image51 from "../images/space-lab/expert03.webp";
 import image52 from "../images/space-lab/expert04.webp";
 import image53 from "../images/company/mo-people01.png";
-// import image50 from "../images/";
-// import image50 from "../images/";
-// import image50 from "../images/";
-// import image50 from "../images/";
+import image54 from "../images/company/mobile-vision.png";
+import image55 from "../images/one-stop/mobile-category.png";
+import image56 from "../images/one-stop/mobile-why.png";
+import image57 from "../images/space/service01.webp";
+import image58 from "../images/space/service02.webp";
+import image59 from "../images/space/service03.webp";
 // import image50 from "../images/";
 // import image50 from "../images/";
 // import image50 from "../images/";
@@ -153,6 +155,12 @@ export {
    image51,
    image52,
    image53,
+   image54,
+   image55,
+   image56,
+   image57,
+   image58,
+   image59,
    mainBanner01,
    mainBanner02,
    mainBanner03,

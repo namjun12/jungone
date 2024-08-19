@@ -33,7 +33,9 @@ body {
    position: absolute;
    left: -9999px;
 }
-
+.only-mobile{
+   display: none
+}
 .container {
    max-width: 1440px;
    margin-left: auto;
@@ -49,6 +51,12 @@ body {
 
 .swiper-button-disabled {
    opacity: 0.2;
+}
+.noitem{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 150px;
 }
 
 /*  */
@@ -67,6 +75,9 @@ body {
 }
 
 @media screen and (max-width:767px){
+   .only-mobile{
+      display: block
+   }
    .top-nav{
       flex-direction: column;
    }

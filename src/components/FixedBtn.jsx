@@ -143,11 +143,8 @@ const Contact = () => {
                   <img src={sns01} alt="전화 아이콘" />
                </a>
                <a
-                  onClick={(e) => {
-                     alert("준비 중입니다");
-                     e.preventDefault();
-                  }}
-                  className="btn" href="#"
+                  className="btn" 
+                  href="http://pf.kakao.com/_xkCagG/chat"
                   target="_blank"
                   rel="noreferrer"
                >

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 // Components
 import { Title01, StrokeTitle, BtnLink, BtnLink02, BtnViewmore } from '../components/StyledCommon'
@@ -344,6 +344,26 @@ const Container = styled.div`
          margin-right: -100px;
          background-color: var(--subColor04);
       }
+      .pro-swiper-text{
+         .swiper-slide{
+            overflow: hidden;
+         }
+      }
+      .sub-title{
+         position: relative;
+         width: fit-content;
+         .num{
+            opacity: 0.6;
+            z-index: -9;
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translate(100%, -50%);
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--pointColor04);
+         }
+      }
    }
    .people{
       background-image: url(${image11});
@@ -569,6 +589,13 @@ const Container = styled.div`
          }
          .line{
             width: 100%;
+         }
+         .sub-title{
+            margin-top: 12px;
+            .num{
+               right: 6px;
+               font-size: 40px;
+            }
          }
       }
       .people{
@@ -799,6 +826,10 @@ const Home = () => {
          <section className='main-banner'>
             <Swiper
                className="mb-swiper"
+               autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+               }}
                pagination={{
                   el: '.pagination',
                }}
@@ -807,41 +838,45 @@ const Home = () => {
                   prevEl: '.btn-prev',
                }}
                loop={true}
-               modules={[Pagination, Navigation]}
+               modules={[Autoplay, Pagination, Navigation]}
             >
-               {data && data.banner.map((bannerInfo, index) => (
-                  <SwiperSlide key={index}>
-                     <div className='contents-wrap'>
-                        <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
-                        <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.subTitle) }}></p>
-                        {bannerInfo.path &&
-                           <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.path}>
-                              더 알아보기
-                           </BtnLink>}
-                     </div>
-                     {isMobile ? (
-                        <>
-                           {bannerInfo.mobile_image_type === 0 ? (
-                              <img className='mb-img' src={bannerInfo.mobile_image} alt="" />
-                           ) : (
-                              <video className='mb-img' muted autoPlay loop playsInline>
-                                 <source src={bannerInfo.mobile_image} />
-                              </video>
-                           )}
-                        </>
-                     ) : (
-                        <>
-                           {bannerInfo.image_type === 0 ? (
-                              <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
-                           ) : (
-                              <video className='mb-img' muted autoPlay loop playsInline>
-                                 <source src={bannerInfo.image} />
-                              </video>
-                           )}
-                        </>
-                     )}
-                  </SwiperSlide>
-               ))}
+               {data && data.banner ? (
+                  data.banner.map((bannerInfo, index) => (
+                     <SwiperSlide key={index}>
+                        <div className='contents-wrap'>
+                           <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
+                           <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.subTitle) }}></p>
+                           {bannerInfo.path &&
+                              <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.path}>
+                                 더 알아보기
+                              </BtnLink>}
+                        </div>
+                        {isMobile ? (
+                           <>
+                              {bannerInfo.mobile_image_type === 0 ? (
+                                 <img className='mb-img' src={bannerInfo.mobile_image} alt="" />
+                              ) : (
+                                 <video className='mb-img' muted autoPlay loop playsInline>
+                                    <source src={bannerInfo.mobile_image} />
+                                 </video>
+                              )}
+                           </>
+                        ) : (
+                           <>
+                              {bannerInfo.image_type === 0 ? (
+                                 <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
+                              ) : (
+                                 <video className='mb-img' muted autoPlay loop playsInline>
+                                    <source src={bannerInfo.image} />
+                                 </video>
+                              )}
+                           </>
+                        )}
+                     </SwiperSlide>
+                  ))
+               ) : (
+                  <SwiperSlide className='flex justify-center items-center text-white bg-subColor01'>배너가 존재하지 않습니다.</SwiperSlide>
+               )}
                <div className='pagination' />
                <div className='navigation'>
                   <div className="btn-prev btn">
@@ -868,7 +903,7 @@ const Home = () => {
                   지금 당신의 공간을 <strong>가드닝</strong>하세요
                </Title01>
                <div className='hide-text xl:block hidden line xl:mt-24 xl:mb-32'>line</div>
-               <p className='opacity-60 xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
+               <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-0 mt-24'>
                   만약 우리가 생활하는 모든 공간이 정원이라면,<br className='xl:block hidden' />
                   잡초가 자라고 화초가 시들어가는 모습을 그냥 두거나 방치하지 않을겁니다.<br className='xl:block hidden' />
                   화초에 물을 주고 사랑을 주며 가꾸는것처럼 우리의 생활공간도 가드닝 해주셔야 됩니다.<br />
@@ -1038,24 +1073,60 @@ const Home = () => {
             <BtnLink02 className='xl:mt-80 mt-40' to="/community/contact">컨설팅 문의하기</BtnLink02>
          </section>
          <section className='professional container xl:flex justify-center items-center xl:mt-160 mt-80'>
-            <div>
-               <div>
-                  <Title01>
-                     당신의 도전을 응원합니다<br />
-                     <strong>공간정원 전문교육</strong>으로<br />
-                     <strong>전문가</strong>가 될 수 있습니다
-                  </Title01>
-                  <h4 className='xl:block hidden leading-1em xl:text-28 font-bold xl:mt-48'>가드너즈 아카데미</h4>
-                  <p className='xl:block hidden xl:leading-32 xl:text-20 xl:mt-48'>
-                     가드너즈 아카데미에서는<br className='xl:block hidden' />
-                     공간정원과 함께할 정리전문가를 양성합니다.
-                  </p>
-                  <BtnViewmore to="/space-lab/academy" className='pc-only xl:mt-40'>
-                     <p className="txt">자세히 보기</p>
-                     <i className="xi-long-arrow-right"></i>
-                  </BtnViewmore>
-               </div>
-               <div className='xl:block hidden line hide-text'>line</div>
+            <Swiper
+               className='pro-swiper-text'
+               allowTouchMove={false}
+               loop={true}
+               navigation={{
+                  prevEl: ".pro-btn-prev",
+                  nextEl: ".pro-btn-next",
+               }}
+               modules={[Navigation]}
+            >
+               <SwiperSlide>
+                  <div>
+                     <Title01>
+                        당신의 도전을 응원합니다<br />
+                        <strong>공간정원 전문교육</strong>으로<br />
+                        <strong>전문가</strong>가 될 수 있습니다
+                     </Title01>
+                     <h4 className='sub-title xl:block hidden leading-1em xl:text-28 font-bold xl:mt-48'>
+                        가드너즈 아카데미
+                        <span className='num'>01</span>
+                     </h4>
+                     <p className='xl:block hidden xl:leading-32 xl:text-20 xl:mt-48'>
+                        가드너즈 아카데미에서는<br className='xl:block hidden' />
+                        공간정원과 함께할 정리전문가를 양성합니다.
+                     </p>
+                     <BtnViewmore to="/space-lab/academy" className='pc-only xl:mt-40'>
+                        <p className="txt">자세히 보기</p>
+                        <i className="xi-long-arrow-right"></i>
+                     </BtnViewmore>
+                  </div>
+                  <div className='xl:block hidden line hide-text'>line</div>
+               </SwiperSlide>
+               <SwiperSlide>
+                  <div>
+                     <Title01>
+                        당신의 도전을 응원합니다<br />
+                        <strong>공간정원 전문교육</strong>으로<br />
+                        <strong>전문가</strong>가 될 수 있습니다
+                     </Title01>
+                     <h4 className='sub-title xl:block hidden leading-1em xl:text-28 font-bold xl:mt-48'>
+                        공간정원 연구소
+                        <span className='num'>02</span>
+                     </h4>
+                     <p className='xl:block hidden xl:leading-32 xl:text-20 xl:mt-48'>
+                        공간정원 연구소에서는 <br className='xl:block hidden' />
+                        우리의 생활을 깊이있게 연구하고 있습니다.
+                     </p>
+                     <BtnViewmore to="/space-lab/gardening" className='pc-only xl:mt-40'>
+                        <p className="txt">자세히 보기</p>
+                        <i className="xi-long-arrow-right"></i>
+                     </BtnViewmore>
+                  </div>
+                  <div className='xl:block hidden line hide-text'>line</div>
+               </SwiperSlide>
                <div className='xl:flex hidden navigation xl:gap-24 xl:pt-48'>
                   <button className="pro-btn-prev">
                      <i className='xl:text-42 font-light xi-angle-left-thin'></i>
@@ -1064,14 +1135,15 @@ const Home = () => {
                      <i className='xl:text-42 xi-angle-right-thin'></i>
                   </button>
                </div>
-            </div>
+            </Swiper>
             <Swiper
                className='pro-swiper'
+               allowTouchMove={false}
+               loop={true}
                navigation={{
                   prevEl: ".pro-btn-prev",
                   nextEl: ".pro-btn-next",
                }}
-               loop={true}
                modules={[Navigation]}
                breakpoints={{
                   1280: { // 1280px 이상
@@ -1095,17 +1167,46 @@ const Home = () => {
                   <img className='slide-img' src={image10} alt="슬라이드 이미지" />
                </SwiperSlide>
             </Swiper>
-            <div className='xl:hidden'>
-               <h4 className='leading-1em xl:text-28 text-20 font-bold xl:mt-48'>가드너즈 아카데미</h4>
-               <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-48 mt-24'>
-                  가드너즈 아카데미에서는<br />
-                  공간정원과 함께할 정리전문가를 양성합니다.
-               </p>
-               <BtnViewmore className='xl:mt-40 mt-24 ml-auto mr-auto'>
-                  <p className="txt">자세히 보기</p>
-                  <i className="xi-long-arrow-right"></i>
-               </BtnViewmore>
-               <div className='line hide-text'>line</div>
+            <Swiper
+               className='xl:hidden'
+               allowTouchMove={false}
+               loop={true}
+               navigation={{
+                  prevEl: ".pro-btn-prev",
+                  nextEl: ".pro-btn-next",
+               }}
+               modules={[Navigation]}
+            >
+               <SwiperSlide>
+                  <h4 className='sub-title leading-1em xl:text-28 text-20 font-bold ml-auto mr-auto'>
+                     가드너즈 아카데미
+                     <span className='num'>01</span>
+                  </h4>
+                  <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-48 mt-24'>
+                     가드너즈 아카데미에서는<br />
+                     공간정원과 함께할 정리전문가를 양성합니다.
+                  </p>
+                  <BtnViewmore to="/space-lab/academy" className='xl:mt-40 mt-24 ml-auto mr-auto'>
+                     <p className="txt">자세히 보기</p>
+                     <i className="xi-long-arrow-right"></i>
+                  </BtnViewmore>
+                  <div className='line hide-text'>line</div>
+               </SwiperSlide>
+               <SwiperSlide>
+                  <h4 className='sub-title leading-1em xl:text-28 text-20 font-bold ml-auto mr-auto'>
+                     공간정원 연구소
+                     <span className='num'>02</span>
+                  </h4>
+                  <p className='xl:leading-32 leading-18 xl:text-20 text-13 xl:mt-48 mt-24'>
+                     공간정원 연구소에서는 <br />
+                     우리의 생활을 깊이있게 연구하고 있습니다.
+                  </p>
+                  <BtnViewmore to="/space-lab/gardening" className='xl:mt-40 mt-24 ml-auto mr-auto'>
+                     <p className="txt">자세히 보기</p>
+                     <i className="xi-long-arrow-right"></i>
+                  </BtnViewmore>
+                  <div className='line hide-text'>line</div>
+               </SwiperSlide>
                <div className='flex navigation justify-center xl:gap-24 gap-16 xl:pt-48 pt-24'>
                   <button className="pro-btn-prev">
                      <i className='xl:text-42 text-21 font-light xi-angle-left-thin'></i>
@@ -1114,7 +1215,7 @@ const Home = () => {
                      <i className='xl:text-42 text-21 xi-angle-right-thin'></i>
                   </button>
                </div>
-            </div>
+            </Swiper>
          </section>
          <section className='people xl:pt-80 pt-60 xl:pb-80 pb-60 mt-80'>
             <div className='container flex justify-between items-center'>
@@ -1170,19 +1271,23 @@ const Home = () => {
                   }
                }}
             >
-               {data && data.youtube.map((youtube, index) => (
-                  <SwiperSlide key={index}>
-                     <Link
-                        to={`https://www.youtube.com/watch?v=${youtube.video_id}`}
-                        target='_blank'
-                        rel='norefererr'
-                     >
-                        <img className='thumbnail w-full h-auto' src={`https://img.youtube.com/vi/${youtube.video_id}/mqdefault.jpg`} alt="썸네일" />
-                        <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>{youtube.title}</h4>
-                        <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>{youtube.created_at_formatted}</p>
-                     </Link>
-                  </SwiperSlide>
-               ))}
+               {data && data.youtube ? (
+                  data.youtube.map((youtube, index) => (
+                     <SwiperSlide key={index}>
+                        <Link
+                           to={`https://www.youtube.com/watch?v=${youtube.video_id}`}
+                           target='_blank'
+                           rel='norefererr'
+                        >
+                           <img className='thumbnail w-full h-auto' src={`https://img.youtube.com/vi/${youtube.video_id}/mqdefault.jpg`} alt="썸네일" />
+                           <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>{youtube.title}</h4>
+                           <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>{youtube.created_at_formatted}</p>
+                        </Link>
+                     </SwiperSlide>
+                  ))
+               ) : (
+                  <SwiperSlide>게시글이 없습니다</SwiperSlide>
+               )}
                <div className="navigation">
                   <div className="youtube-btn-prev"></div>
                   <div className="youtube-btn-next"></div>
@@ -1210,24 +1315,28 @@ const Home = () => {
                      }
                   }}
                >
-                  {data && data.reviews.map((reviews, index) => (
-                     <SwiperSlide key={index}>
-                        <div className='thumbnail-wrap'>
-                           <img className='w-full h-full object-cover thumbnail' src={reviews.image} alt="" />
-                        </div>
-                        <div className='text-wrap'>
-                           <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>{reviews.title}</h4>
-                           <p
-                              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(reviews.content) }}
-                              className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'
-                           />
-                           <div className='category-wrap flex xl:mt-32 mt-16'>
-                              <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>
-                              <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>30평대</p>
+                  {data && data.reviews ? (
+                     data.reviews.map((reviews, index) => (
+                        <SwiperSlide key={index}>
+                           <div className='thumbnail-wrap'>
+                              <img className='w-full h-full object-cover thumbnail' src={reviews.image} alt="" />
                            </div>
-                        </div>
-                     </SwiperSlide>
-                  ))}
+                           <div className='text-wrap'>
+                              <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>{reviews.title}</h4>
+                              <p
+                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(reviews.content) }}
+                                 className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'
+                              />
+                              <div className='category-wrap flex xl:mt-32 mt-16'>
+                                 <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>
+                                 <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>30평대</p>
+                              </div>
+                           </div>
+                        </SwiperSlide>
+                     ))
+                  ) : (
+                     <SwiperSlide className='p-32'>게시글이 없습니다</SwiperSlide>
+                  )}
                   <div className="navigation">
                      <div className="btn-prev"></div>
                      <div className="btn-next"></div>

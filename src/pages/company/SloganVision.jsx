@@ -5,7 +5,7 @@ import { Title02 } from '../../components/StyledCommon'
 import styled from 'styled-components'
 
 // Images
-import { simbol, iconQuotation01, iconQuotation02, pattern02, image15, image16, image17, image18, image19 } from '../../components/Images'
+import { simbol, iconQuotation01, iconQuotation02, pattern02, image15, image16, image17, image18, image19, image54 } from '../../components/Images'
 
 // Styles
 const SloganVisionWrap = styled.div`
@@ -162,7 +162,8 @@ const SloganVision = () => {
                   <p className='text-center xl:leading-1em xl:text-18 text-16 text-pointColor01'>Vision</p>
                   <h3 className='text-center xl:text-32 text-20 font-bold xl:mt-16 mt-8'>공간정원의 비전</h3>
                </div>
-               <img className='main-img xl:mt-80 mt-40' src={image16} alt="" />
+               <img className='main-img xl:block hidden xl:mt-80 mt-40' src={image16} alt="공간정원의 비전" />
+               <img className='main-img xl:hidden xl:mt-80 mt-40' src={image54} alt="공간정원의 비전" />
             </div>
          </div>
          <div className='ci container xl:pt-120 pt-80'>

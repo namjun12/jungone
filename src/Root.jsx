@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 // style Start
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/controller';
 import './css/normalize.css'
 import './css/style.css'
 // style End

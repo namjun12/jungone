@@ -6,7 +6,7 @@ import { Title02, SubBanner01, Desc01 } from '../../components/StyledCommon';
 import ContactBanner from '../../components/subpage/ContactBanner';
 
 // Images
-import { testImg, iconQuotation01, iconQuotation02, image21, icon15, icon16, icon17, icon18, icon19, image22, image23, image24 } from '../../components/Images'
+import { iconQuotation01, iconQuotation02, image21, icon15, icon16, icon17, icon18, icon19, image22, image23, image24, image57, image58, image59 } from '../../components/Images'
 import DOMPurify from 'dompurify';
 
 // Styles
@@ -195,20 +195,20 @@ const Service = () => {
          title: "전체 정리수납 서비스",
          desc01: "전체 공간을 사용자에 맞춰 리빌딩 + 디테일한 정리 및 *코칭까지 해드리는 서비스 <br class='xl:block hidden'/>정리수납 전문가가 6인 이상 (원룸은 2인 이상) 투입되어 컨설팅을 진행합니다.",
          desc02: "*코칭 : 구성된 공간에 정리상태를 지속 유지할수 있도록 공간의 실제 사용자에게 정리방법과 관리방법을 교육해 드립니다. (전체 정리 서비스중 일부)",
-         img: testImg,
+         img: image57,
       },
       partial: {
          subTitle: "Partial Organization & Storage Service",
          title: "부분 정리수납 서비스",
          desc01: "정리가 필요한 공간만을 선택하여 8시간동안 정리수납을 해드리는 서비스로 <br class='xl:block hidden' />아이방, 옷방(드레스룸), 주방, 냉장고, 펜트리, 안방, 서재, 멀티룸, 베란다, 사무실 창고 및 비품실, 매장 등 정리가 필요한 공간에 맞춤으로 서비스합니다.",
          desc02: "* 서비스 인원은 기본 2인 팀으로 구성되며, 물건의 양이나 두개이상의 영역 정리하고자 할때에는 상담을 통한 인원수의 변경이 가능합니다 ",
-         img: testImg,
+         img: image58,
       },
       office: {
          subTitle: "Office Organization & Storage Service",
          title: "오피스 정리수납 서비스",
          desc01: "회사 업무패턴,업무동선,업무능률의 향상을 위한 업무공간 컨설팅 서비스로 <br class='xl:block hidden' />개인공간과 공용공간을 구분하여 효율적인 가구배치를 제안합니다.",
-         img: testImg,
+         img: image59,
       }
    }
    const styleInfo = [
@@ -260,8 +260,12 @@ const Service = () => {
             <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
                <p className='desc'>
-                  공간정원의 다년간의 정리 연구와 개발을 통해 <strong>사용자 개개인의 생활패턴</strong>과 <strong>성향</strong>에 맞는 편리하고 세련된 환경으로 재구성하며,
-                  나아가 <strong>사용자에게 필요한 공간의 기능들을 부여하여 성장과 발전을 돕는 공간</strong>으로 만들어 드리는 정리수납 서비스입니다.
+                  공간정원을 대표하는 서비스로서 <br className='only-mobile'/>
+                  다년간의 정리 연구와 개발을 통해 <span className='point'>사용자 맞춤의 <br className='only-mobile'/>
+                  편리하고 세련된 환경</span>으로  재구성하며,<br /><br className='xl:hidden' />
+                  나아가 <span className='point'>사용자에게 꼭 필요한 공간의 기능들을 부여하여 <br className='only-mobile'/>
+                  성장과 발전을 돕는 공간</span>으로 만들어 드리는 <br className='only-mobile'/>
+                  정리수납 서비스 입니다
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />
             </SubBanner01>

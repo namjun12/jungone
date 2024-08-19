@@ -6,7 +6,7 @@ import { Title02, SubBanner01, Desc01 } from '../../components/StyledCommon';
 import ContactBanner from '../../components/subpage/ContactBanner';
 
 // Images
-import { iconQuotation01, iconQuotation02, iconQuotation03, iconQuotation04, image25, image26, image27, image28, image29, image30, image31, image32, image33, image34, image35 } from '../../components/Images';
+import { iconQuotation01, iconQuotation02, iconQuotation03, iconQuotation04, image25, image26, image27, image28, image29, image30, image31, image32, image33, image34, image35, image55, image56 } from '../../components/Images';
 
 const ServiceWrap = styled.div`
    .banner{
@@ -168,10 +168,15 @@ const OneStopService = () => {
             <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
                <p className='desc'>
-                  <strong>이사에서 부터 청소, 전문시공 및 공간가드닝</strong>까지 모두 알아서 해주는 편리한 <strong>원스톱 토탈서비스</strong>
-                  국내 최초로 공간정원에서 시작 되었으며 소비자분들께 정말 큰 사랑을 받고있는 서비스입니다.
-                  소비자의 현재 상태를 진단하여 최적의 효율과 퍼포먼스가 발생하는 서비스로 패키징 추천을 드리고 있으며
-                  서비스들의 효율적인 연계 작업을 통해 효율적인 가격을 만들어 드립니다.
+                  이사부터 청소, 전문시공 및 공간 가드닝까지 <br className='only-mobile'/>
+                  모두 알아서 해주는 편리한 <span className='point'>원스톱 토탈서비스 </span><br />
+                  <br className='only-mobile'/>
+                  국내최초 공간정원에서 시작하였으며 <br className='only-mobile'/>
+                  현재 가장 큰 사랑을 받고있는 서비스입니다.<br />
+                  <br className='only-mobile'/>
+                  <span className='point'>현재 상태를 진단하여 최적의 효율과 퍼포먼스를 <br className='only-mobile'/>
+                  보장하는 서비스로 패키징 추천</span>을 통해 <br className='only-mobile'/>
+                  합리적인 가격을 만들어 드립니다
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />
             </SubBanner01>
@@ -180,14 +185,16 @@ const OneStopService = () => {
             <Desc01 className='desc xl:leading-36 text-center xl:text-24 font-medium'>
                공간정원 원스톱 토탈서비스는 <span className='point font-bold text-pointColor01'>각 분야 최고 전문가</span>가 시공하고 있습니다.
             </Desc01>
-            <img className='w-full xl:mt-48 mt-36' src={image26} alt="이사, 청소 등" />
+            <img className='w-full xl:block hidden xl:mt-48 mt-36' src={image26} alt="이사, 청소 등" />
+            <img className='w-full xl:hidden xl:mt-48 mt-36' src={image55} alt="이사, 청소 등" />
          </div>
          <div className='why xl:pt-120 xl:pb-120 pt-40 pb-40 bg-pointColor06'>
             <div className='container'>
                <h3 className='xl:text-44 text-center font-bold'>
                   <span className='text-pointColor01'>원스톱 토탈서비스</span>가 사랑받는 이유
                </h3>
-               <img className='w-full xl:mt-80 mt-40' src={image27} alt="원스톱 토탈서비스가 사랑받는 이유" />
+               <img className='w-full xl:block hidden xl:mt-80 mt-40' src={image27} alt="원스톱 토탈서비스가 사랑받는 이유" />
+               <img className='w-full xl:hidden xl:mt-80 mt-40' src={image56} alt="원스톱 토탈서비스가 사랑받는 이유" />
                <div className='text-wrap xl:mt-80 mt-48'>
                   <div className='before-wrap flex justify-center items-start gap-8'>
                      <img className='icon' src={iconQuotation03} alt="따옴표" />

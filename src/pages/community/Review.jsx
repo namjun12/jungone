@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
 import styled from 'styled-components';
@@ -58,12 +58,6 @@ const ReviewWrap = styled.div`
          &:hover{
             background-color: var(--subColor07);
          }
-      }
-      .no-item{
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 300px;
       }
       .thumbnail{
          width: 100%;
@@ -143,7 +137,6 @@ const useQuery = () => {
 };
 
 const Review = () => {
-   const navigate = useNavigate();
 
    const query = useQuery();
    const page = query.get('page');
@@ -313,7 +306,7 @@ const Review = () => {
                   </li>
                ))
             ) : (
-               <li className='no-item xl:pr-40' key="0">게시글이 없습니다.</li>
+               <li className='noitem xl:pr-40' key="0">게시글이 없습니다.</li>
             )}
          </ul>
          {data &&

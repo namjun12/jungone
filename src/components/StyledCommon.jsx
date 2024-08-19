@@ -139,9 +139,12 @@ export const SubBanner01 = styled.div`
    padding: 0px 100px;
    background-size: cover;
    background-position: center center;
+   .point{
+      font-weight: 700;
+   }
    .icon{
       width: auto;
-      height: 22px;
+      height: 16px;
    }
    .desc{
       text-align: center;
@@ -158,8 +161,8 @@ export const SubBanner01 = styled.div`
          height: 12px;
       }
       .desc{
-         line-height: 22px;
-         font-size: 16px;
+         line-height: 20px;
+         font-size: 14px;
          margin-top: 16px;
          margin-bottom: 16px;
       }
@@ -189,8 +192,9 @@ export const Desc01 = styled.p`
    @media screen and (max-width:1279px){
       line-height: 22px;
       font-size: 16px;
+      padding-top: 12px;
       &::after{
-         top: -12px;
+         top: 0px;
          height: 80px;
       }
    }

@@ -185,7 +185,9 @@ const Notice = () => {
          <ListWrap className="list_wrap xl:mb-40">
             {data ? (
                data.total === 0 ? (
-                  <li className="item noitem txt_align_center">게시글이 없습니다.</li>
+                  <li 
+                  className="item noitem txt_align_center"
+                  >게시글이 없습니다.</li>
                ) : (
                   (() => {
                      const featuredItems = [];

@@ -53,6 +53,7 @@ const Sns = () => {
       const fetchData = async () => {
          try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/sns`)
+            console.log("response", response)
             setData(response.data.data)
             if (response.data.success === false) {
                alert(response.data.message)
