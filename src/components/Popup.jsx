@@ -272,7 +272,7 @@ const Popup = () => {
                      data.map((popup, index) => (
                         <SwiperSlide key={index}>
                            {popup.link ? (
-                              <a href={popup.link} className="swiper-slide" target="_blank">
+                              <a href={popup.link} className="swiper-slide" target="_blank" rel="noreferrer">
                                  <div className="m-ratioBox-wrap">
                                     <div className="m-ratioBox">
                                        <img src={popup.image} alt="" />
