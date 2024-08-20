@@ -75,6 +75,8 @@ const Container = styled.div`
             }
          }
          .mb-img {
+            z-index: -9;
+            position: relative;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -746,6 +748,7 @@ const Home = () => {
 
    // Data
    const [data, setData] = useState();
+   const [loading, setLoading] = useState(true);
    useEffect(() => {
       const fetchData = async () => {
          const response = await axios.get(`${process.env.REACT_APP_API_URL}/main`)
@@ -753,6 +756,8 @@ const Home = () => {
             setData(response.data.data)
          } catch (error) {
             console.log(error)
+         } finally {
+            setLoading(false);
          }
       }
       fetchData();
@@ -820,12 +825,18 @@ const Home = () => {
       },
    ]
 
+   useEffect(() => {
+      const winHeight = window.innerHeight;
+      document.querySelector(".main-banner").style.height = `${winHeight}px`
+   }, [])
+
    return (
       <Container>
          <Popup />
          <section className='main-banner'>
             <Swiper
                className="mb-swiper"
+               slidesPerView={1}
                autoplay={{
                   delay: 4000,
                   disableOnInteraction: false,
@@ -834,59 +845,63 @@ const Home = () => {
                   el: '.pagination',
                }}
                navigation={{
-                  nextEl: '.btn-next',
-                  prevEl: '.btn-prev',
+                  nextEl: '.mb-btn-next',
+                  prevEl: '.mb-btn-prev',
                }}
                loop={true}
                modules={[Autoplay, Pagination, Navigation]}
             >
-               {data && data.banner ? (
-                  data.banner.map((bannerInfo, index) => (
-                     <SwiperSlide key={index}>
-                        <div className='contents-wrap'>
-                           <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
-                           <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.subTitle) }}></p>
-                           {bannerInfo.path &&
-                              <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.path}>
-                                 더 알아보기
-                              </BtnLink>}
-                        </div>
-                        {isMobile ? (
-                           <>
-                              {bannerInfo.mobile_image_type === 0 ? (
-                                 <img className='mb-img' src={bannerInfo.mobile_image} alt="" />
-                              ) : (
-                                 <video className='mb-img' muted autoPlay loop playsInline>
-                                    <source src={bannerInfo.mobile_image} />
-                                 </video>
-                              )}
-                           </>
-                        ) : (
-                           <>
-                              {bannerInfo.image_type === 0 ? (
-                                 <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
-                              ) : (
-                                 <video className='mb-img' muted autoPlay loop playsInline>
-                                    <source src={bannerInfo.image} />
-                                 </video>
-                              )}
-                           </>
-                        )}
-                     </SwiperSlide>
-                  ))
+               {loading ? (
+                  <SwiperSlide className='hide-text'>Loading ...</SwiperSlide>
                ) : (
-                  <SwiperSlide className='flex justify-center items-center text-white bg-subColor01'>배너가 존재하지 않습니다.</SwiperSlide>
+                  data && data.banner ? (
+                     data.banner.map((bannerInfo, index) => (
+                        <SwiperSlide key={index}>
+                           <div className='contents-wrap'>
+                              <h2 className='xl:leading-80 leading-44 xl:text-64 text-32 font-bold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.title) }}></h2>
+                              <p className='xl:leading-28 leading-20 xl:text-17 text-14 font-light xl:mt-50 mt-32' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(bannerInfo.subTitle) }}></p>
+                              {bannerInfo.link &&
+                                 <BtnLink className='xl:mt-48 mt-36' to={bannerInfo.link}>
+                                    더 알아보기
+                                 </BtnLink>}
+                           </div>
+                           {isMobile ? (
+                              <>
+                                 {bannerInfo.mobile_image_type === 0 ? (
+                                    <img className='mb-img' src={bannerInfo.mobile_image} alt="" />
+                                 ) : (
+                                    <video className='mb-img' muted autoPlay loop playsInline preload="auto">
+                                       <source src={bannerInfo.mobile_image} />
+                                    </video>
+                                 )}
+                              </>
+                           ) : (
+                              <>
+                                 {bannerInfo.image_type === 0 ? (
+                                    <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
+                                 ) : (
+                                    <video className='mb-img' muted autoPlay loop playsInline preload="auto">
+                                       <source src={bannerInfo.image} />
+                                    </video>
+                                 )}
+                              </>
+                           )}
+                        </SwiperSlide>
+                     ))
+                  ) : (
+                     <SwiperSlide className='hide-text'>배너가 존재하지 않습니다.</SwiperSlide>
+                  )
                )}
                <div className='pagination' />
                <div className='navigation'>
-                  <div className="btn-prev btn">
+                  <div className="mb-btn-prev btn">
                      <div className='line-wrap xl:pb-8'>
                         <div className='line long hide-text'>line1</div>
                         <div className='line short hide-text'>line2</div>
                      </div>
                      <p className='text text-right xl:text-16 xl:pr-16 text-white'>Prev</p>
                   </div>
-                  <div className="btn-next btn">
+                  <div className="mb-btn-next btn">
                      <div className='line-wrap xl:pb-8'>
                         <div className='line short hide-text'>line1</div>
                         <div className='line long hide-text'>line2</div>
@@ -1279,7 +1294,7 @@ const Home = () => {
                            target='_blank'
                            rel='norefererr'
                         >
-                           <img className='thumbnail w-full h-auto' src={`https://img.youtube.com/vi/${youtube.video_id}/mqdefault.jpg`} alt="썸네일" />
+                           <img className='thumbnail w-full h-auto' src={`https://img.youtube.com/vi/${youtube.video_id}/hqdefault.jpg`} alt="썸네일" />
                            <h4 className='max-line1 leading-1em xl:text-20 text-16 font-bold xl:mt-32 mt-24'>{youtube.title}</h4>
                            <p className='leading-1em xl:text-14 text-12 mt-16 text-subColor04'>{youtube.created_at_formatted}</p>
                         </Link>
@@ -1324,8 +1339,13 @@ const Home = () => {
                            <div className='text-wrap'>
                               <h4 className='max-line1 leading-1em xl:text-24 text-16 font-semibold'>{reviews.title}</h4>
                               <p
-                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(reviews.content) }}
                                  className='max-line5 xl:leading-26 leading-18 xl:text-16 text-13 xl:mt-24 mt-16'
+                                 dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(reviews.content, {
+                                       ALLOWED_TAGS: ['p', 'div', 'a', 'span', 'b', 'i', 'u', 'br', 'strong', 'em'],
+                                       ALLOWED_ATTR: []
+                                    })
+                                 }}
                               />
                               <div className='category-wrap flex xl:mt-32 mt-16'>
                                  <p className='category leading-1em xl:text-16 text-12 font-medium text-subColor04'>부분 정리수납</p>

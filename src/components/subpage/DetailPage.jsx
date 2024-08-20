@@ -156,14 +156,15 @@ const DetailPage = () => {
          {data ? (
             <div>
                <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
-                  {data.filter_category !== undefined && <div className='flex gap-8 w-fit ml-auto mr-auto'>
-                     <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
-                        {categoryMap[data.filter_category]}
-                     </p>
-                     <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
-                        {areaMap[data.filter_area]}
-                     </p>
-                  </div>}
+                  {data.filter_category !== undefined &&
+                     <div className='flex gap-8 w-fit ml-auto mr-auto'>
+                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                           {categoryMap[data.filter_category]}
+                        </p>
+                        <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'>
+                           {areaMap[data.filter_area]}
+                        </p>
+                     </div>}
                   <h3 className="tit text-center xl:text-24 text-18 font-bold xl:mb-24 mb-16">{data.title}</h3>
                   <div className="sub_info_wrap xl:mt-24 mt-16">
                      <div className="date_wrap">
@@ -200,7 +201,6 @@ const DetailPage = () => {
          ) : (
             <div>
                <div className="info_wrap type_01 wrap xl:mb-40 mb-32">
-                  <p className='category text-center leading-1em xl:text-16 text-12 font-bold pt-8 pb-8 pr-16 pl-16 mb-16 text-pointColor01'></p>
                   <h3 className="hide-text tit text-center xl:text-24 text-18 font-bold xl:mb-24 mb-16">title</h3>
                   <div className="sub_info_wrap xl:mt-24 mt-16">
                      <div className="date_wrap">

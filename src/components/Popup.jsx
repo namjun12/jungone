@@ -224,7 +224,7 @@ const Popup = () => {
    const getCookie = (name) => {
       const nameEQ = name + "=";
       const ca = document.cookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
+      for (let i = 0;i < ca.length;i++) {
          let c = ca[i];
          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
@@ -267,33 +267,31 @@ const Popup = () => {
                modules={[Autoplay, Pagination]}
                className="popupSwiper"
             >
-               {
-                  data ? (
-                     data.map((popup, index) => (
-                        <SwiperSlide key={index}>
-                           {popup.link ? (
-                              <a href={popup.link} className="swiper-slide" target="_blank" rel="noreferrer">
-                                 <div className="m-ratioBox-wrap">
-                                    <div className="m-ratioBox">
-                                       <img src={popup.image} alt="" />
-                                    </div>
-                                 </div>
-                              </a>
-                           ) : (
-                              <div className="swiper-slide">
-                                 <div className="m-ratioBox-wrap">
-                                    <div className="m-ratioBox">
-                                       <img src={popup.image} alt="" />
-                                    </div>
+               {data ? (
+                  data.map((popup, index) => (
+                     <SwiperSlide key={index}>
+                        {popup.link ? (
+                           <a href={popup.link} className="swiper-slide" target="_blank" rel="noreferrer">
+                              <div className="m-ratioBox-wrap">
+                                 <div className="m-ratioBox">
+                                    <img src={popup.image} alt="" />
                                  </div>
                               </div>
-                           )}
-                        </SwiperSlide>
-                     ))
-                  ) : (
-                     <div className="hide_txt">Loading ...</div>
-                  )
-               }
+                           </a>
+                        ) : (
+                           <div className="swiper-slide">
+                              <div className="m-ratioBox-wrap">
+                                 <div className="m-ratioBox">
+                                    <img src={popup.image} alt="" />
+                                 </div>
+                              </div>
+                           </div>
+                        )}
+                     </SwiperSlide>
+                  ))
+               ) : (
+                  <div className="hide_txt">Loading ...</div>
+               )}
             </Swiper>
             <div className="pop-btns">
                <input type="checkbox" name="oneday" id="oneday_check" onClick={handleOnedayCheck} />

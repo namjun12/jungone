@@ -223,7 +223,7 @@ export default function Faq() {
                   ))
                )
             ) : (
-               <div className="icon_loading_wrap">
+               <div className="noitem">
                   <i className="xi-spinner-2 xi-spin icon_loading"></i>
                </div>
             )}

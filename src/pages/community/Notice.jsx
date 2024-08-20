@@ -62,7 +62,7 @@ const ListWrap = styled.ul`
    display: flex;
    flex-direction: column;
    width: 100%;
-   border-bottom: 2px solid var(--subColor01);
+   /* border-bottom: 2px solid var(--subColor01); */
    & .btn-link {
       border-bottom: 1px solid #e4e4e4;
       border-bottom: 1px solid var(--subColor05);
@@ -182,7 +182,7 @@ const Notice = () => {
                </fieldset>
             </form>
          </div>
-         <ListWrap className="list_wrap xl:mb-40">
+         <ListWrap className="list_wrap">
             {data ? (
                data.total === 0 ? (
                   <li 
@@ -223,8 +223,8 @@ const Notice = () => {
                   })()
                )
             ) : (
-               <li className="item">
-                  <div className="btn-link hide_text" style={{ height: "500px" }}>Contents area</div>
+               <li className="noitem">
+                  <i className="xi-spinner-2 xi-spin icon_loading"></i>
                </li>
             )}
          </ListWrap>

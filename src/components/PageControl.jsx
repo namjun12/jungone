@@ -5,7 +5,7 @@ const PaginationWrap = styled.ul`
    display: flex;
    justify-content: center;
    align-items: center;
-   border-top: 2px solid var(--sub_color01);
+   border-top: 2px solid var(--subColor01);
 `
 const BtnPage = styled.button`
    display: flex;
@@ -34,7 +34,7 @@ export default function PageControl({ data, pageIndex, setPageIndex, loading }) 
    }
 
    return (
-      <PaginationWrap className="xl:mt-40 mt-30 xl:mb-110 mb-80">
+      <PaginationWrap className="xl:pt-40 pt-30 xl:mb-110 mb-80">
          {loading ? (
             <div style={{ backgroundColor: 'red' }} className="h-105">Loading ...</div>
          ) : (

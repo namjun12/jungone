@@ -102,6 +102,7 @@ const MainBannerWrap = styled.div`
             background-color: #fff;
             &.on{
                overflow: visible;
+               z-index: 9999;
                position: fixed;
                top: 0px;
                left: 0px;
