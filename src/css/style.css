@@ -19,11 +19,11 @@
    --subColor11: #fbfbff;
    --subColor12: #f8f8f8;
 }
-html,
+/* html,
 body {
     height: 100vh;
     height: var(--vh);
-}
+} */
 
 * {
    color: inherit;

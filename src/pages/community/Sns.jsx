@@ -86,7 +86,7 @@ const Sns = () => {
 
    return (
       <SnsWrap className="container xl:pt-120 xl:pb-120 pt-80 pb-80">
-         <div className="instagram">
+         {/* <div className="instagram">
             <div className="flex justify-between">
                <h3 className="xl:text-32 montserrat font-semibold">INSTAGRAM</h3>
                <div className="swiper-nav flex">
@@ -143,7 +143,8 @@ const Sns = () => {
                )}
             </Swiper>
          </div>
-         <div className="youtube xl:mt-120 mt-80">
+         <div className="youtube xl:mt-120 mt-80"> */}
+         <div className="youtube">
             <div className="flex justify-between">
                <h3 className="xl:text-32 montserrat font-semibold">YOUTUBE</h3>
                <div className="swiper-nav flex">

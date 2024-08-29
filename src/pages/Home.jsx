@@ -852,7 +852,7 @@ const Home = () => {
                modules={[Autoplay, Pagination, Navigation]}
             >
                {loading ? (
-                  <SwiperSlide className='hide-text'>Loading ...</SwiperSlide>
+                  <SwiperSlide className='hide-text bg-subColor11'>Loading ...</SwiperSlide>
                ) : (
                   data && data.banner ? (
                      data.banner.map((bannerInfo, index) => (
@@ -880,7 +880,12 @@ const Home = () => {
                                  {bannerInfo.image_type === 0 ? (
                                     <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
                                  ) : (
-                                    <video className='mb-img' muted autoPlay loop playsInline preload="auto">
+                                    <video 
+                                    className='mb-img' 
+                                    muted loop playsInline preload="auto" 
+                                    autoPlay={false}
+                                    onCanPlayThrough={(e) => e.currentTarget.play()}
+                                    >
                                        <source src={bannerInfo.image} />
                                     </video>
                                  )}

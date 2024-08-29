@@ -295,7 +295,12 @@ const Review = () => {
                               <h6 className='max-line1 leading-1em xl:text-20 font-semibold xl:mt-20 mt-16'>{listInfo.title}</h6>
                               <p
                                  className='max-line4 xl:leading-28 xl:text-16 xl:mt-20 mt-16 text-subColor04'
-                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(listInfo.content) }}
+                                 dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(listInfo.content, {
+                                       ALLOWED_TAGS: ['p', 'div', 'a', 'span'],
+                                       ALLOWED_ATTR: []
+                                    })
+                                 }}
                               />
                            </div>
                            <div className='icon-wrap'>
