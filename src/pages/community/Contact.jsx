@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 
 // styles
 const Container = styled.div`
@@ -208,6 +209,10 @@ export default function Contact() {
 
    return (
       <Container className="contact_inquire container xl:pt-120 xl:pb-120 pt-80 pb-80">
+         <Helmet>
+            <title>문의하기 - 공간정원</title>
+            <meta name="description" content="문의하기" />
+         </Helmet>
          <div className="top_head_wrap">
             <h2 className="leading-1em xl:text-42 font-bold">문의하기</h2>
             <p className="txt xl:block hidden">

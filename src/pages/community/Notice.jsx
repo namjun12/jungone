@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Title02 } from "../../components/StyledCommon";
+import { Helmet } from "react-helmet-async";
 
 // Components
 import PageControl from "../../components/PageControl";
@@ -160,6 +161,10 @@ const Notice = () => {
 
    return (
       <Container className="type_notice container">
+         <Helmet>
+            <title>공지사항 - 공간정원</title>
+            <meta name="description" content="공지사항" />
+         </Helmet>
          <Title02 className="xl:mt-120 mt-80">공지사항</Title02>
          <div className="top-nav xl:mt-80 mt-24">
             <p className="text_count xl:text-18 xl:mt-0 mt-40">총 {data && <strong className="point">{data.total}</strong>}개의 게시물</p>

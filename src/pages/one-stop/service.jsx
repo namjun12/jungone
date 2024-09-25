@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 
 // Components
 import { Title02, SubBanner01, Desc01 } from '../../components/StyledCommon';
@@ -163,19 +164,23 @@ const OneStopService = () => {
 
    return (
       <ServiceWrap className='xl:pt-120 pt-80'>
+         <Helmet>
+            <title>원스톱 토탈서비스 - 공간정원</title>
+            <meta name="description" content="원스톱 토탈서비스" />
+         </Helmet>
          <div className='container'>
             <Title02>원스톱 토탈서비스</Title02>
             <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
                <p className='desc'>
-                  이사부터 청소, 전문시공 및 공간 가드닝까지 <br className='only-mobile'/>
+                  이사부터 청소, 전문시공 및 공간 가드닝까지 <br className='only-mobile' />
                   모두 알아서 해주는 편리한 <span className='point'>원스톱 토탈서비스 </span><br />
-                  <br className='only-mobile'/>
-                  국내최초 공간정원에서 시작하였으며 <br className='only-mobile'/>
+                  <br className='only-mobile' />
+                  국내최초 공간정원에서 시작하였으며 <br className='only-mobile' />
                   현재 가장 큰 사랑을 받고있는 서비스입니다.<br />
-                  <br className='only-mobile'/>
-                  <span className='point'>현재 상태를 진단하여 최적의 효율과 퍼포먼스를 <br className='only-mobile'/>
-                  보장하는 서비스로 패키징 추천</span>을 통해 <br className='only-mobile'/>
+                  <br className='only-mobile' />
+                  <span className='point'>현재 상태를 진단하여 최적의 효율과 퍼포먼스를 <br className='only-mobile' />
+                     보장하는 서비스로 패키징 추천</span>을 통해 <br className='only-mobile' />
                   합리적인 가격을 만들어 드립니다
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />

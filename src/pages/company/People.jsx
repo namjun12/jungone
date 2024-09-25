@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import DOMPurify from 'dompurify'
+import { Helmet } from 'react-helmet-async'
 
 // Components
 import { Title01, Title02 } from '../../components/StyledCommon'
@@ -93,6 +94,10 @@ const People = () => {
    ]
    return (
       <PeopleWrap className='container xl:pt-180 pt-80 xl:mb-120 mb-80'>
+         <Helmet>
+            <title>인재상 - 공간정원</title>
+            <meta name="description" content="인재상" />
+         </Helmet>
          <div>
             <div>
                <Title02>인재상</Title02>

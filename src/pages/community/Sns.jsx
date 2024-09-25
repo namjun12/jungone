@@ -6,7 +6,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from 'react-helmet-async';
 
+// Images
 import { noImg } from '../../components/Images'
 
 // Styles
@@ -86,7 +88,11 @@ const Sns = () => {
 
    return (
       <SnsWrap className="container xl:pt-120 xl:pb-120 pt-80 pb-80">
-         {/* <div className="instagram">
+         <Helmet>
+            <title>SNS - 공간정원</title>
+            <meta name="description" content="SNS" />
+         </Helmet>
+         <div className="instagram">
             <div className="flex justify-between">
                <h3 className="xl:text-32 montserrat font-semibold">INSTAGRAM</h3>
                <div className="swiper-nav flex">
@@ -143,8 +149,7 @@ const Sns = () => {
                )}
             </Swiper>
          </div>
-         <div className="youtube xl:mt-120 mt-80"> */}
-         <div className="youtube">
+         <div className="youtube xl:mt-120 mt-80">
             <div className="flex justify-between">
                <h3 className="xl:text-32 montserrat font-semibold">YOUTUBE</h3>
                <div className="swiper-nav flex">

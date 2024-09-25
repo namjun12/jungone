@@ -5,6 +5,7 @@ const PaginationWrap = styled.ul`
    display: flex;
    justify-content: center;
    align-items: center;
+   flex-wrap: wrap;
    border-top: 2px solid var(--subColor01);
 `
 const BtnPage = styled.button`
@@ -52,9 +53,30 @@ export default function PageControl({ data, pageIndex, setPageIndex, loading }) 
                      </BtnPage>
                   </li>
                ) : (
-                  <li key={index} data-index={index}>
-                     <BtnPage onClick={() => { handleClick(links.label) }} className={`control_btn pagination xl:text-16 text-14 ${index === parseInt(pageIndex) ? "on" : ""}`}>{links.label}</BtnPage>
-                  </li>
+                  // <li key={index} data-index={index}>
+                  //    <BtnPage
+                  //       onClick={() => { handleClick(links.label) }}
+                  //       className={`control_btn pagination xl:text-16 text-14 ${index === parseInt(pageIndex) ? "on" : ""}`}>
+                  //       {links.label}
+                  //    </BtnPage>
+                  // </li>
+
+                  links.label === "..." ? (
+                     <li key={index}>
+                        <BtnPage style={{ cursor: "not-allowed" }}>
+                           {links.label}
+                        </BtnPage>
+                     </li>
+                  ) : (
+                     <li key={index}>
+                        <BtnPage
+                           onClick={() => { handleClick(links.label) }}
+                           className={`control_btn pagination xl:text-16 text-14 ${parseInt(pageIndex) === parseInt(links.label) ? "on" : ""}`}
+                        >
+                           {links.label}
+                        </BtnPage>
+                     </li >
+                  )
                )
             ))
          )

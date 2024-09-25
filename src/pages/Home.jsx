@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Helmet } from 'react-helmet-async'
 
 // Components
 import { Title01, StrokeTitle, BtnLink, BtnLink02, BtnViewmore } from '../components/StyledCommon'
@@ -832,6 +833,10 @@ const Home = () => {
 
    return (
       <Container>
+         <Helmet>
+            <title>공간정원</title>
+            <meta name="description" content="대한민국 최고의 정리전문기업 공간정원입니다." />
+         </Helmet>
          <Popup />
          <section className='main-banner'>
             <Swiper
@@ -880,11 +885,11 @@ const Home = () => {
                                  {bannerInfo.image_type === 0 ? (
                                     <img className='mb-img' src={bannerInfo.image} alt="배너 이미지" />
                                  ) : (
-                                    <video 
-                                    className='mb-img' 
-                                    muted loop playsInline preload="auto" 
-                                    autoPlay={false}
-                                    onCanPlayThrough={(e) => e.currentTarget.play()}
+                                    <video
+                                       className='mb-img'
+                                       muted loop playsInline preload="auto"
+                                       autoPlay={false}
+                                       onCanPlayThrough={(e) => e.currentTarget.play()}
                                     >
                                        <source src={bannerInfo.image} />
                                     </video>

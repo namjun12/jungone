@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 
 // Components
 import { Title02, SubBanner01, Desc01 } from '../../components/StyledCommon';
@@ -255,16 +256,20 @@ const Service = () => {
 
    return (
       <ServiceWrap className='xl:mt-120 mt-80'>
+         <Helmet>
+            <title>공간정리 - 공간정원</title>
+            <meta name="description" content="공간정리" />
+         </Helmet>
          <div className='container'>
             <Title02>공간정리</Title02>
             <SubBanner01 className='banner flex flex-col justify-center items-center xl:mt-40 mt-32'>
                <img className='icon ml-auto mr-auto' src={iconQuotation01} alt="따옴표" />
                <p className='desc'>
-                  공간정원을 대표하는 서비스로서 <br className='only-mobile'/>
-                  다년간의 정리 연구와 개발을 통해 <span className='point'>사용자 맞춤의 <br className='only-mobile'/>
-                  편리하고 세련된 환경</span>으로  재구성하며,<br /><br className='xl:hidden' />
-                  나아가 <span className='point'>사용자에게 꼭 필요한 공간의 기능들을 부여하여 <br className='only-mobile'/>
-                  성장과 발전을 돕는 공간</span>으로 만들어 드리는 <br className='only-mobile'/>
+                  공간정원을 대표하는 서비스로서 <br className='only-mobile' />
+                  다년간의 정리 연구와 개발을 통해 <span className='point'>사용자 맞춤의 <br className='only-mobile' />
+                     편리하고 세련된 환경</span>으로  재구성하며,<br /><br className='xl:hidden' />
+                  나아가 <span className='point'>사용자에게 꼭 필요한 공간의 기능들을 부여하여 <br className='only-mobile' />
+                     성장과 발전을 돕는 공간</span>으로 만들어 드리는 <br className='only-mobile' />
                   정리수납 서비스 입니다
                </p>
                <img className='icon ml-auto mr-auto' src={iconQuotation02} alt="따옴표" />

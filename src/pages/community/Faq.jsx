@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import styled from "styled-components";
 import axios from "axios"
 import DOMPurify from "dompurify"
+import { Helmet } from "react-helmet-async";
 
 // conponents Start
 import PageControl from "../../components/PageControl"
@@ -181,6 +182,10 @@ export default function Faq() {
 
    return (
       <Container className="contact_faq contact container">
+         <Helmet>
+            <title>자주 묻는 질문 - 공간정원</title>
+            <meta name="description" content="자주 묻는 질문" />
+         </Helmet>
          <Title02 className="xl:mt-120 mt-80">자주 묻는 질문</Title02>
          <div className="top-nav xl:mt-80 mt-24">
             <p className="text_count xl:text-18 xl:mt-0 mt-40">총 {data && <strong className="point">{data.total}</strong>}개의 게시물</p>

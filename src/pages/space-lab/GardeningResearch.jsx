@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 
 // Components
 import { SpaceLab01 } from '../../components/CommonUi'
@@ -187,6 +188,10 @@ const GardeningResearch = () => {
 
    return (
       <CategoryWrap className='xl:pb-120 pb-80'>
+         <Helmet>
+            <title>공간 가드닝 연구 - 공간정원</title>
+            <meta name="description" content="공간 가드닝 연구" />
+         </Helmet>
          <SpaceLab01
             info={SpaceLab01Info}
          />

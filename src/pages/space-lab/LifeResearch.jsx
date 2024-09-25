@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { SpaceLab01 } from '../../components/CommonUi';
+import { Helmet } from 'react-helmet-async';
 
 // Images
 import { pattern02, image37, iconQuotation01, iconQuotation02, image38, image39, image40 } from '../../components/Images';
@@ -128,6 +129,10 @@ const LifeResearch = () => {
 
    return (
       <LifeResearchWrap className='xl:pb-120 pb-80'>
+         <Helmet>
+            <title>라이프 오브제 연구 - 공간정원</title>
+            <meta name="description" content="라이프 오브제 연구" />
+         </Helmet>
          <SpaceLab01
             info={SpaceLab01Info}
          />

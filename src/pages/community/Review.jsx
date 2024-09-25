@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import DOMPurify from 'dompurify';
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Helmet } from 'react-helmet-async';
 
 // Components
 import { Title02 } from '../../components/StyledCommon';
@@ -59,9 +60,15 @@ const ReviewWrap = styled.div`
             background-color: var(--subColor07);
          }
       }
-      .thumbnail{
+      .thumbnail-wrap{
+         aspect-ratio: 1.6/1;
          width: 100%;
-         max-width: 325px;;
+         max-width: 325px;
+         &>.thumbnail{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+         }
       }
       .contents-wrap{
          width: 100%;
@@ -138,6 +145,7 @@ const useQuery = () => {
 
 const Review = () => {
 
+   const navigate = useNavigate();
    const query = useQuery();
    const page = query.get('page');
 
@@ -145,10 +153,10 @@ const Review = () => {
    const [loading, setLoading] = useState(true);
    const [pageIndex, setPageIndex] = useState(page ? page : 1);
 
-   const [category, setCategory] = useState(null);
-   const [area, setArea] = useState(null);
-   const [useApiCategory, setUseApiCategory] = useState();
-   const [useApiArea, setUseApiArea] = useState();
+   const [category, setCategory] = useState('');
+   const [area, setArea] = useState('');
+   const [useApiCategory, setUseApiCategory] = useState('');
+   const [useApiArea, setUseApiArea] = useState('');
 
    useEffect(() => {
       const fetchData = async () => {
@@ -163,12 +171,13 @@ const Review = () => {
       }
 
       fetchData();
-      // navigate(`?filter_category=${category}&filter_area=${area}&page=${pageIndex}`);
+      navigate(`?filter_category=${useApiCategory}&filter_area=${useApiArea}&page=${pageIndex}`);
    }, [pageIndex, useApiCategory, useApiArea])
 
    const handleSearchClick = () => {
       setUseApiCategory(category);
       setUseApiArea(area);
+      setPageIndex(1)
    };
    const filterReset = () => {
       setCategory(null);
@@ -205,6 +214,10 @@ const Review = () => {
    };
    return (
       <ReviewWrap className='container xl:pt-120 pt-80'>
+         <Helmet>
+            <title>고객 후기 - 공간정원</title>
+            <meta name="description" content="고객 후기" />
+         </Helmet>
          <Title02>고객 후기</Title02>
          <div className='filter xl:mt-24 mt-16'>
             <div className='filter-item category flex items-center xl:gap-40 gap-16'>
@@ -281,7 +294,9 @@ const Review = () => {
                         to={`./${listInfo.id}?page=${pageIndex}`}
                         className='btn-link flex xl:gap-48 gap-16 xl:pt-32 xl:pb-32 pt-24 pb-24'
                      >
-                        <img className='thumbnail' src={listInfo.image} alt="리뷰 썸네일" />
+                        <div className='thumbnail-wrap'>
+                           <img className='thumbnail' src={listInfo.image} alt="리뷰 썸네일" />
+                        </div>
                         <div className='contents-wrap flex items-center xl:gap-24'>
                            <div className='text-wrap'>
                               <div className='category-wrap flex gap-8'>

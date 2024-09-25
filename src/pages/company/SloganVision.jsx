@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 
 // Components
 import { Title02 } from '../../components/StyledCommon'
@@ -130,6 +131,10 @@ const SloganVisionWrap = styled.div`
 const SloganVision = () => {
    return (
       <SloganVisionWrap className='xl:pt-180 pt-80 xl:pb-120 pb-80'>
+         <Helmet>
+            <title>슬로건 및 비전 - 공간정원</title>
+            <meta name="description" content="슬로건 및 비전" />
+         </Helmet>
          <div className='slogan container'>
             <div>
                <Title02>슬로건 및 비전</Title02>

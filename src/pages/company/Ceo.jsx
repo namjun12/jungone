@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import DOMPurify from 'dompurify'
+import { Helmet } from 'react-helmet-async'
 
 // Components
 import { Title02 } from '../../components/StyledCommon'
@@ -115,6 +116,10 @@ const Ceo = () => {
 
    return (
       <CeoWrap className='xl:pt-180 pt-80'>
+         <Helmet>
+            <title>대표소개 - 공간정원</title>
+            <meta name="description" content="대표소개" />
+         </Helmet>
          <div>
             <div>
                <Title02>대표소개</Title02>
