@@ -91,6 +91,8 @@ const Sns = () => {
          <Helmet>
             <title>SNS - 공간정원</title>
             <meta name="description" content="SNS" />
+            <meta property="og:title" content="SNS - 공간정원" />
+            <meta property="og:description" content="SNS" />
          </Helmet>
          <div className="instagram">
             <div className="flex justify-between">

@@ -836,6 +836,8 @@ const Home = () => {
          <Helmet>
             <title>공간정원</title>
             <meta name="description" content="대한민국 최고의 정리전문기업 공간정원입니다." />
+            <meta property="og:title" content="공간정원" />
+            <meta property="og:description" content="대한민국 최고의 정리전문기업 공간정원입니다." />
          </Helmet>
          <Popup />
          <section className='main-banner'>

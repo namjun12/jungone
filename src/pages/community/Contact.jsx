@@ -212,6 +212,8 @@ export default function Contact() {
          <Helmet>
             <title>문의하기 - 공간정원</title>
             <meta name="description" content="문의하기" />
+            <meta property="og:title" content="문의하기 - 공간정원" />
+            <meta property="og:description" content="문의하기" />
          </Helmet>
          <div className="top_head_wrap">
             <h2 className="leading-1em xl:text-42 font-bold">문의하기</h2>

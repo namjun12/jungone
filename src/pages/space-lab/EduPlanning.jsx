@@ -96,6 +96,8 @@ const EduPlanning = () => {
          <Helmet>
             <title>교육 기획 - 공간정원</title>
             <meta name="description" content="교육 기획" />
+            <meta property="og:title" content="교육 기획 - 공간정원" />
+            <meta property="og:description" content="교육 기획" />
          </Helmet>
          <SpaceLab01
             info={SpaceLab01Info}

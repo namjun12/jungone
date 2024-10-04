@@ -185,6 +185,8 @@ export default function Faq() {
          <Helmet>
             <title>자주 묻는 질문 - 공간정원</title>
             <meta name="description" content="자주 묻는 질문" />
+            <meta property="og:title" content="자주 묻는 질문 - 공간정원" />
+            <meta property="og:description" content="자주 묻는 질문" />
          </Helmet>
          <Title02 className="xl:mt-120 mt-80">자주 묻는 질문</Title02>
          <div className="top-nav xl:mt-80 mt-24">

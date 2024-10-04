@@ -155,16 +155,16 @@ export default function Footer() {
                   </div>
                </div>
                <div className="sns-wrap flex xl:gap-6">
-                  <Link to="">
+                  <Link to="https://www.instagram.com/junglee_lab" target="_blank" rel="noreferrer">
                      <img className="icon" src={sns01} alt="instagram" />
                   </Link>
-                  <Link to="">
+                  <Link to="https://blog.naver.com/niceout86" target="_blank" rel="noreferrer">
                      <img className="icon" src={sns02} alt="blog" />
                   </Link>
-                  <Link to="">
+                  <Link to="https://www.youtube.com/@tv2381" target="_blank" rel="noreferrer">
                      <img className="icon" src={sns03} alt="youtube" />
                   </Link>
-                  <Link to="">
+                  <Link to="https://pf.kakao.com/_xkCagG/chat" target="_blank" rel="noreferrer">
                      <img className="icon" src={sns04} alt="kakao" />
                   </Link>
                </div>

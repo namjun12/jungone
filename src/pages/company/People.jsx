@@ -97,6 +97,8 @@ const People = () => {
          <Helmet>
             <title>인재상 - 공간정원</title>
             <meta name="description" content="인재상" />
+            <meta property="og:title" content="인재상 - 공간정원" />
+            <meta property="og:description" content="인재상" />
          </Helmet>
          <div>
             <div>

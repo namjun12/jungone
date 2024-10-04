@@ -259,6 +259,8 @@ const Service = () => {
          <Helmet>
             <title>공간정리 - 공간정원</title>
             <meta name="description" content="공간정리" />
+            <meta property="og:title" content="공간정리 - 공간정원" />
+            <meta property="og:description" content="공간정리" />
          </Helmet>
          <div className='container'>
             <Title02>공간정리</Title02>

@@ -217,6 +217,8 @@ const Review = () => {
          <Helmet>
             <title>고객 후기 - 공간정원</title>
             <meta name="description" content="고객 후기" />
+            <meta property="og:title" content="고객 후기 - 공간정원" />
+            <meta property="og:description" content="고객 후기" />
          </Helmet>
          <Title02>고객 후기</Title02>
          <div className='filter xl:mt-24 mt-16'>

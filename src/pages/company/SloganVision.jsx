@@ -134,6 +134,8 @@ const SloganVision = () => {
          <Helmet>
             <title>슬로건 및 비전 - 공간정원</title>
             <meta name="description" content="슬로건 및 비전" />
+            <meta property="og:title" content="슬로건 및 비전 - 공간정원" />
+            <meta property="og:description" content="슬로건 및 비전" />
          </Helmet>
          <div className='slogan container'>
             <div>

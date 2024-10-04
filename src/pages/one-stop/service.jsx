@@ -167,6 +167,8 @@ const OneStopService = () => {
          <Helmet>
             <title>원스톱 토탈서비스 - 공간정원</title>
             <meta name="description" content="원스톱 토탈서비스" />
+            <meta property="og:title" content="원스톱 토탈서비스 - 공간정원" />
+            <meta property="og:description" content="원스톱 토탈서비스" />
          </Helmet>
          <div className='container'>
             <Title02>원스톱 토탈서비스</Title02>

@@ -191,6 +191,8 @@ const GardeningResearch = () => {
          <Helmet>
             <title>공간 가드닝 연구 - 공간정원</title>
             <meta name="description" content="공간 가드닝 연구" />
+            <meta property="og:title" content="공간 가드닝 연구 - 공간정원" />
+            <meta property="og:description" content="공간 가드닝 연구" />
          </Helmet>
          <SpaceLab01
             info={SpaceLab01Info}
