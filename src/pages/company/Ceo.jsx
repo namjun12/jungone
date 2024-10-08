@@ -118,9 +118,9 @@ const Ceo = () => {
       <CeoWrap className='xl:pt-180 pt-80'>
          <Helmet>
             <title>대표소개 - 공간정원</title>
-            <meta name="description" content="대표소개" key="description" />
-            <meta property="og:title" content="대표소개 - 공간정원" key="og:title" />
-            <meta property="og:description" content="대표소개" key="og:description" />
+            <meta name="description" content="대표소개" />
+            <meta property="og:title" content="대표소개 - 공간정원" />
+            <meta property="og:description" content="대표소개" />
          </Helmet>
          <div>
             <div>
